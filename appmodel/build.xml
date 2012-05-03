@@ -1,0 +1,30 @@
+<project name="diploma" basedir="." default="build">
+    
+    <property name="src" value="src/"/>
+    <property name="bin" value="bin/"/>
+    <property name="doc" value="doc/"/>
+    <target name="init">
+        <mkdir dir="${bin}"/>
+    </target>
+    <target name="javadoc-init">
+        <mkdir dir="${doc}"/>
+    </target>
+    
+    
+    <target name="build" depends="init">
+        <javac srcdir="${src}" destdir="${bin}">
+            <classpath refid="lib.classpath" />
+        </javac>
+    </target>
+    
+    
+    <target name="clean" description="Removes previous build">
+        <delete verbose="true">
+            <fileset dir="${bin}"/>
+        </delete>
+    </target>
+
+    <target name="doc" description="generate javadoc" depends="javadoc-init">
+        <javadoc access="private" classpath="." destdir="${doc}" nodeprecated="false" nodeprecatedlist="false" noindex="false" nonavbar="false" notree="false" source="1.6" sourcepath="src" splitindex="true" use="true" version="true"/>
+    </target>
+</project>
