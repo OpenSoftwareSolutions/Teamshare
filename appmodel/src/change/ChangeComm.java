@@ -1,6 +1,6 @@
 package change;
 
-import basic.Device;
+import common.Device;
 
 
 /**

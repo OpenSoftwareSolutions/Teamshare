@@ -1,7 +1,7 @@
 package change;
 
 
-import basic.User;
+import common.User;
 
 /**
  * Class that represents changes in a group.

@@ -1,6 +1,6 @@
 package change;
 
-import gm.Group;
+import groupmanagement.Group;
 
 /**
  * Class that stores the changes history.
