@@ -39,7 +39,7 @@ public class DeviceInquirer {
 	public List<Device> getUserDevices(User user) {return null;}
 	/**
 	 * Communicates with the remote services to retrieve the list of devices registered by every user in the given group
-	 * @param User 
+	 * @param group the group for which to retrieve devices
 	 * @return the list of Device objects, not necessarily ordered by user 
 	 */
 	public List<Device> getDevices(Group group) {return null;}

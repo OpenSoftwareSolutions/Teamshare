@@ -15,7 +15,7 @@ public class ChangeService {
 	public void addChange(Change change){}
 	/**
 	 * Retrieves the history of all the changes performed in a group folder
-	 * @return
+	 * @return the list of changes
 	 */
 	public List<Change> changesHistory(){return null;} 
 	/**

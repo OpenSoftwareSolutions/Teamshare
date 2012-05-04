@@ -42,9 +42,9 @@ public class MessageManager {
 	 */
 	public void processTransferReply(TransferMessage msg) {}
 	/**
-	 * Creates an invitation object and sends it to the remote Messaging service.
-	 * @param g
-	 * @param userEmail
+	 * Creates an TransferMessage object and sends it to the remote Messaging service.
+	 * @param g the group
+	 * @param newOwner the proposed owner, must be part of the group
 	 */
 	public void sendOwnerTransfer(Group g, User newOwner){}
 

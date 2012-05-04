@@ -21,12 +21,12 @@ public class OverlayManager {
 	
 	/**
 	 * Provides a list of devices from which the user should pull data 
-	 * @return
+	 * @return the list of devices
 	 */
 	public List<Device> getDevicesForPull(){return null;}
 	/**
 	 * Provides a list of devices from which the user should push data 
-	 * @return
+	 * @return the list of devices
 	 */
 	public List<Device> getDevicesForPush(){return null;}
 	
