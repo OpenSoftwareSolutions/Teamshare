@@ -3,7 +3,7 @@ package change;
 import java.util.List;
 
 /**
- * Repository for Change objects. It offers an interface to other modules and components for adding and 
+ * Repository for {@link Change} objects. It offers an interface to other modules and components for adding and 
  * retrieving <b>group and filesystem changes<b>.
  */
 

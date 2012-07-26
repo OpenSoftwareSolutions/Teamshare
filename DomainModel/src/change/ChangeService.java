@@ -3,14 +3,14 @@ package change;
 import java.util.List;
 
 /**
-* Interface for the Change Service, which offers the means for the other components to store and access <b>changes</b>.
+* Interface for the {@link change} module, which offers the means for the other components to store and access <b>changes</b>.
 *
 */
 
 public abstract class ChangeService {
 	
 	/**
-	 * A reference to the Change Logger, a repository-type component that handles Change objects storage.
+	 * A reference to the {@link ChangeLogger}, a repository-type component that handles {@link Change} objects storage.
 	 */
 	ChangeLogger changeLogger;
 	

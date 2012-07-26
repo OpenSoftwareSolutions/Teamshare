@@ -1,7 +1,7 @@
 package group;
 
-import common.Group;
+import common.User;
 
-public class GroupOwner extends Group {
+public class GroupOwner extends User {
 
 }

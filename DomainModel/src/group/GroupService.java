@@ -41,17 +41,17 @@ public interface GroupService {
 	 */
 	public void changeOwner(User newOwner, Group group);
 	/**
-	 * The Synchronization Service component informs the Group Service component about a group change, and the Group Service in turn will transmit this 
-	 * information for processing to the Group Management component.
+	 * The {@link SynchronizationService} component informs the Group Service component about a group change, and the Group Service in turn will transmit this 
+	 * information for processing to the {@link GroupManagement} component.
 	 * @param change
 	 * @param group
 	 */
 	public void informGroupChange(Change change);
 	
 	/**
-	 * The Messaging Service forwards a read message to the Group Service in order to apply group changes depending on the message content and type.
-	 * E.g if the message is an invitation acceptance, the Group Management will add the user to the group and then use Synchronization 
-	 * Service to transmit this change to other users.
+	 * The {@link MessagingService} forwards a read message to the Group Service in order to apply group changes depending on the message content and type.
+	 * E.g if the message is an invitation acceptance, the {@link GroupManagement} will add the user to the group and then use {@link SynchronizationService}
+	 * to transmit this change to other users.
 	 * 
 	 * @param message 
 	 */
