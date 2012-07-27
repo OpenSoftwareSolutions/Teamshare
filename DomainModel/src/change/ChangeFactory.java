@@ -24,7 +24,7 @@ public abstract class ChangeFactory {
 											Date timestamp);
 	
 	/*public abstract Change createGroupChange(ChangeType type, String changedGroup, String changeDetails, Date timestamp);
-	public abstract Change createFileChange(ChangeType type, String changedFile, String changeDetails, Date timestamp);//TODO arguments
-	public abstract Change createFolderChange(ChangeType type, String changedGroup, String changeDetails, Date timestamp);//TODO arguments
+	public abstract Change createFileChange(ChangeType type, String changedFile, String changeDetails, Date timestamp);
+	public abstract Change createFolderChange(ChangeType type, String changedGroup, String changeDetails, Date timestamp);
 	*/
 }

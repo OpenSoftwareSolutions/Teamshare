@@ -31,7 +31,8 @@ public class Group {
 	public User pendingOwner;
 	/**
 	 * For security mechanisms the group must have a series of keys, 
-	 * but the details regarding encryption and authentication techniques are on the application level, at the domain level we only 
+	 * but the details regarding encryption and authentication techniques are on the application level, 
+	 * at the domain level it is only relevant that they are needed. 
 	 * that they are needed.
 	 */
 	public List<String> keys;

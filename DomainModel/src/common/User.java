@@ -1,13 +1,40 @@
 package common;
 
-import java.util.ArrayList;
+import java.util.List;
 
+/**
+ * Implementation of the User entity representing a Teamshare application user, as "seen" by other users. {@link Account} is used when referring to the
+ * user logged in on the device, containing all the user's information. User provides only the information that is needed by other users.
+ */
 public class User {
+	/**
+	 * The user's unique identifier, it is not visible through the user interface. 
+	 * <br>Is the same as the one in the user's Account.
+	 */
+	
 	public long userID;
+	
+	/**
+	 * The user's username, it is the one visible to other users through an user interface.
+	 * It is also unique. 
+	 * <br>Is the same as the one in the user's Account.
+	 */
 	public String username;
+	
+	/**
+	 * The user's email address, to which it receives notifications. Two users cannot have the same email address. 
+	 * <br>Is the same as the one in the user's Account.
+	 */
 	public String email;
-	public boolean online; //sa adaug si la policies ca un alt user poate sa 
-								//vada daca un user este online sau nu, adica are 
-								//cel putin un device online
-	public ArrayList<Device> devices;
+	
+	/**
+	 * The user's status, which can be seen by other users. True if online (at least one of its devices is online), false otherwise.
+	 */
+	public boolean online; 
+								
+	/**
+	 * The list of all the devices linked by the user. This list created based on information from the <i>remote services</i> and 
+	 * is not visible to the user. This information is vital for synchronizing changes.
+	 */
+	public List<Device> devices;
 }
