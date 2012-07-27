@@ -1,54 +1,114 @@
-/**
- * 
- */
 package group;
+
+import java.util.Properties;
+
+import synchronization.SynchronizationService;
 
 import messaging.Message;
 
 import change.Change;
+import change.ChangeFactory;
+import change.ChangeService;
 import common.Group;
 import common.User;
 
 /**
- * Interface offering other components group related functionalities.
+ * Interface offering other components group related functionalities. 
  *
  */
-public interface GroupService {
+public abstract class GroupService {
 	
-
+	GroupInfoRepository groupInfoRepository;
 	/**
-	 * Group Service starts performing the necessary steps for inviting an user into the given group. 
+	 * A reference to the ChangeFactory that creates Change objects.
+	 */
+	ChangeFactory changeFactory;
+	/**
+	 * A reference to the ChangeService that logs the group changes.
+	 */
+	ChangeService changeService;
+	
+	/**
+	 * A reference to the SynchronizationService that will log the group changes.
+	 */
+	SynchronizationService syncService;
+	/**
+	 * GroupService starts performing the necessary steps for inviting an user into the given group. 
+	 * @param group - the group to which the user is invited
 	 * @param user - the invited user
-	 * @param group - the group to which the user is invited
 	 */
-	public void inviteUser(User user, Group group);
+	public abstract void inviteUser(Group group, User user);
 	
 	/**
-	 * Group Service starts performing the necessary steps for inviting an external person into the given group. 
+	 * GroupService starts performing the necessary steps for inviting an external person into the given group. 	
+	 * @param group - the group to which the user is invited
 	 * @param email - the external person's email address, to which the invitation is sent
-	 * @param group - the group to which the user is invited
 	 */
-	public void inviteExternalPerson(String email, Group group);
+	public abstract void inviteExternalPerson(Group group, String email);
 	
 	/**
-	 * Group Service starts performing the necessary steps for ownership transfer.
-	 * @param newOwner - the proposed group owner
+	 * GroupService starts performing the necessary steps for removing an user from the given group. 
+	 * @param group - the group from which the user is removed
+	 * @param user - the user to be removed
+	 */
+	public abstract void removeUser(Group group, User user);
+	
+	/**
+	 * GroupService applies the new group settings.
+	 * @param group 
+	 * @param settings
+	 */
+	public abstract void changeGroupSettings(Group group, Properties settings);
+	
+	/**
+	 * GroupService starts performing the necessary steps for ownership transfer.
 	 * @param group - the group for which the ownership is transferred
+	 * @param newOwner - the proposed group owner
 	 */
-	public void changeOwner(User newOwner, Group group);
-	/**
-	 * The {@link SynchronizationService} component informs the Group Service component about a group change, and the Group Service in turn will transmit this 
-	 * information for processing to the {@link GroupManagement} component.
-	 * @param change - the Change object, also containing the Group to which it applies and what was performed that lead to it.
-	 */
-	public void informGroupChange(Change change);
+	public abstract void changeOwner(Group group, User newOwner);
 	
 	/**
-	 * The {@link MessagingService} forwards a read message to the Group Service in order to apply group changes depending on the message content and type.
+	 * The GroupService completely removes a group from the system. It also removes the group's file and folders, in which case it has to communicate with
+	 * the {@link filesystem} module.
+	 * @param group - the group to be removed/deleted, it must not have any users, just the owner, which the logged in user
+	 */
+	public abstract void removeGroup(Group group);
+	
+	/**
+	 * The {@link SynchronizationService} component informs the GroupService component about a group change, and the GroupService in turn will transmit this 
+	 * information for processing to the {@link GroupManagement} component.
+	 * @param change - the Change object, also containing the Group to which it applies and what was performed that lead to it
+	 */
+	public abstract void receiveGroupChange(Change change);
+		
+	
+	/**
+	 * The {@link MessagingService} forwards a read message to the GroupService in order to apply group changes depending on the message content and type.
 	 * E.g if the message is an invitation acceptance, the {@link GroupManagement} will add the user to the group and then use {@link SynchronizationService}
 	 * to transmit this change to other users.
 	 * 
 	 * @param message 
 	 */
-	public void processMessage(Message message); 
+	public abstract void processMessage(Message message); 
+	
+	/**
+	 * The GroupService informs the {@link ChangeService} about a <b>group change<b> that it needs to log.
+	 * @param change - the change that occurred for a group
+	 */	
+	
+	protected abstract void logGroupChange(Change change);
+	
+	
+	/**
+	 * The GroupService informs the {@link SynchronizationService} about a <b>group change<b> that it needs to synchronize.
+	 * @param change - the change that occurred for a group
+	 */	
+	
+	protected abstract void syncGroupChange(Change change);
+	
+	/**
+	 * The GroupService uses the ChangeFactory to obtain a Change object for a group.
+	 */
+	protected abstract void getGroupChange();
+	
 }
