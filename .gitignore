@@ -24,3 +24,5 @@ TAGS
 *.rej
 *.pyc
 *.class
+*/.metadata
+*/bin/**
