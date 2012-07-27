@@ -11,7 +11,7 @@ public abstract class ChangeLogger {
 
 	/**
 	 * Adds a change to the history of changes;
-	 * @param c
+	 * @param change - the Change that will be logged
 	 */
 	public abstract void logChange(Change change);
 	

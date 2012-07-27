@@ -16,9 +16,9 @@ public abstract class ChangeFactory {
 	 * 						The Change's attributes are filled based on this object's type.
 	 * @param changeDetails - details about what was performed that lead to this change (modified, added or removed).
 	 * @param timestamp - the time when this change occurred.
-	 * @return
+	 * @return the Change object representing the <b>change</b>
 	 */
-	public abstract Change createGroupChange(ChangeType type, 
+	public abstract Change createChange(ChangeType type, 
 											Object changeTarget, 
 											String changeDetails, 
 											Date timestamp);
