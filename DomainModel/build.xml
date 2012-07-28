@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<project basedir="." default="build" name="DomainModel">
+    <property environment="env"/>
+    <property name="target" value="1.6"/>
+    <property name="source" value="1.6"/>
+    <property name="bin.dir" value="bin/" /> 
+    <property name="src.dir" value="src/" /> 
+    <property name="lib.dir" value="lib/" /> 
+    <property name="doc.dir" value="doc/" /> 
+    
+    <path id="DomainModel.classpath">
+        <pathelement location="${bin.dir}"/>
+    </path>
+    
+    <target name="clean">
+        <delete dir="${bin.dir}"/>
+    </target>
+   
+
+        <target name="init">
+        <mkdir dir="${bin.dir}"/>
+    </target>
+    
+
+        <target name="build" >
+        <javac debug="true" debuglevel="${debuglevel}" destdir="${bin.dir}" source="${source}" target="${target}">
+            <src path="${src.dir}"/>
+            <classpath refid="DomainModel.classpath"/>
+        </javac>
+    </target>
+
+    <target name="javadoc" depends="build" >
+        <delete dir="${doc.dir}"/>
+        <mkdir dir="${doc.dir}"/>
+
+        <javadoc access="private" author="true" destdir="${doc.dir}" nodeprecated="false" nodeprecatedlist="false" noindex="false" nonavbar="false" notree="false" source="${source}" sourcepath="${src.dir}" splitindex="true" use="true" version="true">
+            <link href="http://java.sun.com/javase/6/docs/api/"/>
+            <link href="${doc.dir}"/>
+        </javadoc>
+    </target>
+
+
+
+
+</project>
