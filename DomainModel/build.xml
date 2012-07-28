@@ -7,11 +7,18 @@
     <property name="src.dir" value="src/" /> 
     <property name="lib.dir" value="lib/" /> 
     <property name="doc.dir" value="doc/" /> 
+    <property name="other-src.dir" value="extern/" /> 
     
     <path id="DomainModel.classpath">
         <pathelement location="${bin.dir}"/>
     </path>
-    
+   
+    <path id="DomainModel.sourcepath">
+        <pathelement location="${src.dir}"/>
+        <pathelement location="${other-src.dir}"/>
+    </path>
+
+     
     <target name="clean">
         <delete dir="${bin.dir}"/>
     </target>
@@ -33,7 +40,7 @@
         <delete dir="${doc.dir}"/>
         <mkdir dir="${doc.dir}"/>
 
-        <javadoc access="private" author="true" destdir="${doc.dir}" nodeprecated="false" nodeprecatedlist="false" noindex="false" nonavbar="false" notree="false" source="${source}" sourcepath="${src.dir}" splitindex="true" use="true" version="true">
+        <javadoc access="private" author="true" destdir="${doc.dir}" nodeprecated="false" nodeprecatedlist="false" noindex="false" nonavbar="false" notree="false" source="${source}" sourcepathref="DomainModel.sourcepath" splitindex="true" use="true" version="true">
             <link href="http://java.sun.com/javase/6/docs/api/"/>
             <link href="${doc.dir}"/>
         </javadoc>
