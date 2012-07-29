@@ -16,7 +16,7 @@ public abstract class SecurityService {
 	public abstract Object getSecureToken();
 	/**
 	 * Generates and returns keys used by groups, devices and users.
-	 * @return the key/keys
+	 * @return the key/keys	
 	 */
 	public abstract Object getKeys();
 	
