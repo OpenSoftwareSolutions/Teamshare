@@ -5,6 +5,8 @@ import java.util.Properties;
 import synchronization.SynchronizationService;
 
 import messaging.Message;
+import messaging.MessageFactory;
+import messaging.MessagingService;
 
 import change.Change;
 import change.ChangeFactory;
@@ -32,6 +34,19 @@ public abstract class GroupService {
 	 * A reference to the SynchronizationService that will log the group changes.
 	 */
 	SynchronizationService syncService;
+	
+	/**
+	 * The GroupService uses the MessagingService for sending messages to other users.
+	 */
+	MessagingService messagingService;
+	
+	
+	/**
+	 * The GroupService uses the MessageFactory for creating Message objects for the 
+	 * messages that it needs to send to other users.
+	 */
+	MessageFactory messageFactory;
+	
 	/**
 	 * GroupService starts performing the necessary steps for inviting an user into the given group. 
 	 * @param group - the group to which the user is invited
@@ -75,8 +90,9 @@ public abstract class GroupService {
 	public abstract void removeGroup(Group group);
 	
 	/**
-	 * The {@link SynchronizationService} component informs the GroupService component about a group change, and the GroupService in turn will transmit this 
-	 * information for processing to the {@link GroupManagement} component.
+	 * The {@link SynchronizationService} component informs the GroupService component about a group change, 
+	 * and the GroupService will process the change and will transmit this information for storing to the 
+	 * {@link GroupInfoRepository} component.
 	 * @param change - the Change object, also containing the Group to which it applies and what was performed that lead to it
 	 */
 	public abstract void receiveGroupChange(Change change);
@@ -84,7 +100,7 @@ public abstract class GroupService {
 	
 	/**
 	 * The {@link MessagingService} forwards a read message to the GroupService in order to apply group changes depending on the message content and type.
-	 * E.g if the message is an invitation acceptance, the {@link GroupManagement} will add the user to the group and then use {@link SynchronizationService}
+	 * E.g if the message is an invitation acceptance, the GroupService will add the user to the group and then use {@link SynchronizationService}
 	 * to transmit this change to other users.
 	 * 
 	 * @param message 

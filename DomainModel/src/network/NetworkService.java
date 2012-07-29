@@ -1,5 +1,7 @@
 package network;
 
-public class NetworkService {
+import messaging.MessagingService;
 
+public abstract class NetworkService {
+	MessagingService messagingService;
 }

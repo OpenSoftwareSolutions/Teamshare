@@ -1,5 +1,8 @@
 package userIO;
 
-public interface UserIO {
+import messaging.MessagingService;
 
+public abstract class UserIO {
+	MessagingService messagingService;
+	
 }
