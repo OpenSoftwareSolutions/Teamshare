@@ -2,6 +2,7 @@ package group;
 
 import java.util.Properties;
 
+import security.SecurityService;
 import synchronization.SynchronizationService;
 
 import messaging.Message;
@@ -40,6 +41,10 @@ public abstract class GroupService {
 	 */
 	MessagingService messagingService;
 	
+	/**
+	 * A reference to the SecurityService, which GroupService uses to obtain secure tokens.
+	 */
+	SecurityService securityService;
 	
 	/**
 	 * The GroupService uses the MessageFactory for creating Message objects for the 
