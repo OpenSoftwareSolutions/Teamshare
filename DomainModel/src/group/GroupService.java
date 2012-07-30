@@ -4,6 +4,7 @@ import java.util.Properties;
 
 import security.SecurityService;
 import synchronization.SynchronizationService;
+import topology.TopologyService;
 
 import messaging.Message;
 import messaging.MessageFactory;
@@ -45,6 +46,13 @@ public abstract class GroupService {
 	 * A reference to the SecurityService, which GroupService uses to obtain secure tokens.
 	 */
 	SecurityService securityService;
+	
+	
+	/**
+	 * The GroupService needs to inform the TopologyService when group users changes occur, such
+	 * as a new user joined the group, or a user left the group.
+	 */
+	TopologyService topologyService;
 	
 	/**
 	 * The GroupService uses the MessageFactory for creating Message objects for the 

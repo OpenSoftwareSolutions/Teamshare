@@ -1,8 +1,18 @@
 package topology;
 
+import java.util.List;
+
 import common.Group;
 
+/**
+ * Implements the component in charge of creating and maintaining <b>overlays</b> 
+ * for all the logged-in <b>user's groups</b>.
+ *
+ */
 public abstract class OverlayManagement {
+	
+	List<GroupOverlay> groupOverlays;
+	
 	/**
 	 * Creates an Overlay for a specific group.
 	 */
@@ -21,3 +31,8 @@ public abstract class OverlayManagement {
 	 */
 	public abstract void clearOverlay(Group group);
 }
+
+//OverlayManagement overlayManagement;
+
+/*public abstract List<Device> getDevices();
+public abstract void updateGroupOverlay(Group group);*/
