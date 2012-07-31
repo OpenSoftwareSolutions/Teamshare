@@ -2,6 +2,8 @@ package topology;
 
 import java.util.List;
 
+import network.NetworkService;
+
 import common.Device;
 import common.Group;
 
@@ -19,6 +21,13 @@ public abstract class TopologyService {
 	 * updates.
 	 */
 	OverlayManagement overlayManagement;
+	
+	/**
+	 * The communication between the TopologyService and the remote services goes through the network module. 
+	 * TopologyService uses the NetworkService to send requests for information about devices.
+	 * devices information.
+	 */
+	NetworkService networkService;
 	
 	/**
 	 * Returns the devices in the given group's overlay. This method is invoked by the {@link SynchronizationService} 

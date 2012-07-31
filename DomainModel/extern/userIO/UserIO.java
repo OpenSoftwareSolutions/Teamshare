@@ -24,7 +24,9 @@ public abstract class UserIO {
 	/**
 	 * The user interface uses the {@link GroupService} to get information about the user's groups or to
 	 * inform the GroupService about group changes performed by the user (e.g. changed group's settings, 
-	 * removed a user etc)
+	 * removed a user etc). It also communicates with the group service when the user wants to send or 
+	 * reply to a message. The {@link GroupService} is the one that creates the message and in turn forwards it 
+	 * to the {@link MessagingService}.
 	 */
 	
 	GroupService groupService;

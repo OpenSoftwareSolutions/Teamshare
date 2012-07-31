@@ -5,7 +5,7 @@ import java.util.Date;
 /**
  * A Factory-type component for creating {@link Change} objects, either <b>filesystem or group changes</b>.
  * Components from other modules ({@link filesystem} and {@link group} modules) can access it directly for creating 
- * <b>change<b> entities.
+ * <b>change</b> entities.
  */
 public abstract class ChangeFactory {
 	

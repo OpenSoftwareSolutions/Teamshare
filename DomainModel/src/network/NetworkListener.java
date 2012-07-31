@@ -39,4 +39,6 @@ public abstract class NetworkListener {
 	 * @param reply - the information received
 	 */
 	protected abstract void receiveReplyFromAS(Object reply);
+	
+	
 }
