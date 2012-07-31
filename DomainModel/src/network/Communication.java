@@ -17,7 +17,7 @@ public abstract class Communication {
 
 	/**
 	 * Sends data over the network to the IP address and port given by the destination, first encrypting it.
-	 * @param data - the data to be sent; tts type is not relevant at this level
+	 * @param data - the data to be sent; the type is not relevant at this level
 	 * @param destination - the connectivity information (IP address and port) of a remote service or another device.
 	 */
 	public abstract void sendData(Object data, ConnectivityInfo destination);

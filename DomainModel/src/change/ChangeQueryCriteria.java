@@ -7,8 +7,10 @@ import java.util.List;
 import common.Group;
 
 /**
- * Value object representing the properties of a ChangeLog query. The query can be made for changes of 1 or more files,
- * during a specific interval, or for all the file and group changes in a group.
+ * Value object representing the properties of a ChangeLog query. 
+ * The criteria for the query include the number of files for which to
+ * get the changes, the interval in which the changes were made, the
+ * group.
  *
  */
 public class ChangeQueryCriteria {

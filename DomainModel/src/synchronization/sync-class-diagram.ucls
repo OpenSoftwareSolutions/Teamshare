@@ -2,7 +2,7 @@
   realizations="true" associations="true" dependencies="true" nesting-relationships="true">  
   <class id="1" corner="BOTTOM_RIGHT" language="java" name="synchronization.SynchronizationService" 
     project="DomainModel" file="/DomainModel/src/synchronization/SynchronizationService.java" binary="false">    
-    <position x="545" y="175" width="-1" height="-1"/>    
+    <position x="541" y="104" width="-1" height="-1"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true"/>      
       <operations public="true" package="true" protected="true" private="true"/>    
@@ -10,7 +10,7 @@
   </class>  
   <class id="2" corner="BOTTOM_RIGHT" language="java" name="synchronization.SynchronizationStrategy" 
     project="DomainModel" file="/DomainModel/src/synchronization/SynchronizationStrategy.java" binary="false">    
-    <position x="583" y="322" width="-1" height="-1"/>    
+    <position x="543" y="310" width="-1" height="-1"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true"/>      
       <operations public="true" package="true" protected="true" private="true"/>    
@@ -18,7 +18,7 @@
   </class>  
   <interface id="3" corner="BOTTOM_RIGHT" language="java" name="synchronization.ConflictResolutionStrategy" 
     project="DomainModel" file="/DomainModel/src/synchronization/ConflictResolutionStrategy.java" binary="false">    
-    <position x="584" y="453" width="-1" height="-1"/>    
+    <position x="543" y="448" width="-1" height="-1"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true"/>      
       <operations public="true" package="true" protected="true" private="true"/>    
@@ -26,7 +26,7 @@
   </interface>  
   <class id="4" corner="BOTTOM_RIGHT" language="java" name="group.GroupService" project="DomainModel" 
     file="/DomainModel/src/group/GroupService.java" binary="false">    
-    <position x="161" y="213" width="-1" height="-1"/>    
+    <position x="152" y="196" width="-1" height="-1"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true"/>      
       <operations public="true" package="true" protected="true" private="true"/>    
@@ -34,18 +34,18 @@
   </class>  
   <class id="5" corner="BOTTOM_RIGHT" language="java" name="filesystem.FilesystemService" project="DomainModel" 
     file="/DomainModel/src/filesystem/FilesystemService.java" binary="false">    
-    <position x="178" y="516" width="-1" height="-1"/>    
+    <position x="171" y="511" width="-1" height="-1"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true"/>      
       <operations public="true" package="true" protected="true" private="true"/>    
     </display>  
   </class>  
   <association id="6">    
-    <end type="SOURCE" refId="4" navigable="false">      
-      <attribute id="7" name="syncService"/>      
+    <end type="SOURCE" refId="2" navigable="false">      
+      <attribute id="7" name="conflictResolution"/>      
       <multiplicity id="8" minimum="0" maximum="1"/>    
     </end>    
-    <end type="TARGET" refId="1" navigable="true"/>    
+    <end type="TARGET" refId="3" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
   <association id="9">    
@@ -57,19 +57,19 @@
     <display labels="true" multiplicity="true"/>  
   </association>  
   <association id="12">    
-    <end type="SOURCE" refId="1" navigable="false">      
-      <attribute id="13" name="syncStrategy"/>      
+    <end type="SOURCE" refId="4" navigable="false">      
+      <attribute id="13" name="syncService"/>      
       <multiplicity id="14" minimum="0" maximum="1"/>    
     </end>    
-    <end type="TARGET" refId="2" navigable="true"/>    
+    <end type="TARGET" refId="1" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
   <association id="15">    
-    <end type="SOURCE" refId="2" navigable="false">      
-      <attribute id="16" name="conflictResolution"/>      
+    <end type="SOURCE" refId="1" navigable="false">      
+      <attribute id="16" name="syncStrategy"/>      
       <multiplicity id="17" minimum="0" maximum="1"/>    
     </end>    
-    <end type="TARGET" refId="3" navigable="true"/>    
+    <end type="TARGET" refId="2" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
   <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 

@@ -2,7 +2,7 @@
   realizations="true" associations="true" dependencies="true" nesting-relationships="true">  
   <class id="1" corner="BOTTOM_RIGHT" language="java" name="change.Change" project="DomainModel" 
     file="/DomainModel/src/change/Change.java" binary="false">    
-    <position height="-1" width="-1" x="276" y="112"/>    
+    <position x="263" y="310" width="-1" height="-1"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true"/>      
       <operations public="true" package="true" protected="true" private="true"/>    
@@ -10,7 +10,7 @@
   </class>  
   <class id="2" corner="BOTTOM_RIGHT" language="java" name="change.ChangeFactory" project="DomainModel" 
     file="/DomainModel/src/change/ChangeFactory.java" binary="false">    
-    <position height="-1" width="-1" x="170" y="316"/>    
+    <position x="262" y="89" width="-1" height="-1"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true"/>      
       <operations public="true" package="true" protected="true" private="true"/>    
@@ -18,7 +18,7 @@
   </class>  
   <class id="3" corner="BOTTOM_RIGHT" language="java" name="change.ChangeLogger" project="DomainModel" 
     file="/DomainModel/src/change/ChangeLogger.java" binary="false">    
-    <position height="-1" width="-1" x="544" y="336"/>    
+    <position x="580" y="267" width="-1" height="-1"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true"/>      
       <operations public="true" package="true" protected="true" private="true"/>    
@@ -26,7 +26,7 @@
   </class>  
   <class id="4" corner="BOTTOM_RIGHT" language="java" name="change.ChangeQueryCriteria" project="DomainModel" 
     file="/DomainModel/src/change/ChangeQueryCriteria.java" binary="false">    
-    <position height="-1" width="-1" x="846" y="210"/>    
+    <position x="854" y="331" width="-1" height="-1"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true"/>      
       <operations public="true" package="true" protected="true" private="true"/>    
@@ -34,31 +34,37 @@
   </class>  
   <enumeration id="5" corner="BOTTOM_RIGHT" language="java" name="change.ChangeType" project="DomainModel" 
     file="/DomainModel/src/change/ChangeType.java" binary="false">    
-    <position height="-1" width="-1" x="554" y="118"/>    
+    <position x="541" y="451" width="-1" height="-1"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true"/>      
       <operations public="true" package="true" protected="true" private="true"/>    
     </display>  
   </enumeration>  
-  <association id="6">    
-    <end type="SOURCE" refId="4" navigable="false">      
-      <attribute id="7" name="changeType"/>      
-      <multiplicity id="8" minimum="0" maximum="1"/>    
+  <class id="6" corner="BOTTOM_RIGHT" language="java" name="change.ChangeService" project="DomainModel" 
+    file="/DomainModel/src/change/ChangeService.java" binary="false">    
+    <position x="576" y="92" width="-1" height="-1"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <association id="7">    
+    <end type="SOURCE" refId="6" navigable="false">      
+      <attribute id="8" name="changeLogger"/>      
+      <multiplicity id="9" minimum="0" maximum="1"/>    
     </end>    
-    <end type="TARGET" refId="5" navigable="true"/>    
+    <end type="TARGET" refId="3" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <dependency id="9">    
-    <end type="SOURCE" refId="3"/>    
-    <end type="TARGET" refId="4"/>  
-  </dependency>  
   <dependency id="10">    
-    <end type="SOURCE" refId="2"/>    
+    <end type="SOURCE" refId="3"/>    
     <end type="TARGET" refId="1"/>  
   </dependency>  
   <association id="11">    
-    <end type="SOURCE" refId="1" navigable="false">      
-      <attribute id="12" name="type"/>      
+    <end type="SOURCE" refId="4" navigable="false">      
+      <attribute id="12" name="changeType">        
+        <position x="642" y="377" width="63" height="13"/>      
+      </attribute>      
       <multiplicity id="13" minimum="0" maximum="1"/>    
     </end>    
     <end type="TARGET" refId="5" navigable="true"/>    
@@ -66,6 +72,30 @@
   </association>  
   <dependency id="14">    
     <end type="SOURCE" refId="3"/>    
+    <end type="TARGET" refId="4"/>  
+  </dependency>  
+  <dependency id="15">    
+    <end type="SOURCE" refId="2"/>    
+    <end type="TARGET" refId="1"/>  
+  </dependency>  
+  <association id="16">    
+    <end type="SOURCE" refId="1" navigable="false">      
+      <attribute id="17" name="type">        
+        <position x="411" y="370" width="26" height="13"/>      
+      </attribute>      
+      <multiplicity id="18" minimum="0" maximum="1">        
+        <position x="401" y="398" width="18" height="13"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="5" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <dependency id="19">    
+    <end type="SOURCE" refId="6"/>    
+    <end type="TARGET" refId="4"/>  
+  </dependency>  
+  <dependency id="20">    
+    <end type="SOURCE" refId="6"/>    
     <end type="TARGET" refId="1"/>  
   </dependency>  
   <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 

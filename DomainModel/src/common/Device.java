@@ -20,7 +20,8 @@ public class Device {
 
 	/**
 	 * The device's connectivity information: IP address and port. {@link ConnectivityInfo} has the role of a value object
-	 * that contains the connectivity attributes. This information is relevant while the device is online, it is cleared when it becomes offline.
+	 * that contains the connectivity attributes. 
+	 * This field is non-null while the device in online and null while offline.
 	 */
 	public ConnectivityInfo address;
 
