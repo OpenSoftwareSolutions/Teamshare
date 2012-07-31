@@ -7,7 +7,7 @@ import change.Change;
 
 /**
  * Implements the Folder entity component. It represents a subfolder in a group's folder.
- * 
+ *
  */
 public class Folder {
 	/**
@@ -26,7 +26,7 @@ public class Folder {
 	 * The time when the folder was last modified locally
 	 */
 	public Date lastModified;
-	/** 
+	/**
 	 * A reference to its last change.
 	 */
 	public Change lastChange;

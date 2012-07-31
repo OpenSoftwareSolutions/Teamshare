@@ -22,10 +22,10 @@ public class File {
 	 */
 	public long version;
 	/**
-	 * The time when the file was last modified locally
+	 * The time when the file was last modified locally.
 	 */
 	public Date lastModified;
-	/** 
+	/**
 	 * A reference to its last change.
 	 */
 	public Change lastChange;

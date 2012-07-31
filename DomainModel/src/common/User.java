@@ -8,32 +8,31 @@ import java.util.List;
  */
 public class User {
 	/**
-	 * The user's unique identifier, it is not visible through the user interface. 
+	 * The user's unique identifier. It is not visible through the user interface.
 	 * <br>Is the same as the one in the user's Account.
 	 */
-	
 	public long userID;
-	
+
 	/**
-	 * The user's username, it is the one visible to other users through an user interface.
-	 * It is also unique. 
+	 * The user's username. It is the one visible to other users through an user interface.
+	 * It is also unique.
 	 * <br>Is the same as the one in the user's Account.
 	 */
 	public String username;
-	
+
 	/**
-	 * The user's email address, to which it receives notifications. Two users cannot have the same email address. 
+	 * The user's email address, used for receiving notifications. Two users cannot have the same email address.
 	 * <br>Is the same as the one in the user's Account.
 	 */
 	public String email;
-	
+
 	/**
 	 * The user's status, which can be seen by other users. True if online (at least one of its devices is online), false otherwise.
 	 */
-	public boolean online; 
-								
+	public boolean online;
+
 	/**
-	 * The list of all the devices linked by the user. This list created based on information from the <i>remote services</i> and 
+	 * List of all devices linked by the user. This list is created based on information from the <i>remote services</i> and
 	 * is not visible to the user. This information is vital for synchronizing changes.
 	 */
 	public List<Device> devices;

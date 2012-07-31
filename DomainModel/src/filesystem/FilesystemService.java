@@ -8,24 +8,24 @@ import change.ChangeService;
 import synchronization.SynchronizationService;
 
 /**
- * Implements the Filesystem Service component. Its roles are to be the entry-point to the {@link filesystem} module functionalities for 
+ * Implements the Filesystem Service component. Its roles are to be the entry-point to the {@link filesystem} module functionalities for
  * components from other modules and to inform other components about filesystem changes.
  *
  */
 public abstract class FilesystemService {
 	/**
-	 * Reference to the {@link SynchronizationService} which is the interface to the synchronization mechanisms.
+	 * Reference to the {@link SynchronizationService} acting as interface to the synchronization mechanisms.
 	 */
 	protected SynchronizationService syncService;
 	/**
-	 * Reference to the {@link ChangeService}, which FilesystemService uses for logging Change objects
+	 * Reference to the {@link ChangeService}, that the FilesystemService uses for logging Change objects.
 	 */
 	protected ChangeService changeService;
 	/**
-	 * Reference to the {@link ChangeFactory}, which FilesystemService uses for creating Change objects
+	 * Reference to the {@link ChangeFactory}, that the FilesystemService uses for creating Change objects.
 	 */
 	protected ChangeFactory changeFactory;
-	
+
 	/**
 	 * Is informed by the {@link SynchronizationService} about a new change.
 	 * @param change - a change that was applied during synchronization
@@ -38,7 +38,7 @@ public abstract class FilesystemService {
 	public abstract void receiveChanges(List<Change> changes);
 	/**
 	 * Informs the {@link SynchronizationService} about a filesystem Change that needs to be synchronized.
-	 * @param change 
+	 * @param change
 	 */
 	protected abstract void informSyncChange(Change change);
 	/**
@@ -47,7 +47,7 @@ public abstract class FilesystemService {
 	 */
 	protected abstract void informLogChange(Change change);
 	/**
-	 * Informs the FilesystemService about a file change that occurred. 
+	 * Informs the FilesystemService about a file change that occurred.
 	 * @param file - the file that was changed (created/modified/removed)
 	 */
 	public abstract void newChange(File file);

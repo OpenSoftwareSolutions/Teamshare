@@ -5,24 +5,23 @@ import messaging.Message;
 import messaging.MessagingService;
 
 /**
- * This implements a network listener, which waits for communication from other devices or from the remote services.
+ * Implements a network listener, waiting for communication from other devices or from remote services.
  * It parses the incoming communication and forwards it to other components.
- * @author adriana
  *
  */
 public abstract class NetworkListener {
-	
+
 	TopologyService topologyService;
 	MessagingService messagingService;
-	
+
 	/**
-	 * Receives a message from another user via the remote MessagingService. 
+	 * Receives a message from another user via the remote MessagingService.
 	 * Forwards the message to the {@link messaging} module.
 	 * @param message - the Message from another user.
 	 */
 	protected abstract void receiveMessage(Message message);
 	/**
-	 * Receives reply to a request from the Discovery Service. Forwards it to the {@link topology} module 
+	 * Receives reply to a request from the Discovery Service. Forwards it to the {@link topology} module.
 	 * (uses {@link TopologyService}).
 	 * @param reply - the information received from DS
 	 */

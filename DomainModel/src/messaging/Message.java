@@ -11,7 +11,7 @@ public class Message {
 	/**
 	 * The user that sends the message
 	 */
-	public User source; 
+	public User source;
 	/**
 	 * The user that receives the message in its <b>mailbox<b>
 	 */

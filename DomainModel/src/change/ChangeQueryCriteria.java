@@ -7,18 +7,18 @@ import java.util.List;
 import common.Group;
 
 /**
- * Value object representing the properties of a ChangeLog query. The query can be made for changes of 1 or more files, 
- * during a specific interval, or for all the file and group changes in a group. 
+ * Value object representing the properties of a ChangeLog query. The query can be made for changes of 1 or more files,
+ * during a specific interval, or for all the file and group changes in a group.
  *
  */
-public class ChangeQueryCriteria{
+public class ChangeQueryCriteria {
 	private File file;
 	private List<File> files;
 	private Date from = null;
 	private Date to = null;
 	private Group group;
 	private ChangeType changeType = null;
-	
+
 	public ChangeType getChangeType() {
 		return changeType;
 	}
@@ -55,5 +55,4 @@ public class ChangeQueryCriteria{
 	public void setGroup(Group group) {
 		this.group = group;
 	}
-	
 }

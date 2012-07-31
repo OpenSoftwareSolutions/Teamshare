@@ -7,8 +7,8 @@ import common.User;
 /**
  * Value object representing the filtering restrictions for querying the Mailbox.
  * It can limit the messages to a time interval, a certain destination, type or status.
- *  The query can be made for changes of 1 or more files, 
- * during a specific interval, or for all the file and group changes in a group. 
+ * The query can be made for changes of 1 or more files,
+ * during a specific interval, or for all the file and group changes in a group.
  *
  */
 public class MessageQueryCriteria {
@@ -17,7 +17,7 @@ public class MessageQueryCriteria {
 	private MessageStatus messageStatus;
 	private Date from = null;
 	private Date to = null;
-	
+
 	public User getDestination() {
 		return destination;
 	}
@@ -47,5 +47,5 @@ public class MessageQueryCriteria {
 	}
 	public void setTo(Date to) {
 		this.to = to;
-	} 
+	}
 }

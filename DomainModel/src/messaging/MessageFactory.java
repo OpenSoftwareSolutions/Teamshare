@@ -7,5 +7,5 @@ import common.User;
  *
  */
 public abstract class MessageFactory {
-	public abstract Message createMessage(MessageType type, User destination, String content); 
+	public abstract Message createMessage(MessageType type, User destination, String content);
 }

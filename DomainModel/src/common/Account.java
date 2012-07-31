@@ -5,21 +5,21 @@ import java.util.List;
 import messaging.Mailbox;
 
 /**
- * Entity representing a Teamshare user. Other users have access/create the {@link User} object of that user, not the Account.
- * 
+ * A Teamshare user. Other users have access/create the {@link User} object of that user, not the Account.
+ *
  */
 public class Account {
 	/**
-	 * The user's unique identifier, it is not visible through the user interface.
+	 * The user's unique identifier. The identifier is not visible through the user interface.
 	 */
 	public long userID;
 	/**
-	 * The user's username, it is the one visible to other users through an user interface.
-	 * It is also unique.
+	 * The user's username. The username the one visible to other users through an user interface.
+	 * Similar to the userID, it is unique.
 	 */
 	public String username;
 	/**
-	 * The user's email address, to which it receives notifications. Two users cannot have the same email address. 
+	 * The user's email address, the one for receiving notifications. Two users cannot have the same email address.
 	 */
 	public String email;
 	/**
@@ -27,7 +27,7 @@ public class Account {
 	 */
 	public List<Group> groups;
 	/**
-	 * The groups the user is owner of (it is a subset of groups)
+	 * The groups the user is owner of (it is a subset of groups).
 	 */
 	public List<Group> owner;
 	/**
