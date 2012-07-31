@@ -38,4 +38,7 @@ public abstract class NetworkService {
 	 * @param credentials - the password the user input or some other form of security credentials.
 	 */
 	public abstract void authenticateUser(Account account, String credentials);
+	
+	//TODO description
+	protected abstract void checkForConnectivity();
 }

@@ -52,9 +52,10 @@ public abstract class MessagingService {
 	/**
 	 * The MessagingService contacts the remote centralized Messaging service to 
 	 * retrieve any new messages. The message will still be kept on the remote service
-	 *  after this retrieval.
+	 *  after this retrieval. This method returns nothing, the NetworkingService will 
+	 *  inform the MessagingService when it receives the reply from the remote service.
 	 */
-	public abstract List<Message> checkForMessages();
+	protected abstract void checkForMessages();
 	/**
 	 * A wrapper over the method offered by {@link Mailbox}, it provides to other components a list of all the messages in the user's
 	 * mailbox. 

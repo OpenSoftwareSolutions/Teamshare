@@ -1,5 +1,7 @@
 package synchronization;
 
+import common.Group;
+
 import topology.TopologyService;
 import userIO.UserIO;
 import change.Change;
@@ -19,7 +21,20 @@ public abstract class SynchronizationService {
 	 */
 	UserIO userIO;
 	
+	/**
+	 * Pushes the group change to other online devices in the group.
+	 * @param change
+	 */
 	public abstract void synchronizeGroupChange(Change change);
-	
+	/**
+	 * Pushes the filesystem change to other online devices in the group.
+	 * @param change
+	 */
 	public abstract void synchornizeFilesystemChange(Change change);
+	
+	/**
+	 * Pulls all changes(group or filesystem) from other online devices in the given group. 
+	 * @param group
+	 */
+	public abstract void pullChanges(Group group);
 }

@@ -35,4 +35,9 @@ public abstract class TopologyService {
 	 * @param group
 	 */
 	public abstract void updateGroupOverlay(Group group);
+	
+	/**
+	 *   The {@link topology} module starts building the group overlays.
+	 */
+	public abstract void buildGroupOverlays();
 }
