@@ -2,6 +2,8 @@ package topology;
 
 import java.util.List;
 
+import network.DiscoveryServiceRequest;
+import network.NamingServiceRequest;
 import network.NetworkService;
 
 import common.Device;
@@ -49,4 +51,23 @@ public abstract class TopologyService {
 	 * The {@link topology} module starts building the group overlays.
 	 */
 	public abstract void buildGroupOverlays();
+	
+	/**
+	 * The {@link OverlayManagement} sends requests to the Discovery Service via the Topology Service 
+	 * (the exit-point for this module). The TopologyService then forwards it to the NetworkService, 
+	 * the {@link OverlayManagement} doesn't need to hold this information (which component does the
+	 *  communication with remote services).
+	 * @param request - the request sent to the Discovery Service
+	 */
+	public abstract void sendRequest(DiscoveryServiceRequest request);
+	
+	/**
+	 * The {@link OverlayManagement} sends requests to the Naming Service via the Topology Service 
+	 * (the exit-point for this module). The TopologyService then forwards it to the NetworkService, 
+	 * the {@link OverlayManagement} doesn't need to hold this information (which component does the
+	 *  communication with remote services).
+	 * @param request - the request sent to the Naming Service 
+	 */
+	public abstract void sendRequest(NamingServiceRequest request);
+	
 }

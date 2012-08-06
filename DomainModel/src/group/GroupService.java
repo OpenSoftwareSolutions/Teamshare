@@ -17,7 +17,7 @@ import common.Group;
 import common.User;
 
 /**
- * Interface offering group related functionalities other components.
+ * Interface offering group related functionalities to other components.
  *
  */
 public abstract class GroupService {
@@ -35,7 +35,7 @@ public abstract class GroupService {
 	ChangeService changeService;
 
 	/**
-	 * A reference to the SynchronizationService that will log group changes.
+	 * A reference to the SynchronizationService that synchronizes group changes.
 	 */
 	SynchronizationService syncService;
 

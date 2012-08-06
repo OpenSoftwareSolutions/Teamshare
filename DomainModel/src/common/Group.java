@@ -4,8 +4,9 @@ import java.util.List;
 import java.util.Properties;
 
 /**
- * The Group entity is defined by an unique ID and its group folder. In addition it folds attributes such as its owner, its list of users,
- * security keys, settings.
+ * The Group entity is defined by an unique ID and its group folder. 
+ * In addition it holds attributes such as the group owner, its list of users,
+ * security keys and settings.
  *
  */
 public class Group {

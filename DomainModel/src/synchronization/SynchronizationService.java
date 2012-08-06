@@ -1,5 +1,6 @@
 package synchronization;
 
+import group.GroupService;
 import common.Group;
 
 import topology.TopologyService;
@@ -9,6 +10,12 @@ import change.Change;
 public abstract class SynchronizationService {
 
 	SynchronizationStrategy syncStrategy;
+	
+	/**
+	 * The SynchronizationService informs the {@link GroupService} about the group changes it receives.
+	 */
+	GroupService groupService;
+	
 	/**
 	 * The SynchronizationService needs a list of the online devices and their connectivity information
 	 * in order to synchronize changes. It obtains this list from the TopologyService.

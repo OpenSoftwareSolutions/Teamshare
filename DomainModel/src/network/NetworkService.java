@@ -25,19 +25,15 @@ public abstract class NetworkService {
 	 * @param message - the message sent by the logged-in user to another user.
 	 */
 	public abstract void contactRemoteService(Message message);
+	
 	/**
-	 * Sends device information to the Authentication Service in order to authenticate the device.
-	 * @param device
+	 * Send the given request to the remote Authentication Service.
+	 * @param request - the request, its type and content as described in the user stories
 	 */
-	public abstract void authenticateDevice(Device device);
-	/**
-	 * Sends user credentials to the Authentication Service in order to authenticate the user
-	 * (necessary when the user logs in).
-	 * @param account - the use's account information
-	 * @param credentials - the password the user input or some other form of security credentials
-	 */
-	public abstract void authenticateUser(Account account, String credentials);
+	public abstract void contactRemoteService(AuthenticationServiceRequest request);
 
-	//TODO description
+	/**
+	 * Checks if this device is still connected to the internet (online).
+	 */
 	protected abstract void checkForConnectivity();
 }

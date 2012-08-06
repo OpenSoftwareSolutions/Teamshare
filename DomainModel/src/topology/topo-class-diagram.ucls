@@ -1,30 +1,6 @@
 <class-diagram version="1.0.9" icons="true" automaticImage="PNG" always-add-relationships="false" generalizations="true" 
   realizations="true" associations="true" dependencies="false" nesting-relationships="true">  
-  <class id="1" corner="BOTTOM_RIGHT" language="java" name="topology.TopologyService" project="DomainModel" 
-    file="/DomainModel/src/topology/TopologyService.java" binary="false">    
-    <position x="468" y="285" width="-1" height="-1"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true"/>      
-      <operations public="true" package="true" protected="true" private="true"/>    
-    </display>  
-  </class>  
-  <class id="2" corner="BOTTOM_RIGHT" language="java" name="topology.GroupOverlay" project="DomainModel" 
-    file="/DomainModel/src/topology/GroupOverlay.java" binary="false">    
-    <position x="197" y="75" width="-1" height="-1"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true"/>      
-      <operations public="true" package="true" protected="true" private="true"/>    
-    </display>  
-  </class>  
-  <class id="3" corner="BOTTOM_RIGHT" language="java" name="topology.OverlayManagement" project="DomainModel" 
-    file="/DomainModel/src/topology/OverlayManagement.java" binary="false">    
-    <position x="464" y="74" width="-1" height="-1"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true"/>      
-      <operations public="true" package="true" protected="true" private="true"/>    
-    </display>  
-  </class>  
-  <class id="4" corner="BOTTOM_RIGHT" language="java" name="common.Group" project="DomainModel" 
+  <class id="1" corner="BOTTOM_RIGHT" language="java" name="common.Group" project="DomainModel" 
     file="/DomainModel/src/common/Group.java" binary="false">    
     <position x="69" y="278" width="-1" height="-1"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" visibility="true">      
@@ -32,7 +8,7 @@
       <operations public="true" package="true" protected="true" private="true"/>    
     </display>  
   </class>  
-  <class id="5" corner="BOTTOM_RIGHT" language="java" name="synchronization.SynchronizationService" 
+  <class id="2" corner="BOTTOM_RIGHT" language="java" name="synchronization.SynchronizationService" 
     project="DomainModel" file="/DomainModel/src/synchronization/SynchronizationService.java" binary="false">    
     <position x="801" y="148" width="-1" height="-1"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" visibility="true">      
@@ -40,7 +16,7 @@
       <operations public="true" package="true" protected="true" private="true"/>    
     </display>  
   </class>  
-  <class id="6" corner="BOTTOM_RIGHT" language="java" name="group.GroupService" project="DomainModel" 
+  <class id="3" corner="BOTTOM_RIGHT" language="java" name="group.GroupService" project="DomainModel" 
     file="/DomainModel/src/group/GroupService.java" binary="false">    
     <position x="803" y="482" width="-1" height="-1"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" visibility="true">      
@@ -48,7 +24,7 @@
       <operations public="true" package="true" protected="true" private="true"/>    
     </display>  
   </class>  
-  <class id="7" corner="BOTTOM_RIGHT" language="java" name="common.Device" project="DomainModel" 
+  <class id="4" corner="BOTTOM_RIGHT" language="java" name="common.Device" project="DomainModel" 
     file="/DomainModel/src/common/Device.java" binary="false">    
     <position x="269" y="261" width="-1" height="-1"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" visibility="true">      
@@ -56,15 +32,15 @@
       <operations public="true" package="true" protected="true" private="true"/>    
     </display>  
   </class>  
-  <class id="8" corner="BOTTOM_RIGHT" language="java" name="network.NetworkService" project="DomainModel" 
+  <class id="5" corner="BOTTOM_RIGHT" language="java" name="network.NetworkService" project="DomainModel" 
     file="/DomainModel/src/network/NetworkService.java" binary="false">    
-    <position x="470" y="541" width="-1" height="-1"/>    
+    <position x="498" y="551" width="-1" height="-1"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true"/>      
       <operations public="true" package="true" protected="true" private="true"/>    
     </display>  
   </class>  
-  <class id="9" corner="BOTTOM_RIGHT" language="java" name="network.NetworkListener" project="DomainModel" 
+  <class id="6" corner="BOTTOM_RIGHT" language="java" name="network.NetworkListener" project="DomainModel" 
     file="/DomainModel/src/network/NetworkListener.java" binary="false">    
     <position x="198" y="517" width="-1" height="-1"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" visibility="true">      
@@ -72,76 +48,104 @@
       <operations public="true" package="true" protected="true" private="true"/>    
     </display>  
   </class>  
+  <class id="7" corner="BOTTOM_RIGHT" language="java" name="topology.OverlayManagement" project="DomainModel" 
+    file="/DomainModel/src/topology/OverlayManagement.java" binary="false">    
+    <position x="498" y="74" width="-1" height="-1"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class id="8" corner="BOTTOM_RIGHT" language="java" name="topology.TopologyService" project="DomainModel" 
+    file="/DomainModel/src/topology/TopologyService.java" binary="false">    
+    <position x="499" y="304" width="-1" height="-1"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class id="9" corner="BOTTOM_RIGHT" language="java" name="topology.GroupOverlay" project="DomainModel" 
+    file="/DomainModel/src/topology/GroupOverlay.java" binary="false">    
+    <position x="201" y="75" width="-1" height="-1"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
   <association id="10">    
-    <end type="SOURCE" refId="2" navigable="false">      
-      <attribute id="11" name="group"/>      
-      <multiplicity id="12" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="4" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="13">    
-    <end type="SOURCE" refId="2" navigable="false">      
-      <attribute id="14" name="devices"/>      
-      <multiplicity id="15" minimum="0" maximum="2147483647"/>    
-    </end>    
-    <end type="TARGET" refId="7" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="16">    
-    <end type="SOURCE" refId="6" navigable="false">      
-      <attribute id="17" name="syncService"/>      
-      <multiplicity id="18" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="5" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="19">    
-    <end type="SOURCE" refId="9" navigable="false">      
-      <attribute id="20" name="topologyService"/>      
-      <multiplicity id="21" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="1" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="22">    
-    <end type="SOURCE" refId="5" navigable="false">      
-      <attribute id="23" name="topologyService"/>      
-      <multiplicity id="24" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="1" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="25">    
-    <end type="SOURCE" refId="1" navigable="false">      
-      <attribute id="26" name="overlayManagement"/>      
-      <multiplicity id="27" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="3" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="28">    
     <end type="SOURCE" refId="3" navigable="false">      
-      <attribute id="29" name="groupOverlays"/>      
-      <multiplicity id="30" minimum="0" maximum="2147483647"/>    
-    </end>    
-    <end type="TARGET" refId="2" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="31">    
-    <end type="SOURCE" refId="1" navigable="false">      
-      <attribute id="32" name="networkService"/>      
-      <multiplicity id="33" minimum="0" maximum="1"/>    
+      <attribute id="11" name="topologyService"/>      
+      <multiplicity id="12" minimum="0" maximum="1"/>    
     </end>    
     <end type="TARGET" refId="8" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="34">    
+  <association id="13">    
+    <bendpoint x="471" y="200"/>    
+    <end type="SOURCE" refId="7" navigable="false">      
+      <attribute id="14" name="topologyService"/>      
+      <multiplicity id="15" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="8" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="16">    
+    <end type="SOURCE" refId="7" navigable="false">      
+      <attribute id="17" name="groupOverlays"/>      
+      <multiplicity id="18" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="9" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="19">    
     <end type="SOURCE" refId="6" navigable="false">      
-      <attribute id="35" name="topologyService"/>      
-      <multiplicity id="36" minimum="0" maximum="1"/>    
+      <attribute id="20" name="topologyService"/>      
+      <multiplicity id="21" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="8" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="22">    
+    <end type="SOURCE" refId="2" navigable="false">      
+      <attribute id="23" name="topologyService"/>      
+      <multiplicity id="24" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="8" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="25">    
+    <end type="SOURCE" refId="9" navigable="false">      
+      <attribute id="26" name="devices"/>      
+      <multiplicity id="27" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="4" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="28">    
+    <bendpoint x="530" y="196"/>    
+    <end type="SOURCE" refId="8" navigable="false">      
+      <attribute id="29" name="overlayManagement">        
+        <position x="505" y="163" width="103" height="13"/>      
+      </attribute>      
+      <multiplicity id="30" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="7" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="31">    
+    <end type="SOURCE" refId="9" navigable="false">      
+      <attribute id="32" name="group"/>      
+      <multiplicity id="33" minimum="0" maximum="1"/>    
     </end>    
     <end type="TARGET" refId="1" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="34">    
+    <end type="SOURCE" refId="8" navigable="false">      
+      <attribute id="35" name="networkService"/>      
+      <multiplicity id="36" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="5" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
   <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
