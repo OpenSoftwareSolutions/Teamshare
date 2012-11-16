@@ -17,10 +17,12 @@ public abstract class UserIO {
 	 * in the user's <b>Mailbox</b>. 
 	 */
 	MessagingService messagingService;
+	
 	/**
 	 * The user interface uses the {@link TopologyService} to get information about the <b>user's devices</b>.
 	 */
 	TopologyService topologyService;
+	
 	/**
 	 * The user interface uses the {@link GroupService} to get information about the user's groups or to
 	 * inform the GroupService about group changes performed by the user (e.g. changed group's settings, 
