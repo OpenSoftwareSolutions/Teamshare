@@ -1,11 +1,12 @@
-package org.oss.teamwork.teamshare.group;
+package com.oss.teamwork.teamshare.group;
 
 import java.net.InetSocketAddress;
 import java.security.PublicKey;
 
-import org.oss.teamwork.teamshare.common.ChangeId;
-import org.oss.teamwork.teamshare.common.DeviceId;
-import org.oss.teamwork.teamshare.sync.Change;
+
+import com.oss.teamwork.teamshare.common.ChangeId;
+import com.oss.teamwork.teamshare.common.DeviceId;
+import com.oss.teamwork.teamshare.sync.Change;
 
 public interface Device {
   

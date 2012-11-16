@@ -1,4 +1,4 @@
-package org.oss.teamwork.teamshare.common;
+package com.oss.teamwork.teamshare.common;
 
 public class DeviceId extends Id {
 

@@ -1,4 +1,4 @@
-package org.oss.teamwork.teamshare.common;
+package com.oss.teamwork.teamshare.common;
 
 // TODO Id class: should be a SHA1 hash
 /**

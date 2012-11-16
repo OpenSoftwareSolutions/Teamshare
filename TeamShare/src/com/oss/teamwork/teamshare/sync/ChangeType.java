@@ -1,4 +1,4 @@
-package org.oss.teamwork.teamshare.sync;
+package com.oss.teamwork.teamshare.sync;
 
 public enum ChangeType {
 	FILE_CHANGE,

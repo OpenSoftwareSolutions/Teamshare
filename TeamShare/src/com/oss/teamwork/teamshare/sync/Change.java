@@ -1,10 +1,11 @@
-package org.oss.teamwork.teamshare.sync;
+package com.oss.teamwork.teamshare.sync;
 
 import java.util.Date;
 
-import org.oss.teamwork.teamshare.group.Group;
-import org.oss.teamwork.teamshare.io.File;
-import org.oss.teamwork.teamshare.io.Folder;
+
+import com.oss.teamwork.teamshare.group.Group;
+import com.oss.teamwork.teamshare.io.File;
+import com.oss.teamwork.teamshare.io.Folder;
 
 // TODO review Change class
 /**
