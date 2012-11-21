@@ -1,4 +1,4 @@
-package com.oss.teamwork.teamshare.group;
+package com.oss.teamwork.teamshare.user;
 
 import java.net.InetSocketAddress;
 import java.security.PublicKey;

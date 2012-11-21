@@ -4,7 +4,7 @@ package com.oss.teamwork.teamshare.common;
 /**
  * Base class for unique identifiers.
  */
-public class Id {
+public abstract class Id {
   protected byte[] hash = null;
   
   protected Id() {}

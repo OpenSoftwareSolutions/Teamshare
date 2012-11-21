@@ -2,7 +2,7 @@
   realizations="true" associations="true" dependencies="true" nesting-relationships="true">  
   <class id="1" corner="BOTTOM_RIGHT" language="java" name="network.Communication" project="DomainModel" 
     file="/DomainModel/src/network/Communication.java" binary="false">    
-    <position x="153" y="396" width="-1" height="-1"/>    
+    <position height="-1" width="-1" x="153" y="396"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true"/>      
       <operations public="true" package="true" protected="true" private="true"/>    
@@ -10,7 +10,7 @@
   </class>  
   <class id="2" corner="BOTTOM_RIGHT" language="java" name="network.NetworkListener" project="DomainModel" 
     file="/DomainModel/src/network/NetworkListener.java" binary="false">    
-    <position x="394" y="397" width="-1" height="-1"/>    
+    <position height="-1" width="-1" x="394" y="397"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true"/>      
       <operations public="true" package="true" protected="true" private="true"/>    
@@ -18,7 +18,7 @@
   </class>  
   <class id="3" corner="BOTTOM_RIGHT" language="java" name="network.NetworkService" project="DomainModel" 
     file="/DomainModel/src/network/NetworkService.java" binary="false">    
-    <position x="400" y="122" width="-1" height="-1"/>    
+    <position height="-1" width="-1" x="400" y="122"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true"/>      
       <operations public="true" package="true" protected="true" private="true"/>    
@@ -26,7 +26,7 @@
   </class>  
   <class id="4" corner="BOTTOM_RIGHT" language="java" name="network.NamingServiceRequest" project="DomainModel" 
     file="/DomainModel/src/network/NamingServiceRequest.java" binary="false">    
-    <position x="106" y="242" width="-1" height="-1"/>    
+    <position height="-1" width="-1" x="106" y="242"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true"/>      
       <operations public="true" package="true" protected="true" private="true"/>    
@@ -34,7 +34,7 @@
   </class>  
   <class id="5" corner="BOTTOM_RIGHT" language="java" name="network.DiscoveryServiceRequest" project="DomainModel" 
     file="/DomainModel/src/network/DiscoveryServiceRequest.java" binary="false">    
-    <position x="103" y="95" width="-1" height="-1"/>    
+    <position height="-1" width="-1" x="103" y="95"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true"/>      
       <operations public="true" package="true" protected="true" private="true"/>    
@@ -42,7 +42,7 @@
   </class>  
   <class id="6" corner="BOTTOM_RIGHT" language="java" name="security.Crypto" project="DomainModel" 
     file="/DomainModel/src/security/Crypto.java" binary="false">    
-    <position x="151" y="527" width="-1" height="-1"/>    
+    <position height="-1" width="-1" x="151" y="527"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true"/>      
       <operations public="true" package="true" protected="true" private="true"/>    
@@ -50,7 +50,7 @@
   </class>  
   <class id="7" corner="BOTTOM_RIGHT" language="java" name="topology.TopologyService" project="DomainModel" 
     file="/DomainModel/src/topology/TopologyService.java" binary="false">    
-    <position x="765" y="419" width="-1" height="-1"/>    
+    <position height="-1" width="-1" x="765" y="419"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true"/>      
       <operations public="true" package="true" protected="true" private="true"/>    
@@ -58,80 +58,88 @@
   </class>  
   <class id="8" corner="BOTTOM_RIGHT" language="java" name="messaging.MessagingService" project="DomainModel" 
     file="/DomainModel/src/messaging/MessagingService.java" binary="false">    
-    <position x="788" y="167" width="-1" height="-1"/>    
+    <position height="-1" width="-1" x="788" y="167"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true"/>      
       <operations public="true" package="true" protected="true" private="true"/>    
     </display>  
   </class>  
   <association id="9">    
-    <end type="SOURCE" refId="2" navigable="false">      
+    <end type="SOURCE" refId="3" navigable="false">      
       <attribute id="10" name="messagingService">        
-        <position x="517" y="329" width="92" height="13"/>      
+        <position height="13" width="92" x="550" y="125"/>      
       </attribute>      
       <multiplicity id="11" minimum="0" maximum="1"/>    
     </end>    
     <end type="TARGET" refId="8" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <dependency id="12">    
-    <end type="SOURCE" refId="3"/>    
+  <association id="12">    
+    <end type="SOURCE" refId="2" navigable="false">      
+      <attribute id="13" name="topologyService"/>      
+      <multiplicity id="14" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="7" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <dependency id="15">    
+    <end type="SOURCE" refId="7"/>    
     <end type="TARGET" refId="4"/>  
   </dependency>  
-  <association id="13">    
+  <association id="16">    
+    <end type="SOURCE" refId="8" navigable="false">      
+      <attribute id="17" name="networkService">        
+        <position height="13" width="79" x="555" y="173"/>      
+      </attribute>      
+      <multiplicity id="18" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="3" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="19">    
+    <end type="SOURCE" refId="7" navigable="false">      
+      <attribute id="20" name="networkService"/>      
+      <multiplicity id="21" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="3" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <dependency id="22">    
+    <end type="SOURCE" refId="7"/>    
+    <end type="TARGET" refId="5"/>  
+  </dependency>  
+  <association id="23">    
     <end type="SOURCE" refId="3" navigable="false">      
-      <attribute id="14" name="communication"/>      
-      <multiplicity id="15" minimum="0" maximum="1"/>    
+      <attribute id="24" name="communication"/>      
+      <multiplicity id="25" minimum="0" maximum="1"/>    
     </end>    
     <end type="TARGET" refId="1" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="16">    
+  <dependency id="26">    
+    <end type="SOURCE" refId="3"/>    
+    <end type="TARGET" refId="5"/>  
+  </dependency>  
+  <association id="27">    
     <end type="SOURCE" refId="1" navigable="false">      
-      <attribute id="17" name="crypto"/>      
-      <multiplicity id="18" minimum="0" maximum="1"/>    
+      <attribute id="28" name="crypto"/>      
+      <multiplicity id="29" minimum="0" maximum="1"/>    
     </end>    
     <end type="TARGET" refId="6" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="19">    
-    <end type="SOURCE" refId="3" navigable="false">      
-      <attribute id="20" name="messagingService">        
-        <position x="550" y="125" width="92" height="13"/>      
+  <dependency id="30">    
+    <end type="SOURCE" refId="3"/>    
+    <end type="TARGET" refId="4"/>  
+  </dependency>  
+  <association id="31">    
+    <end type="SOURCE" refId="2" navigable="false">      
+      <attribute id="32" name="messagingService">        
+        <position height="13" width="92" x="517" y="329"/>      
       </attribute>      
-      <multiplicity id="21" minimum="0" maximum="1"/>    
+      <multiplicity id="33" minimum="0" maximum="1"/>    
     </end>    
     <end type="TARGET" refId="8" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="22">    
-    <end type="SOURCE" refId="8" navigable="false">      
-      <attribute id="23" name="networkService">        
-        <position x="555" y="173" width="79" height="13"/>      
-      </attribute>      
-      <multiplicity id="24" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="3" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="25">    
-    <end type="SOURCE" refId="7" navigable="false">      
-      <attribute id="26" name="networkService"/>      
-      <multiplicity id="27" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="3" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <dependency id="28">    
-    <end type="SOURCE" refId="3"/>    
-    <end type="TARGET" refId="5"/>  
-  </dependency>  
-  <association id="29">    
-    <end type="SOURCE" refId="2" navigable="false">      
-      <attribute id="30" name="topologyService"/>      
-      <multiplicity id="31" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="7" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
   <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
