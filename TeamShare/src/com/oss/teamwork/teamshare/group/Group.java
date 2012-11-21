@@ -84,7 +84,7 @@ public class Group {
 	public void leave(){}
 	
 	/**
-	 * Removes this group. Can be done only by the owner (the logged-in user must pe the group's owner) and 
+	 * Removes this group. Can be done only by the owner (the logged-in user must be the group's owner) and 
 	 * only when the group doesn't have any other members.
 	 */
 	public void removeGroup(){}
