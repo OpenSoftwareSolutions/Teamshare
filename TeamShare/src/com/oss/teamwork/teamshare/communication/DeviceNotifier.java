@@ -1,4 +1,4 @@
-package com.oss.teamwork.teamshare.comm;
+package com.oss.teamwork.teamshare.communication;
 
 
 import com.oss.teamwork.teamshare.common.DeviceId;

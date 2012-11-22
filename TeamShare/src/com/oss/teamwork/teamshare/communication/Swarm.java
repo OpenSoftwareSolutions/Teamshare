@@ -1,11 +1,11 @@
-package com.oss.teamwork.teamshare.comm;
+package com.oss.teamwork.teamshare.communication;
 
 import java.io.InputStream;
 import java.util.Set;
 
 
 import com.oss.teamwork.teamshare.common.Id;
-import com.oss.teamwork.teamshare.group.Device;
+import com.oss.teamwork.teamshare.user.Device;
 
 public interface Swarm {
 
