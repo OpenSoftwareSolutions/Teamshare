@@ -25,14 +25,18 @@ public class Change {
 	public ChangeType type;
 
 	/**
-	 * File change: created, modified, removed.
+	 * TODO File change: created, modified, removed.
 	 */
-	public File changedFile;
+	public File getChangedFile() {
+	  return null;
+	}
 
 	/**
-	 * Group change: user add/remove, ownership transfer, groups settings change.
+	 * TODO Group change: user add/remove, ownership transfer, groups settings change.
 	 */
-	public Group changedGroup;
+	public Group getChangedGroup() {
+	  return null;
+	}
 
 	/**
 	 * If a folder is created or removed only one change object is made

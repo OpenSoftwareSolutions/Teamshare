@@ -67,4 +67,10 @@ public interface Device {
    * Pull a change identified by its ID from this device.
    */
   Change pullChange(ChangeId changeId);
+  
+  /**
+   * TODO Return device change metadata. Should it return a Change?
+   * @return
+   */
+  Change getChangeMetadata();
 }
