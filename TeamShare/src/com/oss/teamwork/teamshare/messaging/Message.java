@@ -1,4 +1,4 @@
-package com.oss.teamwork.teamshare.messages;
+package com.oss.teamwork.teamshare.messaging;
 
 import com.oss.teamwork.teamshare.user.User;
 

@@ -2,7 +2,6 @@ package com.oss.teamwork.teamshare.sync;
 
 import java.util.Collection;
 
-import com.oss.teamwork.teamshare.common.OverlayStrategy;
 import com.oss.teamwork.teamshare.group.DevicesQuery;
 import com.oss.teamwork.teamshare.group.Group;
 import com.oss.teamwork.teamshare.group.GroupRepository;
