@@ -1,4 +1,4 @@
-package com.oss.teamwork.teamshare.messages;
+package com.oss.teamwork.teamshare.messaging;
 
 /**
  * Factory component that creates different types of Message objects depending on their purpose 

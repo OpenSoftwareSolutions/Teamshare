@@ -1,4 +1,4 @@
-package com.oss.teamwork.teamshare.common;
+package com.oss.teamwork.teamshare.sync;
 
 import java.util.Collection;
 

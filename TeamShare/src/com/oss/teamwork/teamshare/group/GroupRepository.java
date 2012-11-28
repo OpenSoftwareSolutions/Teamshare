@@ -20,6 +20,8 @@ public interface GroupRepository {
    */
   public Collection<Device> getDevices(Group group, DevicesQuery query);
   
-  public Collection<Device> addDevice(User user, Device device);
+  public void addDevice(User user, Device device);
+  
+  public void updateDevice(Device device);
   
 }
