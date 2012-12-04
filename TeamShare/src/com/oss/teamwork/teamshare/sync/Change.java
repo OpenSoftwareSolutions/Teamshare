@@ -5,6 +5,7 @@ import java.util.Date;
 
 import com.oss.teamwork.teamshare.group.Group;
 import com.oss.teamwork.teamshare.io.File;
+import com.oss.teamwork.teamshare.io.FilesystemEvent;
 import com.oss.teamwork.teamshare.io.Folder;
 
 // TODO review Change class
@@ -14,6 +15,8 @@ import com.oss.teamwork.teamshare.io.Folder;
  */
 public class Change {
 
+  private Boolean empty;
+  
 	/**
 	 * The device's local time when the change was made.
 	 */
@@ -24,6 +27,8 @@ public class Change {
 	 */
 	public ChangeType type;
 
+	
+	
 	/**
 	 * TODO File change: created, modified, removed.
 	 */
@@ -50,4 +55,11 @@ public class Change {
 	 * expressed differently (not just using a simple String).
 	 */
 	public String changeDetails;
+	
+	public Boolean isEmpty(){
+	  
+	  return empty;	 
+	}
+	
+	public void update(FilesystemEvent fsEvent){}
 }

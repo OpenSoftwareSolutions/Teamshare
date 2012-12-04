@@ -1,5 +1,5 @@
 package com.oss.teamwork.teamshare.sync;
-
-public enum MutationType {
+//TODO
+public interface ChangeHistory {
 
 }
