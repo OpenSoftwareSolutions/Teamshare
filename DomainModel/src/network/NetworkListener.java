@@ -33,7 +33,7 @@ public abstract class NetworkListener {
 	 */
 	protected abstract void receiveReplyFromNS(Object reply);
 	/**
-	 * Receives  reply to a request from the Authetication Service. Forwards it to the component from which
+	 * Receives  reply to a request from the Authentication Service. Forwards it to the component from which
 	 * the request originated.
 	 * @param reply - the information received
 	 */
