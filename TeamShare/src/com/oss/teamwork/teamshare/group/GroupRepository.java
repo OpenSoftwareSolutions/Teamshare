@@ -7,10 +7,7 @@ import com.oss.teamwork.teamshare.user.User;
 
 public interface GroupRepository {
   
-  /**
-   * Return a singleton instance of GroupRepository.
-   */
-  public GroupRepository getInstance();
+  
 
   /**
    * Returns a list of devices from the group based on a query criteria (e.g devices for 
@@ -24,4 +21,10 @@ public interface GroupRepository {
   
   public void updateDevice(Device device);
   
+  /**
+   * Returns the Group that contains the given file (inspects the root folder in the file's path)
+   * @param file - //TODO java.io.File or our file?
+   * @return
+   */
+  public Group getGroup(java.io.File file);
 }
