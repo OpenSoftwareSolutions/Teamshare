@@ -7,6 +7,7 @@ import java.security.PublicKey;
 import com.oss.teamwork.teamshare.common.ChangeId;
 import com.oss.teamwork.teamshare.common.DeviceId;
 import com.oss.teamwork.teamshare.sync.Change;
+import com.oss.teamwork.teamshare.sync.Version;
 
 public interface Device {
   
@@ -69,8 +70,8 @@ public interface Device {
   Change pullChange(ChangeId changeId);
   
   /**
-   * TODO Return device change metadata. Should it return a Change?
-   * @return
+   * Returns the group's folder version that the device has.
+   * @return Version
    */
-  Change getChangeMetadata();
+  Version getVersion();
 }

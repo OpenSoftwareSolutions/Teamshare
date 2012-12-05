@@ -3,6 +3,7 @@ package com.oss.teamwork.teamshare.group;
 import com.oss.teamwork.teamshare.common.*;
 import com.oss.teamwork.teamshare.io.Folder;
 import com.oss.teamwork.teamshare.sync.Change;
+import com.oss.teamwork.teamshare.sync.Version;
 import com.oss.teamwork.teamshare.user.User;
 
 import java.util.List;
@@ -50,6 +51,13 @@ public class Group {
    */
   public Properties settings;
 
+  /**
+   * The (locally-stored) version of the group's folder. Ideally it would be
+   * the same for all the devices in the group.
+   */
+  public Version version;
+  
+  
   /**
    * Invites an user into the given group.
    * 

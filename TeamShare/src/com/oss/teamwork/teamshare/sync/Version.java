@@ -7,8 +7,8 @@ package com.oss.teamwork.teamshare.sync;
  * 
  *
  */
-public interface PushStrategy {
+public class Version {
 
-  void push(Change change);
+  long versionNumber; //maybe  
   
 }
