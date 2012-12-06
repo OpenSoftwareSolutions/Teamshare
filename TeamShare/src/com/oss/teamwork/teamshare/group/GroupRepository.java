@@ -2,8 +2,6 @@ package com.oss.teamwork.teamshare.group;
 
 import java.util.Collection;
 
-import com.oss.teamwork.teamshare.user.Device;
-import com.oss.teamwork.teamshare.user.User;
 
 public interface GroupRepository {
   

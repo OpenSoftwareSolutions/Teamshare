@@ -1,5 +1,6 @@
 package com.oss.teamwork.teamshare.sync;
 import com.oss.teamwork.teamshare.group.*;
+
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
@@ -10,8 +11,6 @@ import java.util.TimerTask;
 import com.oss.teamwork.teamshare.common.Configuration;
 
 import com.oss.teamwork.teamshare.io.FilesystemEvent;
-import com.oss.teamwork.teamshare.user.Account;
-import com.oss.teamwork.teamshare.user.Device;
 
 public class Synchronization {
   
@@ -47,7 +46,6 @@ public class Synchronization {
         Collection<Group> groups = account.getMyGroups();
         for (Group group: groups)
           pull(group);
-    
     }
   }
   
@@ -74,7 +72,7 @@ public class Synchronization {
     pushStrategy.push(change);
   }
   
-  public void pull(Group group) {
+  protected void pull(Group group) {
     
     Collection<Change> changes = pullStrategy.pull(group);   
     

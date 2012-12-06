@@ -5,41 +5,46 @@ import java.util.Collection;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
-import com.oss.teamwork.teamshare.group.DevicesQuery;
+import com.oss.teamwork.teamshare.group.Device;
 import com.oss.teamwork.teamshare.group.Group;
 import com.oss.teamwork.teamshare.group.GroupRepository;
-import com.oss.teamwork.teamshare.user.Device;
 
-public class SwiftPullStrategy implements PullStrategy{
+public class SwiftPullStrategy implements PullStrategy {
 
-  Map<Group, Collection<Device>> devices;
   protected GroupRepository groupRepository;
+  protected VersioningStrategy versioningStrategy;
   
+  
+
+  public SwiftPullStrategy() {
+    super();
+    
+    // TODO init GroupRepository, VersioningStrategy
+  }
+
   @Override
   public Collection<Change> pull(Group group) {
-    
-    Map<Version, Collection<Device>> versions = new  LinkedHashMap<Version, Collection<Device>>();
-    
-    for (Device device: devices.get(group)) {
+
+    Map<Version, Collection<Device>> versions =
+        new LinkedHashMap<Version, Collection<Device>>();
+    Version chosenVersion;
+
+    Collection<Device> devices = group.getGroupSwarm().getDevices();
+    for (Device device : devices) {
       Version v = device.getVersion();
-      Collection<Device> devices = versions.get(v);
-      if (devices == null) {
-        devices = new ArrayList<Device>();
+      Collection<Device> versionDevices = versions.get(v);
+      if (versionDevices == null) {
+        versionDevices = new ArrayList<Device>();
       }
-      devices.add(device);
-      versions.put(v, devices);
-    }   
-    //todo map-ul invers
+      versionDevices.add(device);
+      versions.put(v, versionDevices);
+    }
     
-    return null;
-  }
-  
-  protected Collection<Device> getDevices(Group group) {
-    DevicesQuery query = createDevicesQuery();
-    return groupRepository.getDevices(group, query); 
-  }
-     
-  protected  DevicesQuery createDevicesQuery(){
+    // Choose version.
+    chosenVersion = versioningStrategy.chooseVersion(versions.keySet());
+    
+    // TODO do the actual pull by creating a swift Swarm.
+
     return null;
   }
 

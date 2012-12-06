@@ -1,10 +1,10 @@
 package com.oss.teamwork.teamshare.group;
 
 import com.oss.teamwork.teamshare.common.*;
+import com.oss.teamwork.teamshare.communication.Swarm;
 import com.oss.teamwork.teamshare.io.Folder;
 import com.oss.teamwork.teamshare.sync.Change;
 import com.oss.teamwork.teamshare.sync.Version;
-import com.oss.teamwork.teamshare.user.User;
 
 import java.util.List;
 import java.util.Properties;
@@ -20,42 +20,44 @@ public class Group {
    * The group's unique identifier. It is not visible to users through the
    * application's interface. It is used only internally to identify groups.
    */
-  public GroupId groupID;
+  protected GroupId groupID;
 
   /**
    * The group folder's name is also the group's actual name. This folder is the
    * root for all the files and folders created by the group's users.
    */
-  public Folder folderName;
+  protected Folder folderName;
 
   /**
    * The group's owner.
    */
-  public User owner;
+  protected User owner;
 
   /**
    * A user that will become the group's owner after an ownership transfer. It
    * is marked as pending only during the transfer.
    */
-  public User pendingOwner;
+  protected User pendingOwner;
 
   /**
    * The group's users.
    */
-  public List<User> users;
+  protected List<User> users;
 
   /**
    * The group's settings. Settings are implementation dependent. Exact settings
    * or their number is not set at domain level. They should include properties
    * such as the maximum number of users and the maximum storage capacity.
    */
-  public Properties settings;
+  protected Properties settings;
 
   /**
    * The (locally-stored) version of the group's folder. Ideally it would be
    * the same for all the devices in the group.
    */
-  public Version version;
+  protected Version version;
+  
+  protected Swarm groupSwarm;
   
   
   /**
@@ -152,5 +154,9 @@ public class Group {
       return false;
     return true;
   }
-	
+
+  public Swarm getGroupSwarm() {
+    return groupSwarm;
+  }
+  
 }

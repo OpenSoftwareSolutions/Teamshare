@@ -1,6 +1,6 @@
 package com.oss.teamwork.teamshare.messaging;
 
-import com.oss.teamwork.teamshare.user.User;
+import com.oss.teamwork.teamshare.group.User;
 
 public abstract class MessageService {
 
