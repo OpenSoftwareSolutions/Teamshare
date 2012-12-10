@@ -20,6 +20,13 @@ public interface GroupRepository {
   public void updateDevice(Device device);
   
   /**
+   * Trigger update group information from the group file.
+   * 
+   * @param group
+   */
+  public void update(Group group);
+  
+  /**
    * Returns the Group that contains the given file (inspects the root folder in the file's path)
    * @param file - //TODO java.io.File or our file?
    * @return

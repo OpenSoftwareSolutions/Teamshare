@@ -120,16 +120,6 @@ public class Group {
   public void removeGroup() {
   }
 
-  /**
-   * Applies the new group change.
-   * 
-   * @param groupChange
-   *          - the change that was received for this group from another
-   *          device(s) in the group
-   */
-
-	public void applyChange(Change groupChange){}
-
   @Override
   public int hashCode() {
     final int prime = 31;
