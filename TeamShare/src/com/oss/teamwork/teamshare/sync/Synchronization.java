@@ -22,7 +22,7 @@ public class Synchronization {
   protected Timer pullScheduler;
   protected VersioningStrategy versioningStrategy;
   protected GroupRepository groupRepository;
-  protected Account account;
+  protected Session account;
  
   class PushTask extends TimerTask{
 
