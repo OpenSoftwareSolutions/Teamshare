@@ -5,60 +5,42 @@ import java.util.Collection;
 import com.oss.teamwork.teamshare.messaging.Mailbox;
 
 /**
- * A Teamshare user. Other users have access/create the {@link User} object of
- * that user, not the Account.
+ * Represents the account of the logged-in Teamshare user. Other users have
+ * access/create the {@link User} object of that user, not the Account. The
+ * Account stores more information than an {@link User} object, such as the
+ * number of groups the user is member of, which is not visible to other users.
  * 
  */
 public class Account {
 
+  /**
+   * The {@link User} object for this account, containing all the public
+   * information for this user.
+   */
   protected User myUser;
-  /**
-   * The user's username. The username the one visible to other users through an
-   * user interface. Similar to the userID, it is unique.
-   */
-  protected String username;
-  /**
-   * The user's email address, the one for receiving notifications. Two users
-   * cannot have the same email address.
-   */
-  protected String email;
+
   /**
    * The groups the user is member of.
    */
   protected Collection<Group> myGroups;
+  
   /**
    * The groups the user is owner of (it is a subset of mygroups).
    */
   protected Collection<Group> ownedGroups;
 
   /**
-   * TODO personal info object
-   * User's personal information, not having a major role in the
-   * application yet so is not defined at this level.
-   */
-  protected String personalInfo;
-  /**
-   * A reference to the user's mailbox, a repository that stores and retrieves
-   * the user's messages.
+   * A reference to the user's mailbox, a repository that stores and provides
+   * access to the logged-in user's messages.
    */
   protected Mailbox mailbox;
 
-  public String getUsername() {
-    return username;
-  }
-
-  public void setUsername(String username) {
-    this.username = username;
-  }
-
-  public String getEmail() {
-    return email;
-  }
-
-  public void setEmail(String email) {
-    this.email = email;
-  }
-
+  /*  ______________________________________________________________________
+   * | Getters and Setters                                                  |
+   * |______________________________________________________________________|
+  */
+  
+  
   public Collection<Group> getMyGroups() {
     return myGroups;
   }
@@ -73,14 +55,6 @@ public class Account {
 
   public void setOwnGroups(Collection<Group> ownGroups) {
     this.ownedGroups = ownGroups;
-  }
-
-  public String getPersonalInfo() {
-    return personalInfo;
-  }
-
-  public void setPersonalInfo(String personalInfo) {
-    this.personalInfo = personalInfo;
   }
 
   public Mailbox getMailbox() {

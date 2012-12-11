@@ -1,11 +1,17 @@
 package com.oss.teamwork.teamshare.messaging;
 
+import com.oss.teamwork.teamshare.group.Group;
 import com.oss.teamwork.teamshare.group.User;
 
 public abstract class MessageService {
 
   protected Mailbox mailbox;
 
+  /*  ______________________________________________________________________
+   * | OPERATIONS                                                           |
+   * |______________________________________________________________________|
+  */
+  
   /**
    * The MessagingService contacts the remote centralized Messaging service to
    * retrieve any new messages. The message will still be kept on the remote
@@ -26,7 +32,9 @@ public abstract class MessageService {
    *          - the String containing the invitation's text message written by
    *          the user for the invited user
    */
-  public abstract void sendInvitation(User invitedUser, String content);
+  public abstract void sendInvitation(User invitedUser, 
+      String content, 
+      Group group);
 
   /**
    * Sends an invitation message to an external person and also stores it in the
@@ -39,11 +47,16 @@ public abstract class MessageService {
    *          - the String containing the invitation's text message written by
    *          the user for the invited person
    */
-  public abstract void sendInvitation(String externalPersonEmail, String content);
+  public abstract void sendInvitation(String externalPersonEmail,
+      String content,
+      Group group);
 
-  public abstract void sendOwnershipTransfer(User newOwner, String content);
+  public abstract void sendOwnershipTransfer(User newOwner,
+      String content);
 
   public abstract void sendReply(Message replyto);
+  
+  public abstract Mailbox getMailbox();
 
   /**
    * Used by the MessagingService to forward a message to the remote Messaging
@@ -53,8 +66,10 @@ public abstract class MessageService {
    */
   protected abstract void sendMessage(Message message);
 
-  public abstract Mailbox getMailbox();
+  
 
   protected abstract void informGroupService();
+  
+  
 
 }
