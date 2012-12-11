@@ -5,7 +5,7 @@ import java.util.Collection;
 import com.oss.teamwork.teamshare.group.Device;
 import com.oss.teamwork.teamshare.group.GroupRepository;
 
-public class SwiftPushStrategy implements PushStrategy {
+public class SwarmPushStrategy implements PushStrategy {
 
   // TODO Decide how specialized singletons are loaded from Configuration.
   protected GroupRepository groupRepository;
