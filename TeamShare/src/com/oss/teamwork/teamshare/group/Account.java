@@ -17,13 +17,19 @@ public class Account {
    * The {@link User} object for this account, containing all the public
    * information for this user.
    */
-  protected User myUser;
+  protected User user;
+
+  /**
+   * The {@link Device} object for this account, where the user is currently
+   * logged in.
+   */
+  protected Device device;
 
   /**
    * The groups the user is member of.
    */
   protected Collection<Group> myGroups;
-  
+
   /**
    * The groups the user is owner of (it is a subset of mygroups).
    */
@@ -35,12 +41,12 @@ public class Account {
    */
   protected Mailbox mailbox;
 
-  /*  ______________________________________________________________________
-   * | Getters and Setters                                                  |
+  /*
+   * ______________________________________________________________________ |
+   * Getters and Setters |
    * |______________________________________________________________________|
-  */
-  
-  
+   */
+
   public Collection<Group> getMyGroups() {
     return myGroups;
   }
