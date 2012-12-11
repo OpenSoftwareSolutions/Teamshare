@@ -1,6 +1,6 @@
 package com.oss.teamwork.teamshare.group;
 
-import java.util.List;
+import java.util.Collection;
 
 import com.oss.teamwork.teamshare.common.UserId;
 
@@ -38,10 +38,10 @@ public class User {
   protected boolean online;
 
   /**
-   * List of all devices linked by the user. This list is not visible to the
+   * Collection of all devices linked by the user. This Collection is not visible to the
    * user. This information is vital for synchronizing changes.
    */
-  protected List<Device> devices;
+  protected Collection<Device> devices;
 
   
   /*  ______________________________________________________________________
@@ -89,11 +89,11 @@ public class User {
     this.online = online;
   }
 
-  public List<Device> getDevices() {
+  public Collection<Device> getDevices() {
     return devices;
   }
 
-  public void setDevices(List<Device> devices) {
+  public void setDevices(Collection<Device> devices) {
     this.devices = devices;
   }
 

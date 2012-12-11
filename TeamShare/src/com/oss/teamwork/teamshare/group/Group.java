@@ -3,7 +3,6 @@ package com.oss.teamwork.teamshare.group;
 import com.oss.teamwork.teamshare.common.*;
 import com.oss.teamwork.teamshare.communication.Swarm;
 import com.oss.teamwork.teamshare.io.Folder;
-import com.oss.teamwork.teamshare.sync.Change;
 import com.oss.teamwork.teamshare.sync.Version;
 
 import java.util.List;

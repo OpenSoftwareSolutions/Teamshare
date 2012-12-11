@@ -36,10 +36,21 @@ public interface Device {
   InetSocketAddress getAddress();
   
   /**
+   * The user which owns the device.
+   */
+  User getUser();
+  
+  /**
    * The device's status: true if online, false if offline.
    * A device is online when it can connect and communicate with other devices.
    */
   boolean isOnline();
+  
+  /**
+   * Return {@code true} if {@code this} is a mobile device and {@code false}
+   * otherwise.
+   */
+  boolean isMobile();
   
   /**
    * For security mechanisms, the devices may also have one ore more keys. The exact type and usage is described at application level.
