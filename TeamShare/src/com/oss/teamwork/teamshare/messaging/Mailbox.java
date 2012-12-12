@@ -1,6 +1,6 @@
 package com.oss.teamwork.teamshare.messaging;
 
-import java.util.List;
+import java.util.Collection;
 
 /**
  * Represents a user's mailbox, a repository-type element, providing the set of
@@ -20,7 +20,7 @@ public interface Mailbox {
    *          interval, certain destination etc)
    * @return a list of Message objects
    */
-  public List<Message> getMessages(MessageQuery query);
+  public Collection<Message> getMessages(MessageQuery query);
 
   /**
    * Adds a new message to the mailbox.
@@ -30,7 +30,7 @@ public interface Mailbox {
   /**
    * Adds newly received or sent messages to the mailbox.
    */
-  public void addMessages(List<Message> messages);
+  public void addMessages(Collection<Message> messages);
 
   /**
    * Removes (deletes) a message from the mailbox.

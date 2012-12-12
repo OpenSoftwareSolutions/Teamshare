@@ -4,7 +4,7 @@ import java.util.Collection;
 
 import com.oss.teamwork.teamshare.common.UserId;
 
-public class User {
+public class User extends Person {
 
   /**
    * The user's unique identifier. It is not visible through the user interface. <br>
@@ -18,12 +18,6 @@ public class User {
    * It's the same as the one in the user's Account.
    */
   protected String username;
-
-  /**
-   * The user's email address, used for receiving notifications. Two users
-   * cannot have the same email address.
-   */
-  protected String email;
 
   /**
    * TODO personal info object User's personal information, not having a major
