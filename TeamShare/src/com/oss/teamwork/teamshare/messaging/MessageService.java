@@ -15,23 +15,29 @@ public abstract class MessageService {
    */
   public abstract void pull();
 
-  /**
-   * Sends an invitation message to another user and also stores it in the
-   * Mailbox. The message will be sent to the remote Messaging Service, which
-   * will store it in the destination user's mailbox.
+  /*
+   * DEPRACTED STUFF /** Sends an invitation message to another user and also
+   * stores it in the Mailbox. The message will be sent to the remote Messaging
+   * Service, which will store it in the destination user's mailbox.
    */
-  public abstract void sendInvitation(InvitationMessage msg);
-  
-  public abstract void replyToInvitation(InvitationMessage msg);
-  
-  public abstract void sendOwnershipTransfer(OwnershipTransferMessage msg);
-  
-  public abstract void replyToOwnershipTransfer(OwnershipTransferMessage msg);
 
-  // TODO probably deprecated
-  @Deprecated
-  public void sendReply(Message replyto) {
-  }
+  /*
+   * public abstract void sendInvitation(InvitationMessage msg);
+   * 
+   * public abstract void replyToInvitation(InvitationMessage msg);
+   * 
+   * public abstract void sendOwnershipTransfer(OwnershipTransferMessage msg);
+   * 
+   * public abstract void replyToOwnershipTransfer(OwnershipTransferMessage
+   * msg);
+   */
+
+  /**
+   * Sends a message to another user and also stores it in the Mailbox. The
+   * message will be sent to the remote Messaging Service, which will store it
+   * in the destination user's mailbox.
+   */
+  public abstract void send(Message msg);
 
   public abstract Mailbox getMailbox();
 
