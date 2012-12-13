@@ -1,7 +1,6 @@
 package com.oss.teamwork.teamshare.messaging;
 
-
-public abstract class MessageService {
+public abstract class MessagingService {
 
   protected Mailbox mailbox;
 
@@ -15,12 +14,10 @@ public abstract class MessageService {
   public abstract void pull();
 
   /*
-   * DEPRACTED STUFF /** Sends an invitation message to another user and also
+   * DEPRECATED STUFF /** Sends an invitation message to another user and also
    * stores it in the Mailbox. The message will be sent to the remote Messaging
    * Service, which will store it in the destination user's mailbox.
-   */
-
-  /*
+   * 
    * public abstract void sendInvitation(InvitationMessage msg);
    * 
    * public abstract void replyToInvitation(InvitationMessage msg);
@@ -37,16 +34,6 @@ public abstract class MessageService {
    * in the destination user's mailbox.
    */
   public abstract void send(Message msg);
-
-  public abstract Mailbox getMailbox();
-
-  /**
-   * Used by the MessagingService to forward a message to the remote Messaging
-   * Service.
-   * 
-   * @param message
-   */
-  protected abstract void sendMessage(Message message);
 
   protected abstract void informGroupService();
 

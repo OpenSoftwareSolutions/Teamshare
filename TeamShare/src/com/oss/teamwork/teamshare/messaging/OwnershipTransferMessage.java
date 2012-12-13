@@ -9,11 +9,6 @@ public class OwnershipTransferMessage extends Message implements
   User newUser;
   
   @Override
-  public void send() {
-    // TODO
-  }
-
-  @Override
   public void accept() {
     // TODO
     type = AcceptableMessage.Type.ACCEPT;

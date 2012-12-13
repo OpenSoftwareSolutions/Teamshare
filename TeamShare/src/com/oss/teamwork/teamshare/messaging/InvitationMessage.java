@@ -8,11 +8,6 @@ public class InvitationMessage extends Message implements AcceptableMessage {
   Group group;
   
   @Override
-  public void send() {
-    // TODO
-  }
-
-  @Override
   public void accept() {
     // TODO
     type = AcceptableMessage.Type.ACCEPT;

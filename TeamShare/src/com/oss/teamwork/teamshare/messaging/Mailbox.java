@@ -53,7 +53,7 @@ public interface Mailbox {
   /**
    * Triggers a check for new message and updates on existing message. The
    * actual retrieval(pull) of messages must be done in a different component,
-   * such as {@link MessageService}.
+   * such as {@link MessagingService}.
    * 
    */
   public void checkForMessages();

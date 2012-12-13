@@ -3,19 +3,20 @@ package com.oss.teamwork.teamshare.common;
 import java.io.File;
 
 public class Configuration {
+  private static Configuration instance;
+  
   private long pushInterval = 10000;
-  private long pullInterval = 100000;
+  private long pullInterval = 120000;
   
   private Configuration(){
    
   }
   
   public static Configuration getInstance() {
-    if (INSTANCE == null) 
-      INSTANCE = new Configuration();
-    return INSTANCE;
+    if (instance == null) 
+      instance = new Configuration();
+    return instance;
   }
-  
   
   public long getPushInterval() {
     return pushInterval;
@@ -25,15 +26,12 @@ public class Configuration {
     this.pushInterval = pushInterval;
   }
   
-  public void loadConfiguration(File confFile){}
-  
-  private static Configuration INSTANCE;
-
   public long getPullInterval() {
    
     return pullInterval;
   }
- 
-  
-  
+
+  public void setPullInterval(long pullInterval) {
+    this.pullInterval = pullInterval;
+  }
 }

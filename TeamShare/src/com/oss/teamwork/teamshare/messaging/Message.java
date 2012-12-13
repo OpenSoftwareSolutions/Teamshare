@@ -6,7 +6,7 @@ import com.oss.teamwork.teamshare.group.User;
 /**
  * Represents a Message transmitted between Teamshare users.
  */
-public abstract class Message {
+public class Message {
   /**
    * The user that sends the message
    */
@@ -30,13 +30,20 @@ public abstract class Message {
 
   /**
    * Send the message to the destination by using the configured
-   * {@link MessageService} implementation.
+   * {@link MessagingService} implementation.
    * 
-   * Only messages having their {@link status} {@link MessageType.DRAFT} can be
-   * sent. For any other status a {@link UnsupportedOperationException} is
+   * Only messages having their {@link status} {@link MessageStatus.DRAFT} can
+   * be sent. For any other status a {@link UnsupportedOperationException} is
    * thrown.
    */
-  public abstract void send();
+  public void send() {
+    if (status != MessageStatus.DRAFT) {
+      throw new UnsupportedOperationException(
+          "Only draft messages can be sent.");
+    }
+    
+    MessagingServiceProvider.getMessagingService().send(this);
+  }
 
   public User getSource() {
     return source;
