@@ -1,6 +1,5 @@
 package com.oss.teamwork.teamshare.messaging;
 
-import com.oss.teamwork.teamshare.group.OwnershipTransferMessage;
 
 public abstract class MessageService {
 
