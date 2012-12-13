@@ -2,7 +2,7 @@ package com.oss.teamwork.teamshare.group;
 
 import java.util.Collection;
 
-
+@Deprecated
 public interface GroupRepository {
   
   

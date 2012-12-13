@@ -3,8 +3,6 @@ import com.oss.teamwork.teamshare.group.*;
 
 import java.util.Collection;
 import java.util.HashMap;
-import java.util.LinkedHashMap;
-import java.util.Map;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -53,7 +51,7 @@ public class Synchronization {
     
     //TODO initialize strategies, account!
     
-    groupRepository = GroupRepositoryFactory.getInstance().getGroupRepository();
+    //groupRepository = GroupRepositoryFactory.getInstance().getGroupRepository();
     
     pushScheduler = new Timer();
     pushScheduler.schedule(new PushTask(), 0, Configuration.getInstance().getPushInterval());

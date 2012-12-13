@@ -35,6 +35,4 @@ public abstract class MessagingService {
    */
   public abstract void send(Message msg);
 
-  protected abstract void informGroupService();
-
 }

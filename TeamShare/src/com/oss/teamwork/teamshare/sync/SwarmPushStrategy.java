@@ -3,12 +3,10 @@ package com.oss.teamwork.teamshare.sync;
 import java.util.Collection;
 
 import com.oss.teamwork.teamshare.group.Device;
-import com.oss.teamwork.teamshare.group.GroupRepository;
 
 public class SwarmPushStrategy implements PushStrategy {
 
   // TODO Decide how specialized singletons are loaded from Configuration.
-  protected GroupRepository groupRepository;
 
   /**
    * Force the others to pull, by notifying them.

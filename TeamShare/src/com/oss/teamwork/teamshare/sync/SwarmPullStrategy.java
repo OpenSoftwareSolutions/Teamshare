@@ -8,11 +8,9 @@ import java.util.Map;
 import com.oss.teamwork.teamshare.communication.Swarm;
 import com.oss.teamwork.teamshare.group.Device;
 import com.oss.teamwork.teamshare.group.Group;
-import com.oss.teamwork.teamshare.group.GroupRepository;
 
 public abstract class SwarmPullStrategy implements PullStrategy {
 
-  protected GroupRepository groupRepository;
   protected VersioningStrategy versioningStrategy;
 
   public SwarmPullStrategy() {

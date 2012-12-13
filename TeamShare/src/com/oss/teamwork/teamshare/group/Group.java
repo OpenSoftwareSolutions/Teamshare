@@ -118,6 +118,18 @@ public class Group {
    */
   public void removeGroup() {
   }
+  
+  public void acceptInvitation(User user) {
+    // TODO
+    
+    // addUser, removePending
+  }
+  
+  public void refuseInvitation(User user) {
+    // TODO
+    
+    //removePending
+  }
 
   @Override
   public int hashCode() {
