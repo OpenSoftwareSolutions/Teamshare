@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+    <project basedir="." default="build" name="Teamshare">
+    <property name="bin.dir" value="bin/" />
+    <property name="src.dir" value="src/" />
+    <property name="doc.dir" value="doc/" />
+    <property name="app.name" value="Teamshare" />
+
+    <path id="Teamshare.classpath">
+        <pathelement location="${bin.dir}"/>
+    </path>
+
+    <target name="init">
+            <mkdir dir="${bin.dir}"/>
+            <mkdir dir="${doc.dir}"/>
+    </target>
+
+
+    <target name="build" depends="init" description="compile java sources">
+        <javac srcdir="${src.dir}" destdir="${bin.dir}"/>
+
+    </target>
+
+
+    <!-- Generate javadoc for current project into ${doc.dir} -->
+      <target name="doc" depends="build" description="generate documentation">
+        <javadoc 
+            access="protected" 
+            author="false" 
+            windowtitle = "${app.name} API" 
+            sourcepath="${src.dir}" 
+            destdir="${doc.dir}"/>
+<!--        <link href = "http://docs.oracle.com/javase/7/docs/api/" />-->
+      </target>
+
+
+    <!-- Clean-up generated files -->
+
+    <target name="clean" description="clean-up .class">
+        <delete dir="${bin.dir}"/>
+    </target>
+
+    <target name="cleanall" description="clean-up .class and javadoc">
+        <delete dir="${bin.dir}"/>
+        <delete dir="${doc.dir}"/>
+    </target>
+</project>
