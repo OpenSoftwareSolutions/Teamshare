@@ -13,6 +13,11 @@ public abstract class MessagingService {
    */
   public abstract void pull();
 
+  // TODO o metoda pt cazul in care noi cerem mailbox intr-un query mesaje mai
+  // vechi, care nu le avem descarcate pe acest device, si atunci trebuie aduse
+  // de pe remote service  
+  
+   
   /*
    * DEPRECATED STUFF /** Sends an invitation message to another user and also
    * stores it in the Mailbox. The message will be sent to the remote Messaging

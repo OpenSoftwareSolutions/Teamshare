@@ -1,5 +1,7 @@
 package com.oss.teamwork.teamshare.messaging;
 
+import java.util.Date;
+
 import com.oss.teamwork.teamshare.group.Person;
 import com.oss.teamwork.teamshare.group.User;
 
@@ -28,7 +30,10 @@ public class Message {
    */
   protected String content;
 
-  /**
+  protected Date date;
+  
+  
+   /**
    * Send the message to the destination by using the configured
    * {@link MessagingService} implementation.
    * 
@@ -45,6 +50,12 @@ public class Message {
     MessagingServiceProvider.getMessagingService().send(this);
   }
 
+  
+  /*  ______________________________________________________________________
+   * | Getters and Setters                                                  |
+   * |______________________________________________________________________|
+  */
+  
   public User getSource() {
     return source;
   }
@@ -71,6 +82,22 @@ public class Message {
 
   public MessageStatus getStatus() {
     return status;
+  }
+  
+  public Date getDate() {
+    return date;
+  }
+
+  public void setDate(Date date) {
+    this.date = date;
+  }
+
+  public void setDestination(Person destination) {
+    this.destination = destination;
+  }
+
+  public void setStatus(MessageStatus status) {
+    this.status = status;
   }
 
 }
