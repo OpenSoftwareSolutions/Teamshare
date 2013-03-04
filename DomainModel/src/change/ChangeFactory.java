@@ -1,6 +1,6 @@
 package change;
 
-import java.util.Date;
+import org.joda.time.DateTime;
 
 /**
  * A Factory-type component for creating {@link Change} objects, either <b>filesystem or group changes</b>.
@@ -21,7 +21,7 @@ public abstract class ChangeFactory {
 	public abstract Change createChange(ChangeType type,
 											Object changeTarget,
 											String changeDetails,
-											Date timestamp);
+											DateTime timestamp);
 
 	/*public abstract Change createGroupChange(ChangeType type, String changedGroup, String changeDetails, Date timestamp);
 	public abstract Change createFileChange(ChangeType type, String changedFile, String changeDetails, Date timestamp);

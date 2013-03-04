@@ -1,8 +1,9 @@
 package change;
 
 import java.io.File;
-import java.util.Date;
 import java.util.List;
+
+import org.joda.time.DateTime;
 
 import common.Group;
 
@@ -16,8 +17,8 @@ import common.Group;
 public class ChangeQueryCriteria {
 	private File file;
 	private List<File> files;
-	private Date from = null;
-	private Date to = null;
+	private DateTime from = null;
+	private DateTime to = null;
 	private Group group;
 	private ChangeType changeType = null;
 
@@ -39,16 +40,16 @@ public class ChangeQueryCriteria {
 	public void setFiles(List<File> files) {
 		this.files = files;
 	}
-	public Date getFrom() {
+	public DateTime getFrom() {
 		return from;
 	}
-	public void setFrom(Date from) {
+	public void setFrom(DateTime from) {
 		this.from = from;
 	}
-	public Date getTo() {
+	public DateTime getTo() {
 		return to;
 	}
-	public void setTo(Date to) {
+	public void setTo(DateTime to) {
 		this.to = to;
 	}
 	public Group getGroup() {

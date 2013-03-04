@@ -1,6 +1,6 @@
 package messaging;
 
-import java.util.Date;
+import org.joda.time.DateTime;
 
 import common.User;
 
@@ -15,8 +15,8 @@ public class MessageQueryCriteria {
 	private User destination;
 	private MessageType messageType;
 	private MessageStatus messageStatus;
-	private Date from = null;
-	private Date to = null;
+	private DateTime from = null;
+	private DateTime to = null;
 
 	public User getDestination() {
 		return destination;
@@ -36,16 +36,16 @@ public class MessageQueryCriteria {
 	public void setMessageStatus(MessageStatus messageStatus) {
 		this.messageStatus = messageStatus;
 	}
-	public Date getFrom() {
+	public DateTime getFrom() {
 		return from;
 	}
-	public void setFrom(Date from) {
+	public void setFrom(DateTime from) {
 		this.from = from;
 	}
-	public Date getTo() {
+	public DateTime getTo() {
 		return to;
 	}
-	public void setTo(Date to) {
+	public void setTo(DateTime to) {
 		this.to = to;
 	}
 }

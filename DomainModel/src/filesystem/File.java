@@ -1,6 +1,6 @@
 package filesystem;
 
-import java.util.Date;
+import org.joda.time.DateTime;
 
 import change.Change;
 
@@ -24,7 +24,7 @@ public class File {
 	/**
 	 * The time when the file was last modified locally.
 	 */
-	public Date lastModified;
+	public DateTime lastModified;
 	/**
 	 * A reference to its last change.
 	 */

@@ -1,6 +1,6 @@
 package com.oss.teamwork.teamshare.messaging;
 
-import java.util.Date;
+import org.joda.time.DateTime;
 
 import com.oss.teamwork.teamshare.group.Person;
 import com.oss.teamwork.teamshare.group.User;
@@ -30,7 +30,7 @@ public class Message {
    */
   protected String content;
 
-  protected Date date;
+  protected DateTime date;
   
   
    /**
@@ -84,11 +84,11 @@ public class Message {
     return status;
   }
   
-  public Date getDate() {
+  public DateTime getDate() {
     return date;
   }
 
-  public void setDate(Date date) {
+  public void setDate(DateTime date) {
     this.date = date;
   }
 

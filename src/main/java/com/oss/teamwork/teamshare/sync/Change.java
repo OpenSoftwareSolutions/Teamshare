@@ -1,7 +1,6 @@
 package com.oss.teamwork.teamshare.sync;
 
-import java.util.Date;
-
+import org.joda.time.DateTime;
 
 import com.oss.teamwork.teamshare.group.Group;
 import com.oss.teamwork.teamshare.io.File;
@@ -20,7 +19,7 @@ public class Change {
 	/**
 	 * The device's local time when the change was made.
 	 */
-	public Date timestamp;
+	public DateTime timestamp;
 
 	/**
 	 * The type of change: group, folder or file-related.

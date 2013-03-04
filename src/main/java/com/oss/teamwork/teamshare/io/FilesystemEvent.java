@@ -1,18 +1,19 @@
 package com.oss.teamwork.teamshare.io;
 
-import java.util.Date;
+import org.joda.time.DateTime;
+
 
 public class FilesystemEvent {
   
   // TODO Do we need an event interface?
   
-  private Date time;
+  private DateTime time;
   private java.io.File file; // TODO or our file?
   
-  public Date getTime() {
+  public DateTime getTime() {
     return time;
   }
-  public void setTime(Date time) {
+  public void setTime(DateTime time) {
     this.time = time;
   }
   public java.io.File getFile() {
