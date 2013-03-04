@@ -26,6 +26,7 @@ TAGS
 *.class
 .metadata/*
 */bin/**
+target/
 
 # == Eclipse ==
 *.pydevproject
