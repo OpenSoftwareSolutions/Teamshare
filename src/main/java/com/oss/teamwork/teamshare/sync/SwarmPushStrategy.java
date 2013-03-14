@@ -2,7 +2,7 @@ package com.oss.teamwork.teamshare.sync;
 
 import java.util.Collection;
 
-import com.oss.teamwork.teamshare.group.Device;
+import com.oss.teamwork.teamshare.team.Device;
 
 public class SwarmPushStrategy implements PushStrategy {
 
@@ -14,7 +14,7 @@ public class SwarmPushStrategy implements PushStrategy {
    * @param change
    */
   public void push(Change change) {
-    Collection<Device> devices = change.getChangedGroup().getGroupSwarm()
+    Collection<Device> devices = change.getChangedGroup().getSwarm()
         .getDevices();
     for (Device device : devices) {
       device.notifyChange(change);

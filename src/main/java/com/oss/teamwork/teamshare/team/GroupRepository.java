@@ -1,4 +1,4 @@
-package com.oss.teamwork.teamshare.group;
+package com.oss.teamwork.teamshare.team;
 
 import java.util.Collection;
 
@@ -13,7 +13,7 @@ public interface GroupRepository {
    * @param query
    * @return
    */
-  public Collection<Device> getDevices(Group group, DevicesQuery query);
+  public Collection<Device> getDevices(Team group, DevicesQuery query);
   
   public void addDevice(User user, Device device);
   
@@ -24,12 +24,12 @@ public interface GroupRepository {
    * 
    * @param group
    */
-  public void update(Group group);
+  public void update(Team group);
   
   /**
    * Returns the Group that contains the given file (inspects the root folder in the file's path)
    * @param file - //TODO java.io.File or our file?
    * @return
    */
-  public Group getGroup(java.io.File file);
+  public Team getGroup(java.io.File file);
 }

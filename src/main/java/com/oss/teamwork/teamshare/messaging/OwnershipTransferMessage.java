@@ -1,7 +1,7 @@
 package com.oss.teamwork.teamshare.messaging;
 
 import com.oss.teamwork.teamshare.common.UserId;
-import com.oss.teamwork.teamshare.group.User;
+import com.oss.teamwork.teamshare.team.User;
 
 public class OwnershipTransferMessage extends Message implements
     AcceptableMessage {

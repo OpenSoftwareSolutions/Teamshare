@@ -2,8 +2,8 @@ package com.oss.teamwork.teamshare.messaging;
 
 import org.joda.time.DateTime;
 
-import com.oss.teamwork.teamshare.group.Person;
-import com.oss.teamwork.teamshare.group.User;
+import com.oss.teamwork.teamshare.team.Person;
+import com.oss.teamwork.teamshare.team.User;
 
 /**
  * Represents a Message transmitted between Teamshare users.

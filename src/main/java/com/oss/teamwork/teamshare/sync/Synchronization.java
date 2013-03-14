@@ -1,5 +1,4 @@
 package com.oss.teamwork.teamshare.sync;
-import com.oss.teamwork.teamshare.group.*;
 
 import java.util.Collection;
 import java.util.HashMap;
@@ -9,13 +8,14 @@ import java.util.TimerTask;
 import com.oss.teamwork.teamshare.common.Configuration;
 
 import com.oss.teamwork.teamshare.io.FilesystemEvent;
+import com.oss.teamwork.teamshare.team.*;
 
 public class Synchronization {
   
   // TODO Decide how strategies are loaded from Configuration.
   protected PushStrategy pushStrategy;
   protected PullStrategy pullStrategy;
-  protected HashMap<Group, Change> changes;
+  protected HashMap<Team, Change> changes;
   protected Timer pushScheduler;
   protected Timer pullScheduler;
   protected VersioningStrategy versioningStrategy;
@@ -26,7 +26,7 @@ public class Synchronization {
 
     @Override
     public void run() {
-      for (Group group: changes.keySet()){
+      for (Team group: changes.keySet()){
         Change change = changes.get(group);
         if (!change.isEmpty()){
           push(change);
@@ -41,8 +41,8 @@ public class Synchronization {
 
     @Override
     public void run() {
-        Collection<Group> groups = account.getMyGroups();
-        for (Group group: groups)
+        Collection<Team> groups = account.getTeams();
+        for (Team group: groups)
           pull(group);
     }
   }
@@ -70,7 +70,7 @@ public class Synchronization {
     pushStrategy.push(change);
   }
   
-  protected void pull(Group group) {
+  protected void pull(Team group) {
     
     Collection<Change> changes = pullStrategy.pull(group);   
     
@@ -79,7 +79,7 @@ public class Synchronization {
   
   protected void updateChange(FilesystemEvent event) {
 
-    Group group = groupRepository.getGroup(event.getFile());
+    Team group = groupRepository.getGroup(event.getFile());
     changes.get(group).update(event);
     
   }

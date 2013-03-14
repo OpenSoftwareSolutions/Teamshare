@@ -9,10 +9,8 @@ import com.oss.teamwork.teamshare.sync.Change;
  */
 public interface DeviceNotifier {
   
-  /*  ______________________________________________________________________
-   * | GETTERS                                                              |
-   * |______________________________________________________________________|
-  */
+  // GETTERS
+  // =======
   
   /**
    * The device's unique identifier, provided when the device is linked.
@@ -21,10 +19,8 @@ public interface DeviceNotifier {
   DeviceId getDeviceId();
   
   
-  /*  ______________________________________________________________________
-   * | OPERATIONS                                                           |
-   * |______________________________________________________________________|
-  */
+  // OPERATIONS
+  // ==========
   
   /**
    * Notify a device of a change so that it can pull them.

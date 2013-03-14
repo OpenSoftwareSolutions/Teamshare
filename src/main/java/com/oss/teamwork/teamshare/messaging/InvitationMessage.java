@@ -1,12 +1,12 @@
 package com.oss.teamwork.teamshare.messaging;
 
-import com.oss.teamwork.teamshare.group.Group;
+import com.oss.teamwork.teamshare.team.Team;
 
 public class InvitationMessage extends Message implements AcceptableMessage,
     ActionMessage {
 
   AcceptableMessage.Type type = AcceptableMessage.Type.REQUEST;
-  Group group; // MessagingService will obtain a reference from Session.
+  Team group; // MessagingService will obtain a reference from Session.
 
   @Override
   public void accept() {

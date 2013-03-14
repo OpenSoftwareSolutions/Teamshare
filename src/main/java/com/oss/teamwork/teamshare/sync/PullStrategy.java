@@ -2,9 +2,9 @@ package com.oss.teamwork.teamshare.sync;
 
 import java.util.Collection;
 
-import com.oss.teamwork.teamshare.group.Group;
+import com.oss.teamwork.teamshare.team.Team;
 
 public interface PullStrategy {
   
-  Collection<Change> pull(Group group);
+  Collection<Change> pull(Team group);
 }

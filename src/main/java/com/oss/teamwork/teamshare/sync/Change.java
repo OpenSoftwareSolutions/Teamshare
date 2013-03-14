@@ -2,10 +2,10 @@ package com.oss.teamwork.teamshare.sync;
 
 import org.joda.time.DateTime;
 
-import com.oss.teamwork.teamshare.group.Group;
 import com.oss.teamwork.teamshare.io.File;
 import com.oss.teamwork.teamshare.io.FilesystemEvent;
 import com.oss.teamwork.teamshare.io.Folder;
+import com.oss.teamwork.teamshare.team.Team;
 
 // TODO review Change class
 /**
@@ -38,7 +38,7 @@ public class Change {
 	/**
 	 * TODO Group change: user add/remove, ownership transfer, groups settings change.
 	 */
-	public Group getChangedGroup() {
+	public Team getChangedGroup() {
 	  return null;
 	}
 

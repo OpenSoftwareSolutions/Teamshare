@@ -6,8 +6,8 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 
 import com.oss.teamwork.teamshare.communication.Swarm;
-import com.oss.teamwork.teamshare.group.Device;
-import com.oss.teamwork.teamshare.group.Group;
+import com.oss.teamwork.teamshare.team.Device;
+import com.oss.teamwork.teamshare.team.Team;
 
 public abstract class SwarmPullStrategy implements PullStrategy {
 
@@ -20,13 +20,13 @@ public abstract class SwarmPullStrategy implements PullStrategy {
   }
 
   @Override
-  public Collection<Change> pull(Group group) {
+  public Collection<Change> pull(Team group) {
 
     Map<Version, Collection<Device>> versions = new LinkedHashMap<Version, Collection<Device>>();
     Version chosenVersion;
     Swarm swarm;
 
-    Collection<Device> devices = group.getGroupSwarm().getDevices();
+    Collection<Device> devices = group.getSwarm().getDevices();
     for (Device device : devices) {
       Version v = device.getVersion();
       Collection<Device> versionDevices = versions.get(v);
@@ -58,6 +58,6 @@ public abstract class SwarmPullStrategy implements PullStrategy {
    *          version of the group folder for which a swarm is required
    * @return a newly created swarm
    */
-  protected abstract Swarm createSwarm(Group group, Version version);
+  protected abstract Swarm createSwarm(Team group, Version version);
 
 }

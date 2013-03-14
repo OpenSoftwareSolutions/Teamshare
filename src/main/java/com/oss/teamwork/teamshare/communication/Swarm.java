@@ -5,7 +5,7 @@ import java.util.Set;
 
 
 import com.oss.teamwork.teamshare.common.Id;
-import com.oss.teamwork.teamshare.group.Device;
+import com.oss.teamwork.teamshare.team.Device;
 
 public interface Swarm {
 
