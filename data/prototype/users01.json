@@ -1,0 +1,25 @@
+{
+    "users": [
+	{
+	    "id": "idCalin",
+	    "username": "calin.burloiu",
+	    "devices": [
+		{
+		    "id": "idCalinDesktop",
+		    "name": "CalinDesktop",
+		    "address": "localhost"
+		}
+	    ]}, {
+	    "id": "idAdriana",
+	    "username": "adriana.draghici",
+	    "devices": [
+		{
+		    "id": "idAdrianaLaptop",
+		    "name": "AdrianaLaptop",
+		    "address": "localhost"
+		}
+	    ]
+	}
+    ]
+}
+

@@ -1,11 +1,11 @@
 package com.oss.teamwork.teamshare.team;
 
-import com.oss.teamwork.teamshare.common.*;
 import com.oss.teamwork.teamshare.communication.Swarm;
 import com.oss.teamwork.teamshare.io.Folder;
 import com.oss.teamwork.teamshare.sync.Version;
 
-import java.util.Collection;
+import java.util.LinkedHashMap;
+import java.util.Map;
 import java.util.Properties;
 
 /**
@@ -15,11 +15,25 @@ import java.util.Properties;
  * 
  */
 public class Team {
+  
+  Team(TeamId id, String name, User owner) {
+    this.id = id;
+    this.name = name;
+    this.owner = owner;
+    
+    addUser(owner);
+  }
+  
   /**
    * The team's unique identifier. It is not visible to users through the
    * application's interface. It is used only internally to identify teams.
    */
   protected TeamId id;
+  
+  /**
+   * Team friendly, descriptive name.
+   */
+  protected String name;
 
   /**
    * The team folder's name is also the team's actual name. This folder is the
@@ -35,7 +49,7 @@ public class Team {
   /**
    * The team's users.
    */
-  protected Collection<User> users;
+  protected Map<UserId, User> users = new LinkedHashMap<>();
 
   /**
    * The team's settings. Settings are implementation dependent. Exact settings
@@ -52,6 +66,15 @@ public class Team {
   
   protected Swarm swarm;
   
+  void addUser(User user) {
+    if (user != null) {
+      users.put(user.getId(), user);
+    }
+  }
+  
+  boolean hasUser(UserId id) {
+    return users.containsKey(id);
+  }
   
   /**
    * Invites an user into the given team.
@@ -145,9 +168,34 @@ public class Team {
       return false;
     return true;
   }
+  
+  @Override
+  public String toString() {
+    String strUsers = "";
+    for (User user : users.values()) {
+      strUsers += user + ", ";
+    }
+    return String.format("Team(%s, %s, %s, [%s])", id, name, owner, strUsers);
+  }
 
   public Swarm getSwarm() {
     return swarm;
+  }
+
+  public TeamId getId() {
+    return id;
+  }
+
+  public String getName() {
+    return name;
+  }
+
+  public Folder getFolder() {
+    return folder;
+  }
+
+  public User getOwner() {
+    return owner;
   }
   
 }

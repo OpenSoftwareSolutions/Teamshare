@@ -1,0 +1,17 @@
+{
+    "teams": [
+	{
+	    "id": "idDoc",
+	    "name": "doc",
+	    "owner": "idCalin",
+	    "users": ["idCalin", "idAdriana"]
+	},
+	{
+	    "id": "idImg",
+	    "name": "img",
+	    "owner": "idAdriana",
+	    "users": ["idCalin", "idAdriana"]
+	}
+    ]
+}
+

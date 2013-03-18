@@ -4,19 +4,47 @@ package com.oss.teamwork.teamshare.common;
 /**
  * Base class for unique identifiers.
  */
-public abstract class Id {
-  protected byte[] hash = null;
+public abstract class Id<T> {
+  protected T value;
   
-  protected Id() {}
-  
-  protected Id(byte[] hash) {
-    this.hash = hash;
+  public Id(T value) {
+    this.value = value;
   }
 
-  public byte[] getHash() {
-    if (hash == null)
-      throw new Error("Invalid object implementation. A static method which creates an object with a hash value should be implemented.");
-    
-    return hash;
+  public T getValue() {
+    return value;
   }
+
+  @Override
+  public int hashCode() {
+    final int prime = 31;
+    int result = 1;
+    result = prime * result + ((value == null) ? 0 : value.hashCode());
+    return result;
+  }
+
+  @SuppressWarnings("rawtypes")
+  @Override
+  public boolean equals(Object obj) {
+    if (this == obj)
+      return true;
+    if (obj == null)
+      return false;
+    if (getClass() != obj.getClass())
+      return false;
+    Id other = (Id) obj;
+    if (value == null) {
+      if (other.value != null)
+        return false;
+    } else if (!value.equals(other.value))
+      return false;
+    return true;
+  }
+
+  @Override
+  public String toString() {
+    return "" + value;
+  }
+
+  
 }

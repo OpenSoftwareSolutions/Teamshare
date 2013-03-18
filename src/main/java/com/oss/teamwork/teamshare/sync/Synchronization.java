@@ -19,7 +19,7 @@ public class Synchronization {
   protected Timer pushScheduler;
   protected Timer pullScheduler;
   protected VersioningStrategy versioningStrategy;
-  protected GroupRepository groupRepository;
+  protected TeamRepo groupRepository;
   protected Session account;
  
   class PushTask extends TimerTask{
@@ -41,7 +41,8 @@ public class Synchronization {
 
     @Override
     public void run() {
-        Collection<Team> groups = account.getTeams();
+        // TODO Get logged in user teams.
+        Collection<Team> groups = null; //account.getTeams();
         for (Team group: groups)
           pull(group);
     }
@@ -79,7 +80,8 @@ public class Synchronization {
   
   protected void updateChange(FilesystemEvent event) {
 
-    Team group = groupRepository.getGroup(event.getFile());
+    // TODO Get team by file.
+    Team group = null; // groupRepository.getGroup(event.getFile());
     changes.get(group).update(event);
     
   }

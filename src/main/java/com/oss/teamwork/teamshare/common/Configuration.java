@@ -1,7 +1,5 @@
 package com.oss.teamwork.teamshare.common;
 
-import java.io.File;
-
 public class Configuration {
   private static Configuration instance;
   

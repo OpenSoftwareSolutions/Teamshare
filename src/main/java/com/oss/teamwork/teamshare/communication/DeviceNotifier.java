@@ -1,8 +1,8 @@
 package com.oss.teamwork.teamshare.communication;
 
 
-import com.oss.teamwork.teamshare.common.DeviceId;
 import com.oss.teamwork.teamshare.sync.Change;
+import com.oss.teamwork.teamshare.team.DeviceId;
 
 /**
  * Provides RPC-like calls for notifications to another device.

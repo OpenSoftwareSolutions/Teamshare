@@ -4,11 +4,17 @@ import java.net.InetSocketAddress;
 import java.security.PublicKey;
 
 import com.oss.teamwork.teamshare.common.ChangeId;
-import com.oss.teamwork.teamshare.common.DeviceId;
 import com.oss.teamwork.teamshare.sync.Change;
 import com.oss.teamwork.teamshare.sync.Version;
 
-public abstract class Device {
+public class Device {
+  
+  public Device(DeviceId id, String name, User user) {
+    super();
+    this.id = id;
+    this.name = name;
+    this.user = user;
+  }
 
   /**
    * Device's unique identifier, provided when the device is linked. It is not
@@ -55,18 +61,24 @@ public abstract class Device {
   /**
    * Notify a device of a change so that it can pull them.
    */
-  public abstract void notifyChange(Change change);
+  public void notifyChange(Change change) {
+    
+  }
 
   /**
    * Notify a device that a message has been sent to it so that it can check its
    * mailbox.
    */
-  public abstract void notifyMessageDelivery();
+  public void notifyMessageDelivery() {
+    
+  }
 
   /**
    * Pull a change identified by its ID from this device.
    */
-  abstract Change pullChange(ChangeId changeId);
+  Change pullChange(ChangeId changeId) {
+    return null;
+  }
 
   public DeviceId getId() {
     return id;
@@ -89,5 +101,13 @@ public abstract class Device {
   }
 
   @Deprecated
-  abstract public Version getVersion();
+  public Version getVersion() {
+    return null;
+  }
+
+  @Override
+  public String toString() {
+    return String.format("Device(%s, %s, %s)", id, name, address + "");
+  }
+  
 }

@@ -1,6 +1,6 @@
 package com.oss.teamwork.teamshare.team;
 
-import java.util.Collection;
+import java.util.Map;
 
 import com.oss.teamwork.teamshare.messaging.Mailbox;
 
@@ -17,13 +17,7 @@ public class Session {
   /**
    * The groups the user is member of.
    */
-  protected Collection<Team> teams;
-
-  /**
-   * The groups the user is owner of (it is a subset of mygroups).
-   * TODO Redundant. Is it required?
-   */
-  protected Collection<Team> ownedTeams;
+  protected Map<TeamId, Team> teams;
 
   /**
    * Reference to the user's mailbox, a repository that stores and provides
@@ -31,12 +25,8 @@ public class Session {
    */
   protected Mailbox mailbox;
 
-  public Collection<Team> getTeams() {
+  public Map<TeamId, Team> getTeams() {
     return teams;
-  }
-
-  public Collection<Team> getOwnedTeams() {
-    return ownedTeams;
   }
 
   public Mailbox getMailbox() {

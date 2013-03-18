@@ -1,10 +1,18 @@
 package com.oss.teamwork.teamshare.team;
 
-import java.util.Collection;
+import java.util.LinkedHashMap;
+import java.util.Map;
 
-import com.oss.teamwork.teamshare.common.UserId;
 
 public class User extends Person {
+
+  
+  
+  public User(UserId id, String username) {
+    super();
+    this.id = id;
+    this.username = username;
+  }
 
   /**
    * The user's unique identifier.
@@ -21,7 +29,13 @@ public class User extends Person {
    * Collection of all devices linked by the user. This Collection is not
    * visible to the user. This information is vital for synchronizing changes.
    */
-  protected Collection<Device> devices;
+  protected Map<DeviceId, Device> devices = new LinkedHashMap<>();
+  
+  void addDevice(Device device) {
+    if (device != null) {
+      devices.put(device.getId(), device);
+    }
+  }
 
   public UserId getId() {
     return id;
@@ -35,7 +49,18 @@ public class User extends Person {
     return email;
   }
 
-  public Collection<Device> getDevices() {
+  public Map<DeviceId, Device> getDevices() {
     return devices;
+  }
+
+  @Override
+  public String toString() {
+    String strDevices = "";
+    
+    for (Device device : devices.values()) {
+      strDevices += device + ", ";
+    }
+    
+    return String.format("User(%s, %s, %s)", id, username, strDevices);
   }
 }
