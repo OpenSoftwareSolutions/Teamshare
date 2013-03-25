@@ -5,7 +5,7 @@ import java.security.PublicKey;
 
 import com.oss.teamwork.teamshare.common.ChangeId;
 import com.oss.teamwork.teamshare.sync.Change;
-import com.oss.teamwork.teamshare.sync.Version;
+import com.oss.teamwork.teamshare.sync.Revision;
 
 public class Device {
   
@@ -100,8 +100,8 @@ public class Device {
     return mobile;
   }
 
-  @Deprecated
-  public Version getVersion() {
+  // TODO
+  public Revision getVersion() {
     return null;
   }
 

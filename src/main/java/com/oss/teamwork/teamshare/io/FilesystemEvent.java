@@ -1,26 +1,16 @@
 package com.oss.teamwork.teamshare.io;
 
-import org.joda.time.DateTime;
-
 
 public class FilesystemEvent {
   
-  // TODO Do we need an event interface?
+  protected String filename;
   
-  private DateTime time;
-  private java.io.File file; // TODO or our file?
+  public FilesystemEvent(String filename) {
+    super();
+    this.filename = filename;
+  }
   
-  public DateTime getTime() {
-    return time;
+  public String getFilename() {
+    return filename;
   }
-  public void setTime(DateTime time) {
-    this.time = time;
-  }
-  public java.io.File getFile() {
-    return file;
-  }
-  public void setFile(java.io.File file) {
-    this.file = file;
-  }
-
 }

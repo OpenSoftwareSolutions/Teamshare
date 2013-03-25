@@ -4,7 +4,7 @@ import com.oss.teamwork.teamshare.common.Id;
 
 public class DeviceId extends Id<String> {
 
-  protected DeviceId(String value) {
+  public DeviceId(String value) {
     super(value);
   }
 }

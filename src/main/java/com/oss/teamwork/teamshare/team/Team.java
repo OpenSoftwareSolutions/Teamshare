@@ -2,8 +2,10 @@ package com.oss.teamwork.teamshare.team;
 
 import com.oss.teamwork.teamshare.communication.Swarm;
 import com.oss.teamwork.teamshare.io.Folder;
-import com.oss.teamwork.teamshare.sync.Version;
+import com.oss.teamwork.teamshare.sync.Revision;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Properties;
@@ -62,9 +64,19 @@ public class Team {
    * The (locally-stored) version of the team's folder. Ideally it would be
    * the same for all the devices in the team.
    */
-  protected Version version;
+  protected Revision version;
   
   protected Swarm swarm;
+  
+  public Collection<Device> getOnlineDevices() {
+    Collection<Device> devices = new ArrayList<>();
+    
+    for (User user: users.values()) {
+      devices.addAll(user.devices.values());
+    }
+    
+    return devices;
+  }
   
   void addUser(User user) {
     if (user != null) {

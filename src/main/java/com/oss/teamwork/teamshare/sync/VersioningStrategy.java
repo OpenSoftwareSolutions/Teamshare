@@ -11,6 +11,6 @@ import java.util.Collection;
  */
 public interface VersioningStrategy {
 
-  Version chooseVersion(Collection<Version> versions);
+  Revision chooseVersion(Collection<Revision> versions);
   
 }

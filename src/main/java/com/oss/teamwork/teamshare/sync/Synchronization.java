@@ -1,16 +1,24 @@
 package com.oss.teamwork.teamshare.sync;
 
+import java.io.IOException;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import org.joda.time.DateTime;
+
 import com.oss.teamwork.teamshare.common.Configuration;
 
+import com.oss.teamwork.teamshare.io.FileUtil;
 import com.oss.teamwork.teamshare.io.FilesystemEvent;
 import com.oss.teamwork.teamshare.team.*;
 
 public class Synchronization {
+  
+  protected Session session;
   
   // TODO Decide how strategies are loaded from Configuration.
   protected PushStrategy pushStrategy;
@@ -21,6 +29,13 @@ public class Synchronization {
   protected VersioningStrategy versioningStrategy;
   protected TeamRepo groupRepository;
   protected Session account;
+  
+  @SuppressWarnings("unused")
+  private Logger logger = LogManager.getLogger(this.getClass().getName());
+  
+  public Synchronization(Session session) {
+    this.session = session;
+  }
  
   class PushTask extends TimerTask{
 
@@ -28,11 +43,8 @@ public class Synchronization {
     public void run() {
       for (Team group: changes.keySet()){
         Change change = changes.get(group);
-        if (!change.isEmpty()){
-          push(change);
-     
-          changes.put(group, new Change());
-        }
+        push(change);
+        changes.put(group, new Change());
     }
     }
   }
@@ -61,9 +73,53 @@ public class Synchronization {
     pullScheduler.schedule(new PullTask(), 0, Configuration.getInstance().getPullInterval());
   }
   
-  public void notifyFilesystemEvent(FilesystemEvent event) {
-    updateChange(event);
+  /**
+   * Returns a reference to the team where the file is stored.
+   * 
+   * Pass a relative file name with Unix separator "/" where the first directory
+   * identifies the team.
+   * 
+   * TODO UGLY PROTOTYPE! Change and move this somewhere else.
+   * 
+   * @param filename
+   * @return
+   */
+  protected Team getTeamFromPhysicalFilename(String physicalFilename) {
+    int firstSlash = physicalFilename.indexOf('/');
     
+    return session.getTeam(new TeamId(physicalFilename.substring(0, firstSlash)));
+  }
+  
+  /**
+   * TODO UGLY PROTOTYPE! Change and move this somewhere else.
+   * 
+   * @param physicalFilename
+   * @return
+   */
+  protected String getLogicalFilename(String physicalFilename) {
+    int firstSlash = physicalFilename.indexOf('/');
+    
+    return physicalFilename.substring(firstSlash + 1);
+  }
+  
+  public void notifyFilesystemEvent(FilesystemEvent event) {
+    logger.info("File system event occured for file '" + event.getFilename() +
+        "'.");
+    String physicalFilename = event.getFilename();
+    byte[] hash;
+    
+    try {
+      hash = FileUtil.getFileHash(physicalFilename);
+    } catch (IOException e) {
+      logger.error(String.format("Error while hashing physical file '%s': %s",
+          physicalFilename, e.getMessage()));
+      return;
+    }
+    
+    Revision revision = new Revision(
+        getTeamFromPhysicalFilename(physicalFilename),
+        getLogicalFilename(physicalFilename),
+        hash, System.currentTimeMillis());
   }
   
   protected void push(Change change) {

@@ -9,11 +9,11 @@ import com.oss.teamwork.teamshare.communication.Swarm;
 import com.oss.teamwork.teamshare.team.Device;
 import com.oss.teamwork.teamshare.team.Team;
 
-public abstract class SwarmPullStrategy implements PullStrategy {
+public abstract class SwiftPullStrategy implements PullStrategy {
 
   protected VersioningStrategy versioningStrategy;
 
-  public SwarmPullStrategy() {
+  public SwiftPullStrategy() {
     super();
 
     // TODO init GroupRepository, VersioningStrategy
@@ -22,13 +22,13 @@ public abstract class SwarmPullStrategy implements PullStrategy {
   @Override
   public Collection<Change> pull(Team group) {
 
-    Map<Version, Collection<Device>> versions = new LinkedHashMap<Version, Collection<Device>>();
-    Version chosenVersion;
+    Map<Revision, Collection<Device>> versions = new LinkedHashMap<Revision, Collection<Device>>();
+    Revision chosenVersion;
     Swarm swarm;
 
     Collection<Device> devices = group.getSwarm().getDevices();
     for (Device device : devices) {
-      Version v = device.getVersion();
+      Revision v = device.getVersion();
       Collection<Device> versionDevices = versions.get(v);
       if (versionDevices == null) {
         versionDevices = new ArrayList<Device>();
@@ -58,6 +58,6 @@ public abstract class SwarmPullStrategy implements PullStrategy {
    *          version of the group folder for which a swarm is required
    * @return a newly created swarm
    */
-  protected abstract Swarm createSwarm(Team group, Version version);
+  protected abstract Swarm createSwarm(Team group, Revision version);
 
 }

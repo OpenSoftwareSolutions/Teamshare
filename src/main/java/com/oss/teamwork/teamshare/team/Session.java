@@ -24,9 +24,15 @@ public class Session {
    * access to the logged-in user's messages.
    */
   protected Mailbox mailbox;
-
-  public Map<TeamId, Team> getTeams() {
-    return teams;
+  
+  /**
+   * Returns a team by its id or null if not found.
+   * 
+   * @param id
+   * @return
+   */
+  public Team getTeam(TeamId id) {
+    return teams.get(id);
   }
 
   public Mailbox getMailbox() {
