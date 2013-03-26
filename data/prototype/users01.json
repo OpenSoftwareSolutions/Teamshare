@@ -1,22 +1,22 @@
 {
     "users": [
 	{
-	    "id": "idCalin",
+	    "id": "calin",
 	    "username": "calin.burloiu",
 	    "devices": [
 		{
-		    "id": "idCalinDesktop",
+		    "id": "calin_desktop",
 		    "name": "CalinDesktop",
-		    "address": "localhost"
+		    "address": "localhost:6881"
 		}
 	    ]}, {
-	    "id": "idAdriana",
+	    "id": "adriana",
 	    "username": "adriana.draghici",
 	    "devices": [
 		{
-		    "id": "idAdrianaLaptop",
+		    "id": "adriana_laptop",
 		    "name": "AdrianaLaptop",
-		    "address": "localhost"
+		    "address": "localhost:6882"
 		}
 	    ]
 	}
