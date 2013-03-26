@@ -21,13 +21,12 @@ public class Main {
   }
   
   public static void main(String[] args) throws TeamRepoException {
-//    TeamRepo teamRepo = new JsonTeamRepo();
-//    Map<TeamId, Team> teams = teamRepo.retrieveUserTeams(new UserId("idCalin"));
-//    
-//    for (Team team : teams.values()) {
-//      System.out.println(team);
-//    }
-    logger.info("test!");
+    TeamRepo teamRepo = new JsonTeamRepo();
+    Map<TeamId, Team> teams = teamRepo.retrieveUserTeams(new UserId("idCalin"));
+    
+    for (Team team : teams.values()) {
+      System.out.println(team);
+    }
   }
 
 }

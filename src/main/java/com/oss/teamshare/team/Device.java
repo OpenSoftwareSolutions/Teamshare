@@ -4,16 +4,22 @@ import java.net.InetSocketAddress;
 import java.security.PublicKey;
 
 import com.oss.teamshare.common.ChangeId;
+import com.oss.teamshare.communication.zerocice.DeviceEndpointPrx;
+import com.oss.teamshare.communication.zerocice.DeviceEndpointPrxHelper;
+import com.oss.teamshare.communication.zerocice.IceRuntime;
 import com.oss.teamshare.sync.Change;
 import com.oss.teamshare.sync.Revision;
 
 public class Device {
   
-  public Device(DeviceId id, String name, User user) {
+  public Device(DeviceId id, String name, User user, InetSocketAddress address) {
     super();
     this.id = id;
     this.name = name;
     this.user = user;
+    
+    Ice.ObjectPrx base = IceRuntime.getInstance().createObjectProxy(id, address);
+    this.endpoint = DeviceEndpointPrxHelper.checkedCast(base);
   }
 
   /**
@@ -30,11 +36,10 @@ public class Device {
   String name;
 
   /**
-   * The device's connectivity information: IP address and port. This field is
-   * non-null while the device in online and null while offline.
+   * Provides communication to another device through Ice.
    */
-  InetSocketAddress address;
-
+  DeviceEndpointPrx endpoint;
+  
   /**
    * The user which owns the device.
    */
@@ -107,7 +112,7 @@ public class Device {
 
   @Override
   public String toString() {
-    return String.format("Device(%s, %s, %s)", id, name, address + "");
+    return "" + id;
   }
   
 }

@@ -2,8 +2,11 @@ package com.oss.teamshare.team;
 
 import java.io.File;
 import java.io.IOException;
+import java.net.InetSocketAddress;
 import java.util.Map;
 import java.util.LinkedHashMap;
+import java.util.NoSuchElementException;
+import java.util.StringTokenizer;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -68,7 +71,7 @@ public class JsonTeamRepo implements TeamRepo {
   }
   
   /**
-   * Read a JSON file which contains data for all registered users and thier
+   * Read a JSON file which contains data for all registered users and their
    * attached devices
    * 
    * @return
@@ -107,7 +110,18 @@ public class JsonTeamRepo implements TeamRepo {
               "id, name and address fields are mandatory for a device");
         }
         
-        Device device = new Device(new DeviceId(strDevId), devName, user);
+        InetSocketAddress isa;
+        StringTokenizer strtok = new StringTokenizer(addr, ":");
+        try {
+          isa = new InetSocketAddress(strtok.nextToken(),
+              Integer.parseInt(strtok.nextToken()));
+        } catch (NoSuchElementException e) {
+          throw new IllegalArgumentException("Provide address as <host>:<port>");
+        } catch (NumberFormatException e) {
+          throw new IllegalArgumentException("Invalid address port.");
+        }
+        
+        Device device = new Device(new DeviceId(strDevId), devName, user, isa);
         user.addDevice(device);
       }
       

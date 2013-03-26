@@ -11,13 +11,13 @@ import com.oss.teamshare.team.DeviceId;
 public class DeviceServer extends Thread {
 
   protected DeviceId id;
-  protected InetSocketAddress address;
+  protected int port;
   
   private Logger logger = LogManager.getLogger("DeviceServer");
   
-  public DeviceServer(DeviceId id, InetSocketAddress address) {
+  public DeviceServer(DeviceId id, int port) {
     this.id = id;
-    this.address = address;
+    this.port = port;
   }
   
   public void run() {
@@ -28,8 +28,7 @@ public class DeviceServer extends Thread {
       ic = Ice.Util.initialize();
       Ice.ObjectAdapter adapter = 
           ic.createObjectAdapterWithEndpoints("DeviceServerAdapter",
-              "default -h " + address.getAddress().getHostAddress() +
-              " -p " + address.getPort());
+              "default -p " + port);
       Ice.Object object = new DeviceEndpointI();
       adapter.add(object, ic.stringToIdentity("" + id));
       adapter.activate();
@@ -59,8 +58,7 @@ public class DeviceServer extends Thread {
   }
   
   public static void main(String[] args) {
-    DeviceServer server = new DeviceServer(new DeviceId("cucu"),
-        new InetSocketAddress("localhost", 6881));
+    DeviceServer server = new DeviceServer(new DeviceId("cucu"), 6881);
     server.start();
   }
 
