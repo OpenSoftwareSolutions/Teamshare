@@ -52,6 +52,31 @@ TODO
 On mobile devices:
 TODO
 
+Build
+-----
+
+Teamshare uses Maven for building, so the project can be compiled from the
+command line by running in its root directory:
+
+    mvn compile
+
+However, before doing this, a dependency needs to be manually added to the
+local Maven repository. Teamshare uses ZeroC Ice, an object-oriented middleware
+for remote procedure calls. Unfortunately, this library is not managed by any
+public Maven repository, thus it needs to be downloaded and manually added to
+the local repository. To do this, follow the steps:
+
+* Install Ice on your machine from http://www.zeroc.com/download.html
+* Locate Ice library JAR. In Ubuntu, if installed through APT, this is
+  '/usr/share/java/zeroc-ice-3.4.jar'. TODO: Where would that be in other
+  operating systems?
+* Add the JAR to the local Maven repository by running on the command line:
+
+    mvn install:install-file -Dfile="$ICE_LIBRARY_JAR" \
+        -DgroupId=com.zeroc.ice -DartifactId=zeroc-ice \ -Dversion=3.4
+        -Dpackaging=jar
+
+  where `$ICE_LIBRARY_JAR` is the JAR file path previously located.
 
 Bug Reporting
 -------------
