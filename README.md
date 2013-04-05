@@ -19,7 +19,7 @@ For more information please visit TODO site
 Licence
 -------
 
-Please see the file called LICENCE
+Please see the file called LICENSE
 
 Download
 --------
