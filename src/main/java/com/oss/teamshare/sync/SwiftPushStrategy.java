@@ -2,9 +2,14 @@ package com.oss.teamshare.sync;
 
 import java.util.Collection;
 
+import javax.xml.bind.DatatypeConverter;
+
 import com.oss.teamshare.communication.SwiftService;
+import com.oss.teamshare.communication.zerocice.DeviceEndpointPrx;
+import com.oss.teamshare.io.TeamFile;
 import com.oss.teamshare.team.Device;
 import com.oss.teamshare.team.Session;
+import com.oss.teamshare.team.Team;
 
 public class SwiftPushStrategy implements PushStrategy {
 
@@ -14,26 +19,22 @@ public class SwiftPushStrategy implements PushStrategy {
     swiftService = new SwiftService();
   }
 
-  /**
-   * Force the others to pull, by notifying them.
-   * 
-   * @param change
-   */
-  @Deprecated
-  public void push(Change change) {
-//    Collection<Device> devices = change.getChangedGroup().getSwarm()
-//        .getDevices();
-//    for (Device device : devices) {
-//      device.notifyChange(change);
-//    }
-  }
-  
-  public void push(Revision revision) {
+  public void push(TeamFile file) {
     // Create a new swarm for the new revision.
-    swiftService.seed(revision.getFilename());
+    byte[] swarmId = swiftService.seed(file.getAbsoluteFile());
     
     // Get online devices.
-    Collection<Device> onlineDevices = revision.getTeam().getOnlineDevices();
+    Team team = file.getTeam();
+    Collection<Device> onlineDevices = team.getOnlineDevices();
+    
+    String teamId = team.getId().toString();
+    String filename = file.getPath();
+    String strSwarmId = DatatypeConverter.printHexBinary(swarmId).toLowerCase();
+    
+    for (Device dev : onlineDevices) {
+      DeviceEndpointPrx endpoint = dev.getEndpoint();
+      endpoint.notifyRevision(teamId, filename, strSwarmId);
+    }
   }
 
 }

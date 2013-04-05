@@ -3,14 +3,14 @@ package com.oss.teamshare.io;
 
 public class FilesystemEvent {
   
-  protected String filename;
-  
-  public FilesystemEvent(String filename) {
+  protected java.io.File file;
+
+  public FilesystemEvent(java.io.File file) {
     super();
-    this.filename = filename;
+    this.file = file;
   }
-  
-  public String getFilename() {
-    return filename;
+
+  public java.io.File getFile() {
+    return file;
   }
 }

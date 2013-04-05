@@ -92,6 +92,10 @@ public class Device {
   public String getName() {
     return name;
   }
+  
+  public DeviceEndpointPrx getEndpoint() {
+    return endpoint;
+  }
 
   public User getUser() {
     return user;

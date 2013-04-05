@@ -1,7 +1,6 @@
 package com.oss.teamshare.team;
 
 import com.oss.teamshare.communication.Swarm;
-import com.oss.teamshare.io.Folder;
 import com.oss.teamshare.sync.Revision;
 
 import java.util.ArrayList;
@@ -18,14 +17,6 @@ import java.util.Properties;
  */
 public class Team {
   
-  Team(TeamId id, String name, User owner) {
-    this.id = id;
-    this.name = name;
-    this.owner = owner;
-    
-    addUser(owner);
-  }
-  
   /**
    * The team's unique identifier. It is not visible to users through the
    * application's interface. It is used only internally to identify teams.
@@ -41,7 +32,7 @@ public class Team {
    * The team folder's name is also the team's actual name. This folder is the
    * root for all the files and folders created by the team's users.
    */
-  protected Folder folder;
+  protected String path = null;
 
   /**
    * The team's owner.
@@ -67,6 +58,14 @@ public class Team {
   protected Revision version;
   
   protected Swarm swarm;
+  
+  Team(TeamId id, String name, User owner) {
+    this.id = id;
+    this.name = name;
+    this.owner = owner;
+    
+    addUser(owner);
+  }
   
   public Collection<Device> getOnlineDevices() {
     Collection<Device> devices = new ArrayList<>();
@@ -202,8 +201,12 @@ public class Team {
     return name;
   }
 
-  public Folder getFolder() {
-    return folder;
+  public String getPath() {
+    if (path == null) {
+      return name;
+    }
+    
+    return path;
   }
 
   public User getOwner() {

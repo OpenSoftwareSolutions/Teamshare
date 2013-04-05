@@ -3,15 +3,14 @@
  */
 package com.oss.teamshare.sync;
 
+import com.oss.teamshare.io.TeamFile;
+
 /**
  * 
  *
  */
 public interface PushStrategy {
 
-  @Deprecated
-  void push(Change change);
-  
-  void push(Revision revision);
+  void push(TeamFile file);
   
 }
