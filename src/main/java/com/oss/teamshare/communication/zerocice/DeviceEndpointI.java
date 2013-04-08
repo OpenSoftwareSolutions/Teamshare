@@ -12,18 +12,10 @@ public class DeviceEndpointI extends _DeviceEndpointDisp {
   private static final long serialVersionUID = -3537283385423250006L;
 
   @Override
-  public void notifyRevision(String teamId, String filename, String swarmId,
+  public void notifyRevision(String uri, String swarmId,
       Current __current) {
-    logger.debug(teamId + ", " + filename + ", " + swarmId);
-    System.err.println(teamId + ", " + filename + ", " + swarmId);
+    logger.debug(uri + ", " + swarmId);
 
-  }
-
-  @Override
-  public String getLatestRevisionHash(String teamId, String filename,
-      Current __current) {
-    // TODO Auto-generated method stub
-    return null;
   }
 
 }

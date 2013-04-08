@@ -22,135 +22,20 @@ package com.oss.teamshare.communication.zerocice;
 
 public final class DeviceEndpointPrxHelper extends Ice.ObjectPrxHelperBase implements DeviceEndpointPrx
 {
-    public String
-    getLatestRevisionHash(String teamId, String filename)
+    public void
+    notifyRevision(String uri, String swarmId)
     {
-        return getLatestRevisionHash(teamId, filename, null, false);
-    }
-
-    public String
-    getLatestRevisionHash(String teamId, String filename, java.util.Map<String, String> __ctx)
-    {
-        return getLatestRevisionHash(teamId, filename, __ctx, true);
-    }
-
-    private String
-    getLatestRevisionHash(String teamId, String filename, java.util.Map<String, String> __ctx, boolean __explicitCtx)
-    {
-        if(__explicitCtx && __ctx == null)
-        {
-            __ctx = _emptyContext;
-        }
-        int __cnt = 0;
-        while(true)
-        {
-            Ice._ObjectDel __delBase = null;
-            try
-            {
-                __checkTwowayOnly("getLatestRevisionHash");
-                __delBase = __getDelegate(false);
-                _DeviceEndpointDel __del = (_DeviceEndpointDel)__delBase;
-                return __del.getLatestRevisionHash(teamId, filename, __ctx);
-            }
-            catch(IceInternal.LocalExceptionWrapper __ex)
-            {
-                __handleExceptionWrapper(__delBase, __ex);
-            }
-            catch(Ice.LocalException __ex)
-            {
-                __cnt = __handleException(__delBase, __ex, null, __cnt);
-            }
-        }
-    }
-
-    private static final String __getLatestRevisionHash_name = "getLatestRevisionHash";
-
-    public Ice.AsyncResult begin_getLatestRevisionHash(String teamId, String filename)
-    {
-        return begin_getLatestRevisionHash(teamId, filename, null, false, null);
-    }
-
-    public Ice.AsyncResult begin_getLatestRevisionHash(String teamId, String filename, java.util.Map<String, String> __ctx)
-    {
-        return begin_getLatestRevisionHash(teamId, filename, __ctx, true, null);
-    }
-
-    public Ice.AsyncResult begin_getLatestRevisionHash(String teamId, String filename, Ice.Callback __cb)
-    {
-        return begin_getLatestRevisionHash(teamId, filename, null, false, __cb);
-    }
-
-    public Ice.AsyncResult begin_getLatestRevisionHash(String teamId, String filename, java.util.Map<String, String> __ctx, Ice.Callback __cb)
-    {
-        return begin_getLatestRevisionHash(teamId, filename, __ctx, true, __cb);
-    }
-
-    public Ice.AsyncResult begin_getLatestRevisionHash(String teamId, String filename, Callback_DeviceEndpoint_getLatestRevisionHash __cb)
-    {
-        return begin_getLatestRevisionHash(teamId, filename, null, false, __cb);
-    }
-
-    public Ice.AsyncResult begin_getLatestRevisionHash(String teamId, String filename, java.util.Map<String, String> __ctx, Callback_DeviceEndpoint_getLatestRevisionHash __cb)
-    {
-        return begin_getLatestRevisionHash(teamId, filename, __ctx, true, __cb);
-    }
-
-    private Ice.AsyncResult begin_getLatestRevisionHash(String teamId, String filename, java.util.Map<String, String> __ctx, boolean __explicitCtx, IceInternal.CallbackBase __cb)
-    {
-        __checkAsyncTwowayOnly(__getLatestRevisionHash_name);
-        IceInternal.OutgoingAsync __result = new IceInternal.OutgoingAsync(this, __getLatestRevisionHash_name, __cb);
-        try
-        {
-            __result.__prepare(__getLatestRevisionHash_name, Ice.OperationMode.Normal, __ctx, __explicitCtx);
-            IceInternal.BasicStream __os = __result.__os();
-            __os.writeString(teamId);
-            __os.writeString(filename);
-            __os.endWriteEncaps();
-            __result.__send(true);
-        }
-        catch(Ice.LocalException __ex)
-        {
-            __result.__exceptionAsync(__ex);
-        }
-        return __result;
-    }
-
-    public String end_getLatestRevisionHash(Ice.AsyncResult __result)
-    {
-        Ice.AsyncResult.__check(__result, this, __getLatestRevisionHash_name);
-        if(!__result.__wait())
-        {
-            try
-            {
-                __result.__throwUserException();
-            }
-            catch(Ice.UserException __ex)
-            {
-                throw new Ice.UnknownUserException(__ex.ice_name(), __ex);
-            }
-        }
-        String __ret;
-        IceInternal.BasicStream __is = __result.__is();
-        __is.startReadEncaps();
-        __ret = __is.readString();
-        __is.endReadEncaps();
-        return __ret;
+        notifyRevision(uri, swarmId, null, false);
     }
 
     public void
-    notifyRevision(String teamId, String filename, String swarmId)
+    notifyRevision(String uri, String swarmId, java.util.Map<String, String> __ctx)
     {
-        notifyRevision(teamId, filename, swarmId, null, false);
-    }
-
-    public void
-    notifyRevision(String teamId, String filename, String swarmId, java.util.Map<String, String> __ctx)
-    {
-        notifyRevision(teamId, filename, swarmId, __ctx, true);
+        notifyRevision(uri, swarmId, __ctx, true);
     }
 
     private void
-    notifyRevision(String teamId, String filename, String swarmId, java.util.Map<String, String> __ctx, boolean __explicitCtx)
+    notifyRevision(String uri, String swarmId, java.util.Map<String, String> __ctx, boolean __explicitCtx)
     {
         if(__explicitCtx && __ctx == null)
         {
@@ -164,7 +49,7 @@ public final class DeviceEndpointPrxHelper extends Ice.ObjectPrxHelperBase imple
             {
                 __delBase = __getDelegate(false);
                 _DeviceEndpointDel __del = (_DeviceEndpointDel)__delBase;
-                __del.notifyRevision(teamId, filename, swarmId, __ctx);
+                __del.notifyRevision(uri, swarmId, __ctx);
                 return;
             }
             catch(IceInternal.LocalExceptionWrapper __ex)
@@ -180,45 +65,44 @@ public final class DeviceEndpointPrxHelper extends Ice.ObjectPrxHelperBase imple
 
     private static final String __notifyRevision_name = "notifyRevision";
 
-    public Ice.AsyncResult begin_notifyRevision(String teamId, String filename, String swarmId)
+    public Ice.AsyncResult begin_notifyRevision(String uri, String swarmId)
     {
-        return begin_notifyRevision(teamId, filename, swarmId, null, false, null);
+        return begin_notifyRevision(uri, swarmId, null, false, null);
     }
 
-    public Ice.AsyncResult begin_notifyRevision(String teamId, String filename, String swarmId, java.util.Map<String, String> __ctx)
+    public Ice.AsyncResult begin_notifyRevision(String uri, String swarmId, java.util.Map<String, String> __ctx)
     {
-        return begin_notifyRevision(teamId, filename, swarmId, __ctx, true, null);
+        return begin_notifyRevision(uri, swarmId, __ctx, true, null);
     }
 
-    public Ice.AsyncResult begin_notifyRevision(String teamId, String filename, String swarmId, Ice.Callback __cb)
+    public Ice.AsyncResult begin_notifyRevision(String uri, String swarmId, Ice.Callback __cb)
     {
-        return begin_notifyRevision(teamId, filename, swarmId, null, false, __cb);
+        return begin_notifyRevision(uri, swarmId, null, false, __cb);
     }
 
-    public Ice.AsyncResult begin_notifyRevision(String teamId, String filename, String swarmId, java.util.Map<String, String> __ctx, Ice.Callback __cb)
+    public Ice.AsyncResult begin_notifyRevision(String uri, String swarmId, java.util.Map<String, String> __ctx, Ice.Callback __cb)
     {
-        return begin_notifyRevision(teamId, filename, swarmId, __ctx, true, __cb);
+        return begin_notifyRevision(uri, swarmId, __ctx, true, __cb);
     }
 
-    public Ice.AsyncResult begin_notifyRevision(String teamId, String filename, String swarmId, Callback_DeviceEndpoint_notifyRevision __cb)
+    public Ice.AsyncResult begin_notifyRevision(String uri, String swarmId, Callback_DeviceEndpoint_notifyRevision __cb)
     {
-        return begin_notifyRevision(teamId, filename, swarmId, null, false, __cb);
+        return begin_notifyRevision(uri, swarmId, null, false, __cb);
     }
 
-    public Ice.AsyncResult begin_notifyRevision(String teamId, String filename, String swarmId, java.util.Map<String, String> __ctx, Callback_DeviceEndpoint_notifyRevision __cb)
+    public Ice.AsyncResult begin_notifyRevision(String uri, String swarmId, java.util.Map<String, String> __ctx, Callback_DeviceEndpoint_notifyRevision __cb)
     {
-        return begin_notifyRevision(teamId, filename, swarmId, __ctx, true, __cb);
+        return begin_notifyRevision(uri, swarmId, __ctx, true, __cb);
     }
 
-    private Ice.AsyncResult begin_notifyRevision(String teamId, String filename, String swarmId, java.util.Map<String, String> __ctx, boolean __explicitCtx, IceInternal.CallbackBase __cb)
+    private Ice.AsyncResult begin_notifyRevision(String uri, String swarmId, java.util.Map<String, String> __ctx, boolean __explicitCtx, IceInternal.CallbackBase __cb)
     {
         IceInternal.OutgoingAsync __result = new IceInternal.OutgoingAsync(this, __notifyRevision_name, __cb);
         try
         {
             __result.__prepare(__notifyRevision_name, Ice.OperationMode.Normal, __ctx, __explicitCtx);
             IceInternal.BasicStream __os = __result.__os();
-            __os.writeString(teamId);
-            __os.writeString(filename);
+            __os.writeString(uri);
             __os.writeString(swarmId);
             __os.endWriteEncaps();
             __result.__send(true);
@@ -364,7 +248,7 @@ public final class DeviceEndpointPrxHelper extends Ice.ObjectPrxHelperBase imple
     public static final String[] __ids =
     {
         "::Ice::Object",
-        "::com::oss::teamwork::teamshare::sync::zerocice::DeviceEndpoint"
+        "::com::oss::teamshare::communication::zerocice::DeviceEndpoint"
     };
 
     public static String

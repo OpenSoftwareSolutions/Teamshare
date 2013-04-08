@@ -22,57 +22,8 @@ package com.oss.teamshare.communication.zerocice;
 
 public final class _DeviceEndpointDelM extends Ice._ObjectDelM implements _DeviceEndpointDel
 {
-    public String
-    getLatestRevisionHash(String teamId, String filename, java.util.Map<String, String> __ctx)
-        throws IceInternal.LocalExceptionWrapper
-    {
-        IceInternal.Outgoing __og = __handler.getOutgoing("getLatestRevisionHash", Ice.OperationMode.Normal, __ctx);
-        try
-        {
-            try
-            {
-                IceInternal.BasicStream __os = __og.os();
-                __os.writeString(teamId);
-                __os.writeString(filename);
-            }
-            catch(Ice.LocalException __ex)
-            {
-                __og.abort(__ex);
-            }
-            boolean __ok = __og.invoke();
-            try
-            {
-                if(!__ok)
-                {
-                    try
-                    {
-                        __og.throwUserException();
-                    }
-                    catch(Ice.UserException __ex)
-                    {
-                        throw new Ice.UnknownUserException(__ex.ice_name(), __ex);
-                    }
-                }
-                IceInternal.BasicStream __is = __og.is();
-                __is.startReadEncaps();
-                String __ret;
-                __ret = __is.readString();
-                __is.endReadEncaps();
-                return __ret;
-            }
-            catch(Ice.LocalException __ex)
-            {
-                throw new IceInternal.LocalExceptionWrapper(__ex, false);
-            }
-        }
-        finally
-        {
-            __handler.reclaimOutgoing(__og);
-        }
-    }
-
     public void
-    notifyRevision(String teamId, String filename, String swarmId, java.util.Map<String, String> __ctx)
+    notifyRevision(String uri, String swarmId, java.util.Map<String, String> __ctx)
         throws IceInternal.LocalExceptionWrapper
     {
         IceInternal.Outgoing __og = __handler.getOutgoing("notifyRevision", Ice.OperationMode.Normal, __ctx);
@@ -81,8 +32,7 @@ public final class _DeviceEndpointDelM extends Ice._ObjectDelM implements _Devic
             try
             {
                 IceInternal.BasicStream __os = __og.os();
-                __os.writeString(teamId);
-                __os.writeString(filename);
+                __os.writeString(uri);
                 __os.writeString(swarmId);
             }
             catch(Ice.LocalException __ex)

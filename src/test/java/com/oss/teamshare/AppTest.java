@@ -1,4 +1,4 @@
-package com.oss.teamwork.teamshare;
+package com.oss.teamshare;
 
 import junit.framework.Test;
 import junit.framework.TestCase;

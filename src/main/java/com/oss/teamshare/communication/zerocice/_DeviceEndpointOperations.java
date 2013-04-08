@@ -22,7 +22,5 @@ package com.oss.teamshare.communication.zerocice;
 
 public interface _DeviceEndpointOperations
 {
-    void notifyRevision(String teamId, String filename, String swarmId, Ice.Current __current);
-
-    String getLatestRevisionHash(String teamId, String filename, Ice.Current __current);
+    void notifyRevision(String uri, String swarmId, Ice.Current __current);
 }

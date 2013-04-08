@@ -1,6 +1,6 @@
 package com.oss.teamshare.communication;
 
-import java.io.File;
+import java.nio.file.Path;
 
 public class SwiftService {
 
@@ -14,7 +14,7 @@ public class SwiftService {
    * @param file the file to start seeding for
    * @return swarm ID hash value which identifies content
    */
-  public byte[] seed(File file) {
+  public byte[] seed(Path file) {
     return null;
   }
   

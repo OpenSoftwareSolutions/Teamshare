@@ -33,7 +33,7 @@ public class Synchronization {
   public void notifyFilesystemEvent(FilesystemEvent event) {
     logger.info("File system event occured for file '" + event.getFile() +
         "'.");
-    TeamFile file = TeamFile.createFromAbsoluteFile(event.getFile());
+    TeamFile file = session.getTeamFile(event.getFile());
 
     // TODO Cache file hash somewhere in a file
     byte[] hash;

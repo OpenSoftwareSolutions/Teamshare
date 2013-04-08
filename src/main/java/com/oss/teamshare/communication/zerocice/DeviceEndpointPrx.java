@@ -22,39 +22,21 @@ package com.oss.teamshare.communication.zerocice;
 
 public interface DeviceEndpointPrx extends Ice.ObjectPrx
 {
-    public void notifyRevision(String teamId, String filename, String swarmId);
+    public void notifyRevision(String uri, String swarmId);
 
-    public void notifyRevision(String teamId, String filename, String swarmId, java.util.Map<String, String> __ctx);
+    public void notifyRevision(String uri, String swarmId, java.util.Map<String, String> __ctx);
 
-    public Ice.AsyncResult begin_notifyRevision(String teamId, String filename, String swarmId);
+    public Ice.AsyncResult begin_notifyRevision(String uri, String swarmId);
 
-    public Ice.AsyncResult begin_notifyRevision(String teamId, String filename, String swarmId, java.util.Map<String, String> __ctx);
+    public Ice.AsyncResult begin_notifyRevision(String uri, String swarmId, java.util.Map<String, String> __ctx);
 
-    public Ice.AsyncResult begin_notifyRevision(String teamId, String filename, String swarmId, Ice.Callback __cb);
+    public Ice.AsyncResult begin_notifyRevision(String uri, String swarmId, Ice.Callback __cb);
 
-    public Ice.AsyncResult begin_notifyRevision(String teamId, String filename, String swarmId, java.util.Map<String, String> __ctx, Ice.Callback __cb);
+    public Ice.AsyncResult begin_notifyRevision(String uri, String swarmId, java.util.Map<String, String> __ctx, Ice.Callback __cb);
 
-    public Ice.AsyncResult begin_notifyRevision(String teamId, String filename, String swarmId, Callback_DeviceEndpoint_notifyRevision __cb);
+    public Ice.AsyncResult begin_notifyRevision(String uri, String swarmId, Callback_DeviceEndpoint_notifyRevision __cb);
 
-    public Ice.AsyncResult begin_notifyRevision(String teamId, String filename, String swarmId, java.util.Map<String, String> __ctx, Callback_DeviceEndpoint_notifyRevision __cb);
+    public Ice.AsyncResult begin_notifyRevision(String uri, String swarmId, java.util.Map<String, String> __ctx, Callback_DeviceEndpoint_notifyRevision __cb);
 
     public void end_notifyRevision(Ice.AsyncResult __result);
-
-    public String getLatestRevisionHash(String teamId, String filename);
-
-    public String getLatestRevisionHash(String teamId, String filename, java.util.Map<String, String> __ctx);
-
-    public Ice.AsyncResult begin_getLatestRevisionHash(String teamId, String filename);
-
-    public Ice.AsyncResult begin_getLatestRevisionHash(String teamId, String filename, java.util.Map<String, String> __ctx);
-
-    public Ice.AsyncResult begin_getLatestRevisionHash(String teamId, String filename, Ice.Callback __cb);
-
-    public Ice.AsyncResult begin_getLatestRevisionHash(String teamId, String filename, java.util.Map<String, String> __ctx, Ice.Callback __cb);
-
-    public Ice.AsyncResult begin_getLatestRevisionHash(String teamId, String filename, Callback_DeviceEndpoint_getLatestRevisionHash __cb);
-
-    public Ice.AsyncResult begin_getLatestRevisionHash(String teamId, String filename, java.util.Map<String, String> __ctx, Callback_DeviceEndpoint_getLatestRevisionHash __cb);
-
-    public String end_getLatestRevisionHash(Ice.AsyncResult __result);
 }

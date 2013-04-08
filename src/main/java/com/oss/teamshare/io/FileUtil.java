@@ -1,21 +1,22 @@
 package com.oss.teamshare.io;
 
-import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
 public class FileUtil {
 
-  public static byte[] getFileHash(File file) throws IOException {
+  public static byte[] getFileHash(Path file) throws IOException {
     MessageDigest md = null;
     try {
       md = MessageDigest.getInstance("SHA1");
     } catch (NoSuchAlgorithmException e) {
       throw new Error(e);
     }
-    FileInputStream input = new FileInputStream(file);
+    FileInputStream input = new FileInputStream(file.toFile());
     byte[] fileData = new byte[4096];
     int count;
     
@@ -29,7 +30,7 @@ public class FileUtil {
   }
   
   public static void main(String[] args) throws IOException {
-    byte[] hash = getFileHash(new File("/home/calinburloiu/tmp/swift/big.in"));
+    byte[] hash = getFileHash(Paths.get("/home/calinburloiu/tmp/swift/big.in"));
     System.out.println(javax.xml.bind.DatatypeConverter.printHexBinary(hash));
   }
 }

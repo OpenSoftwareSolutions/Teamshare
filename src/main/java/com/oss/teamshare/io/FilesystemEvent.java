@@ -1,16 +1,18 @@
 package com.oss.teamshare.io;
 
+import java.nio.file.Path;
+
 
 public class FilesystemEvent {
   
-  protected java.io.File file;
+  protected Path file;
 
-  public FilesystemEvent(java.io.File file) {
+  public FilesystemEvent(Path file) {
     super();
     this.file = file;
   }
 
-  public java.io.File getFile() {
+  public Path getFile() {
     return file;
   }
 }

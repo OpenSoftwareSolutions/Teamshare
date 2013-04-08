@@ -13,7 +13,8 @@ import com.oss.teamshare.team.Team;
 
 public class SwiftPushStrategy implements PushStrategy {
 
-  protected SwiftService swiftService;
+  private SwiftService swiftService;
+  private Session session;
   
   public SwiftPushStrategy() {
     swiftService = new SwiftService();
@@ -21,19 +22,18 @@ public class SwiftPushStrategy implements PushStrategy {
 
   public void push(TeamFile file) {
     // Create a new swarm for the new revision.
-    byte[] swarmId = swiftService.seed(file.getAbsoluteFile());
+    byte[] swarmId = swiftService.seed(file.getAbsolutePath(session));
     
     // Get online devices.
     Team team = file.getTeam();
     Collection<Device> onlineDevices = team.getOnlineDevices();
     
-    String teamId = team.getId().toString();
-    String filename = file.getPath();
+    String uri = file.toUriString();
     String strSwarmId = DatatypeConverter.printHexBinary(swarmId).toLowerCase();
     
     for (Device dev : onlineDevices) {
       DeviceEndpointPrx endpoint = dev.getEndpoint();
-      endpoint.notifyRevision(teamId, filename, strSwarmId);
+      endpoint.notifyRevision(uri, strSwarmId);
     }
   }
 

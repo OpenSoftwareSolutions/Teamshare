@@ -3,6 +3,8 @@ package com.oss.teamshare.team;
 import com.oss.teamshare.communication.Swarm;
 import com.oss.teamshare.sync.Revision;
 
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.LinkedHashMap;
@@ -32,7 +34,7 @@ public class Team {
    * The team folder's name is also the team's actual name. This folder is the
    * root for all the files and folders created by the team's users.
    */
-  protected String path = null;
+  protected Path path;
 
   /**
    * The team's owner.
@@ -201,9 +203,9 @@ public class Team {
     return name;
   }
 
-  public String getPath() {
+  public Path getPath() {
     if (path == null) {
-      return name;
+      return Paths.get(name);
     }
     
     return path;

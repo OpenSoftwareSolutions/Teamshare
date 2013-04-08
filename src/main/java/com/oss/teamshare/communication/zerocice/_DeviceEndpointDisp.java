@@ -32,7 +32,7 @@ public abstract class _DeviceEndpointDisp extends Ice.ObjectImpl implements Devi
     public static final String[] __ids =
     {
         "::Ice::Object",
-        "::com::oss::teamwork::teamshare::sync::zerocice::DeviceEndpoint"
+        "::com::oss::teamshare::communication::zerocice::DeviceEndpoint"
     };
 
     public boolean
@@ -77,16 +77,10 @@ public abstract class _DeviceEndpointDisp extends Ice.ObjectImpl implements Devi
         return __ids[1];
     }
 
-    public final String
-    getLatestRevisionHash(String teamId, String filename)
-    {
-        return getLatestRevisionHash(teamId, filename, null);
-    }
-
     public final void
-    notifyRevision(String teamId, String filename, String swarmId)
+    notifyRevision(String uri, String swarmId)
     {
-        notifyRevision(teamId, filename, swarmId, null);
+        notifyRevision(uri, swarmId, null);
     }
 
     public static Ice.DispatchStatus
@@ -95,37 +89,17 @@ public abstract class _DeviceEndpointDisp extends Ice.ObjectImpl implements Devi
         __checkMode(Ice.OperationMode.Normal, __current.mode);
         IceInternal.BasicStream __is = __inS.is();
         __is.startReadEncaps();
-        String teamId;
-        teamId = __is.readString();
-        String filename;
-        filename = __is.readString();
+        String uri;
+        uri = __is.readString();
         String swarmId;
         swarmId = __is.readString();
         __is.endReadEncaps();
-        __obj.notifyRevision(teamId, filename, swarmId, __current);
-        return Ice.DispatchStatus.DispatchOK;
-    }
-
-    public static Ice.DispatchStatus
-    ___getLatestRevisionHash(DeviceEndpoint __obj, IceInternal.Incoming __inS, Ice.Current __current)
-    {
-        __checkMode(Ice.OperationMode.Normal, __current.mode);
-        IceInternal.BasicStream __is = __inS.is();
-        __is.startReadEncaps();
-        String teamId;
-        teamId = __is.readString();
-        String filename;
-        filename = __is.readString();
-        __is.endReadEncaps();
-        IceInternal.BasicStream __os = __inS.os();
-        String __ret = __obj.getLatestRevisionHash(teamId, filename, __current);
-        __os.writeString(__ret);
+        __obj.notifyRevision(uri, swarmId, __current);
         return Ice.DispatchStatus.DispatchOK;
     }
 
     private final static String[] __all =
     {
-        "getLatestRevisionHash",
         "ice_id",
         "ice_ids",
         "ice_isA",
@@ -146,25 +120,21 @@ public abstract class _DeviceEndpointDisp extends Ice.ObjectImpl implements Devi
         {
             case 0:
             {
-                return ___getLatestRevisionHash(this, in, __current);
+                return ___ice_id(this, in, __current);
             }
             case 1:
             {
-                return ___ice_id(this, in, __current);
+                return ___ice_ids(this, in, __current);
             }
             case 2:
             {
-                return ___ice_ids(this, in, __current);
+                return ___ice_isA(this, in, __current);
             }
             case 3:
             {
-                return ___ice_isA(this, in, __current);
-            }
-            case 4:
-            {
                 return ___ice_ping(this, in, __current);
             }
-            case 5:
+            case 4:
             {
                 return ___notifyRevision(this, in, __current);
             }
@@ -199,7 +169,7 @@ public abstract class _DeviceEndpointDisp extends Ice.ObjectImpl implements Devi
     __write(Ice.OutputStream __outS)
     {
         Ice.MarshalException ex = new Ice.MarshalException();
-        ex.reason = "type com::oss::teamwork::teamshare::sync::zerocice::DeviceEndpoint was not generated with stream support";
+        ex.reason = "type com::oss::teamshare::communication::zerocice::DeviceEndpoint was not generated with stream support";
         throw ex;
     }
 
@@ -207,7 +177,7 @@ public abstract class _DeviceEndpointDisp extends Ice.ObjectImpl implements Devi
     __read(Ice.InputStream __inS, boolean __rid)
     {
         Ice.MarshalException ex = new Ice.MarshalException();
-        ex.reason = "type com::oss::teamwork::teamshare::sync::zerocice::DeviceEndpoint was not generated with stream support";
+        ex.reason = "type com::oss::teamshare::communication::zerocice::DeviceEndpoint was not generated with stream support";
         throw ex;
     }
 }
