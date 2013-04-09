@@ -11,6 +11,12 @@
 	    "name": "Img",
 	    "owner": "adriana",
 	    "users": ["calin", "adriana"]
+	},
+	{
+	    "id": "personal",
+	    "name": "Personal",
+	    "owner": "calin",
+	    "users": ["calin"]
 	}
     ]
 }
