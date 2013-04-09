@@ -4,5 +4,6 @@ import java.util.Map;
 
 public interface TeamRepo {
   
-  Map<TeamId, Team> retrieveUserTeams(UserId userId) throws TeamRepoException;
+  Map<TeamId, Team> retrieveUserTeams(UserId userId, DeviceId deviceId)
+      throws TeamRepoException;
 }

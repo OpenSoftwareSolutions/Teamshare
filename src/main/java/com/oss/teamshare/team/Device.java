@@ -17,9 +17,7 @@ public class Device {
     this.id = id;
     this.name = name;
     this.user = user;
-    
-    Ice.ObjectPrx base = IceRuntime.getInstance().createObjectProxy(id, address);
-    this.endpoint = DeviceEndpointPrxHelper.checkedCast(base);
+    this.address = address;
   }
 
   /**
@@ -35,6 +33,11 @@ public class Device {
    */
   String name;
 
+  /**
+   * Internet socket address for the communication endpoint of the device.
+   */
+  InetSocketAddress address;
+  
   /**
    * Provides communication to another device through Ice.
    */
@@ -62,6 +65,21 @@ public class Device {
    * exact type and usage is described at application level.
    */
   PublicKey publicKey;
+  
+  /**
+   * Connect to the device endpoint by using Ice. endpoint member will hold
+   * a reference to the device proxy.
+   * 
+   * TODO Return an exception if the connection fails.
+   */
+  public void connect() {
+    if (endpoint != null) {
+      return;
+    }
+    
+    Ice.ObjectPrx base = IceRuntime.getInstance().createObjectProxy(id, address);
+    endpoint = DeviceEndpointPrxHelper.checkedCast(base);
+  }
 
   /**
    * Notify a device of a change so that it can pull them.

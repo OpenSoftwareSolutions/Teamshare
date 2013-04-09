@@ -15,7 +15,7 @@ public class IceRuntime implements Closeable {
 
   protected Ice.Communicator communicator;
 
-  private Logger logger = LogManager.getLogger(IceRuntime.class.getName());
+  private Logger logger = LogManager.getLogger(IceRuntime.class);
   
   public IceRuntime() {
     try {
@@ -39,7 +39,7 @@ public class IceRuntime implements Closeable {
   }
   
   public Ice.ObjectPrx createObjectProxy(DeviceId id, InetSocketAddress address) {
-    return  communicator.stringToProxy(id + ":default -h " +
+    return communicator.stringToProxy(id + ":default -h " +
         address.getAddress().getHostAddress() + " -p " + address.getPort());
   }
 

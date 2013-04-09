@@ -61,6 +61,6 @@ public class User extends Person {
       strDevices += device + ", ";
     }
     
-    return String.format("User(%s, %s, %s)", id, username, strDevices);
+    return String.format("User(%s, %s, [%s])", id, username, strDevices);
   }
 }

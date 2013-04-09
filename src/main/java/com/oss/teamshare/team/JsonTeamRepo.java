@@ -8,6 +8,9 @@ import java.util.LinkedHashMap;
 import java.util.NoSuchElementException;
 import java.util.StringTokenizer;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
@@ -18,24 +21,23 @@ public class JsonTeamRepo implements TeamRepo {
   
   private Map<UserId, User> users;
   
-  public void init() throws TeamRepoException {
-    if (users == null) {
-      users = readUsersFromJson();
-    }
-  }
-
+  public static Logger logger = LogManager.getLogger(JsonTeamRepo.class);
+  
   /**
    * Retrieve from team repository all teams in which a user is part of.
    * 
    * @throws TeamRepoException
    */
   @Override
-  public Map<TeamId, Team> retrieveUserTeams(UserId userId)
+  public Map<TeamId, Team> retrieveUserTeams(UserId userId, DeviceId deviceId)
       throws TeamRepoException {
     Map<TeamId, Team> teams = new LinkedHashMap<>();
     ObjectMapper mapper = new ObjectMapper();
-    init();
-
+    
+    /* Load users and their devices */
+    users = readUsersFromJson(deviceId);
+    logger.info("Loaded " + users.size() + " users.");
+    
     JsonNode rootNode;
     try {
       rootNode = mapper.readValue(new File(TEAMS_FILENAME), JsonNode.class);
@@ -64,7 +66,9 @@ public class JsonTeamRepo implements TeamRepo {
         }
       }
       
-      teams.put(team.getId(), team);
+      if (team.hasUser(userId)) {
+        teams.put(team.getId(), team);
+      }
     }
     
     return teams;
@@ -72,12 +76,18 @@ public class JsonTeamRepo implements TeamRepo {
   
   /**
    * Read a JSON file which contains data for all registered users and their
-   * attached devices
+   * attached devices.
    * 
+   * myDeviceId represents the device which runs this
+   * application instance and will not be added, because the logged in
+   * user does not have to connect to its own device.
+   * 
+   * @param myDeviceId the 
    * @return
    * @throws TeamRepoException
    */
-  private Map<UserId, User> readUsersFromJson() throws TeamRepoException {
+  private Map<UserId, User> readUsersFromJson(DeviceId myDeviceId)
+      throws TeamRepoException {
     Map<UserId, User> users = new LinkedHashMap<>();
     ObjectMapper mapper = new ObjectMapper();
     
@@ -120,9 +130,12 @@ public class JsonTeamRepo implements TeamRepo {
         } catch (NumberFormatException e) {
           throw new IllegalArgumentException("Invalid address port.");
         }
-        
-        Device device = new Device(new DeviceId(strDevId), devName, user, isa);
-        user.addDevice(device);
+
+        DeviceId devId = new DeviceId(strDevId);
+        if (!devId.equals(myDeviceId)) {
+          Device device = new Device(devId, devName, user, isa);
+          user.addDevice(device);
+        }
       }
       
       users.put(user.getId(), user);

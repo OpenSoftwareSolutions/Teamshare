@@ -3,6 +3,9 @@ package com.oss.teamshare.team;
 import java.nio.file.Path;
 import java.util.Map;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import com.oss.teamshare.io.TeamFile;
 import com.oss.teamshare.messaging.Mailbox;
 
@@ -33,6 +36,29 @@ public class Session {
    */
   protected Path path;
   
+  public static Logger logger = LogManager.getLogger(Session.class);
+
+  /**
+   * Demo constructor which load team from JSON files.
+   * 
+   * @param userId
+   * @param deviceId
+   */
+  public Session(UserId userId, DeviceId deviceId) {
+    /* Retrieve teams from JSON. */
+    TeamRepo teamRepo = new JsonTeamRepo();
+    try {
+      teams = teamRepo.retrieveUserTeams(userId, deviceId);
+    } catch (TeamRepoException e) {
+      logger.fatal("Failed to load teams from JSON files: " + e.getMessage());
+      System.exit(1);
+    }
+    logger.info("Loaded " + teams.size() + " teams.");
+    for (Team team : teams.values()) {
+      logger.debug("" + team);
+    }
+  }
+
   /**
    * Returns a team by its id or null if not found.
    * 
