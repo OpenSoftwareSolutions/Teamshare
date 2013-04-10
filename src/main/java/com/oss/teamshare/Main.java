@@ -28,14 +28,13 @@ public class Main {
     /* Parse arguments.*/
     if (args.length < 2) {
       logger.fatal("usage: ${TEAMSHARE} userId deviceId");
+      System.exit(1);
     }
     UserId userId = new UserId(args[0]);
     DeviceId deviceId = new DeviceId(args[1]);
     
     /* Create session.*/
     Session session = new Session(userId, deviceId);
-    
-    
     
     logger.info("Exiting Teamshare...");
   }

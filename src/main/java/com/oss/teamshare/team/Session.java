@@ -1,6 +1,7 @@
 package com.oss.teamshare.team;
 
 import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.Map;
 
 import org.apache.logging.log4j.LogManager;
@@ -45,6 +46,8 @@ public class Session {
    * @param deviceId
    */
   public Session(UserId userId, DeviceId deviceId) {
+    
+    
     /* Retrieve teams from JSON. */
     TeamRepo teamRepo = new JsonTeamRepo();
     try {
@@ -57,6 +60,10 @@ public class Session {
     for (Team team : teams.values()) {
       logger.debug("" + team);
     }
+    
+    /* XXX Use user home for Teamshare path.*/
+    path = Paths.get(System.getProperty("user.home"), "Teamshare");
+    logger.info("Teamshare path: " + path);
   }
 
   /**
