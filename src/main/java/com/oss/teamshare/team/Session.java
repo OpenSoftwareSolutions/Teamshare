@@ -7,13 +7,15 @@ import java.util.Map;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import com.oss.teamshare.communication.DeviceServer;
+import com.oss.teamshare.communication.IceRuntime;
 import com.oss.teamshare.io.TeamFile;
 import com.oss.teamshare.messaging.Mailbox;
 
 /**
  * Singleton representing the session of running the application on a device. 
  */
-public class Session {
+public class Session implements AutoCloseable {
   
   /**
    * Reference to the device of the current logged in user.
@@ -37,6 +39,8 @@ public class Session {
    */
   protected Path path;
   
+  private DeviceServer deviceServer;
+  
   public static Logger logger = LogManager.getLogger(Session.class);
 
   /**
@@ -45,8 +49,10 @@ public class Session {
    * @param userId
    * @param deviceId
    */
-  public Session(UserId userId, DeviceId deviceId) {
-    
+  public Session(UserId userId, DeviceId deviceId, int port) {
+    /* Start device server where other devices can connect through Ice.*/
+    deviceServer = new DeviceServer(deviceId, port);
+    deviceServer.start();
     
     /* Retrieve teams from JSON. */
     TeamRepo teamRepo = new JsonTeamRepo();
@@ -113,5 +119,10 @@ public class Session {
     Path filePath = team.getPath().relativize(pathInTeamshare);
     
     return new TeamFile(team, filePath);
+  }
+
+  @Override
+  public void close() throws Exception {
+    IceRuntime.getInstance().close();
   }
 }
