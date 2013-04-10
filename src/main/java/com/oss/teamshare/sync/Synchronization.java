@@ -31,8 +31,9 @@ public class Synchronization {
   }
   
   public void notifyFilesystemEvent(FilesystemEvent event) {
-    logger.info("File system event occured for file '" + event.getFile() +
-        "'.");
+    logger.info(String.format("File system event of type %s occured for file %s.", 
+                    event.getEventType(), event.getFile()));
+    
     TeamFile file = session.getTeamFile(event.getFile());
 
     // TODO Cache file hash somewhere in a file
@@ -45,7 +46,7 @@ public class Synchronization {
       return;
     }
     
-    pushStrategy.push(file);
+    //pushStrategy.push(file);
   }
   
 }

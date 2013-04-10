@@ -1,4 +1,6 @@
 package com.oss.teamshare.io;
+import java.nio.file.Path;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -16,15 +18,15 @@ enum FileEventType{
  */
 public class FilesystemEvent {
 
-	protected TeamFile file;
+	protected Path file;
 	protected FileEventType eventType;
 
-	public FilesystemEvent(TeamFile file, FileEventType eventType) {
+	public FilesystemEvent(Path file, FileEventType eventType) {
 		this.file = file;
 		this.eventType = eventType;
 	}
 
-	public TeamFile getFile() {
+	public Path getFile() {
 		return file;
 	}
 

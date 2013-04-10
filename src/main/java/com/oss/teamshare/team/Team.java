@@ -61,7 +61,7 @@ public class Team {
   
   protected Swarm swarm;
   
-  Team(TeamId id, String name, User owner) {
+  public Team(TeamId id, String name, User owner) {
     this.id = id;
     this.name = name;
     this.owner = owner;
