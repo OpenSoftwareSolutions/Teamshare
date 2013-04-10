@@ -1,16 +1,12 @@
 package com.oss.teamshare;
 
-import java.util.Map;
 
+import org.apache.commons.lang3.exception.ExceptionUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import com.oss.teamshare.team.DeviceId;
-import com.oss.teamshare.team.JsonTeamRepo;
 import com.oss.teamshare.team.Session;
-import com.oss.teamshare.team.Team;
-import com.oss.teamshare.team.TeamId;
-import com.oss.teamshare.team.TeamRepo;
 import com.oss.teamshare.team.TeamRepoException;
 import com.oss.teamshare.team.UserId;
 
@@ -23,21 +19,29 @@ public class Main {
   }
   
   public static void main(String[] args) throws TeamRepoException {
-    logger.info("Starting Teamshare...");
+    String strUser = System.getProperty("teamshare.user");
+    String strDevice = System.getProperty("teamshare.device");
+    String strPort = System.getProperty("teamshare.port");
     
-    /* Parse arguments.*/
-    if (args.length < 2) {
-      logger.fatal("usage: ${TEAMSHARE} userId deviceId");
+    if (strUser == null || strDevice == null || strPort == null) {
+      throw new IllegalArgumentException(
+          "You must provide properties teamshare.user, teamshare.device, teamshare.port.");
     }
-    UserId userId = new UserId(args[0]);
-    DeviceId deviceId = new DeviceId(args[1]);
+    
+    UserId userId = new UserId(strUser);
+    DeviceId deviceId = new DeviceId(strDevice);
+    logger.info(String.format("Starting Teamshare for user %s and device %s.",
+        userId, deviceId));
+    int port = Integer.parseInt(strPort);
+    logger.info("Device server endpoint listening on port " + port);
     
     /* Create session.*/
-    Session session = new Session(userId, deviceId);
-    
-    
-    
-    logger.info("Exiting Teamshare...");
+    try (Session session = new Session(userId, deviceId, port)) {
+      Thread.sleep(10000);
+      logger.info("Exiting Teamshare...");
+    } catch (Exception e) {
+      logger.fatal(ExceptionUtils.getStackTrace(e));
+    }
   }
 
 }

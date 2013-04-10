@@ -55,6 +55,12 @@
       <artifactId>jackson-databind</artifactId>
       <version>2.1.3</version>
     </dependency>
+
+    <dependency>
+      <groupId>org.apache.commons</groupId>
+      <artifactId>commons-lang3</artifactId>
+      <version>3.1</version>
+    </dependency>
   </dependencies>
 
   <build>
@@ -66,6 +72,20 @@
         <configuration>
           <source>1.7</source>
           <target>1.7</target>
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>exec-maven-plugin</artifactId>
+        <version>1.2.1</version>
+        <configuration>
+          <mainClass>com.oss.teamshare.Main</mainClass>
+          <arguments>
+            <argument>calin</argument>
+            <argument>calin_desktop</argument>
+          </arguments>
+          <!-- <systemProperties> <systemProperty> <key>cheie</key> <value>valoare</value> 
+            </systemProperty> </systemProperties> -->
         </configuration>
       </plugin>
     </plugins>

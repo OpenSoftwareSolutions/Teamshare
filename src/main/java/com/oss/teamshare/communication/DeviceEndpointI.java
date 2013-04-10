@@ -1,7 +1,9 @@
-package com.oss.teamshare.communication.zerocice;
+package com.oss.teamshare.communication;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+
+import com.oss.teamshare.communication.zerocice._DeviceEndpointDisp;
 
 import Ice.Current;
 

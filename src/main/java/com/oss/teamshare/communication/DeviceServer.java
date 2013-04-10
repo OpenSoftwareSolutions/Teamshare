@@ -1,11 +1,8 @@
 package com.oss.teamshare.communication;
 
-import java.net.InetSocketAddress;
-
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import com.oss.teamshare.communication.zerocice.DeviceEndpointI;
 import com.oss.teamshare.team.DeviceId;
 
 public class DeviceServer extends Thread {
@@ -13,7 +10,7 @@ public class DeviceServer extends Thread {
   protected DeviceId id;
   protected int port;
   
-  private Logger logger = LogManager.getLogger("DeviceServer");
+  private Logger logger = LogManager.getLogger(DeviceServer.class);
   
   public DeviceServer(DeviceId id, int port) {
     this.id = id;
@@ -21,11 +18,10 @@ public class DeviceServer extends Thread {
   }
   
   public void run() {
-    Ice.Communicator ic = null;
+    Ice.Communicator ic = IceRuntime.getInstance().getCommunicator();
     int status = 0;
     
     try {
-      ic = Ice.Util.initialize();
       Ice.ObjectAdapter adapter = 
           ic.createObjectAdapterWithEndpoints("DeviceServerAdapter",
               "default -p " + port);
@@ -36,7 +32,7 @@ public class DeviceServer extends Thread {
       logger.info("DeviceServer started.");
       ic.waitForShutdown();
     } catch (Ice.LocalException e) {
-      logger.fatal("An error occurred while initializing DeviceServer: "
+      logger.fatal("Failed to initialize DeviceServer: "
           + e.getMessage());
       status = 1;
     }
@@ -46,7 +42,7 @@ public class DeviceServer extends Thread {
       try {
         ic.destroy();
       } catch (Exception e) {
-        logger.error("An error occurred while destroying DeviceServer: "
+        logger.error("Failed to destroy DeviceServer: "
             + e.getMessage());
       }
     }
