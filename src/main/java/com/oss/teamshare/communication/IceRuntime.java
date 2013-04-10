@@ -1,4 +1,4 @@
-package com.oss.teamshare.communication.zerocice;
+package com.oss.teamshare.communication;
 
 import java.io.Closeable;
 import java.io.IOException;

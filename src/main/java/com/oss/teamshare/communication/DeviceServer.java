@@ -5,7 +5,6 @@ import java.net.InetSocketAddress;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import com.oss.teamshare.communication.zerocice.DeviceEndpointI;
 import com.oss.teamshare.team.DeviceId;
 
 public class DeviceServer extends Thread {

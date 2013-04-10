@@ -4,9 +4,9 @@ import java.net.InetSocketAddress;
 import java.security.PublicKey;
 
 import com.oss.teamshare.common.ChangeId;
+import com.oss.teamshare.communication.IceRuntime;
 import com.oss.teamshare.communication.zerocice.DeviceEndpointPrx;
 import com.oss.teamshare.communication.zerocice.DeviceEndpointPrxHelper;
-import com.oss.teamshare.communication.zerocice.IceRuntime;
 import com.oss.teamshare.sync.Change;
 import com.oss.teamshare.sync.Revision;
 
