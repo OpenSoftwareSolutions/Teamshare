@@ -3,6 +3,8 @@ package com.oss.teamshare.io;
 import java.nio.file.FileSystems;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 
 
 import com.oss.teamshare.team.Session;
@@ -72,4 +74,25 @@ public class TeamFile {
   public Path getAbsolutePath(Session session) {
     return session.getPath().resolve(team.getPath()).resolve(path);
   }
+  
+  public byte[] getHash() {
+    MessageDigest md;
+    try {
+      md = MessageDigest.getInstance("SHA-1");
+    } catch (NoSuchAlgorithmException e) {
+      throw new Error(e);
+    }
+    
+    // TODO Calculate hash differently after establishing IDs.
+    String str = team.getId().toString() + path.toString();
+    md.update(str.getBytes());
+    
+    return md.digest();
+  }
+
+  @Override
+  public String toString() {
+    return "TeamFile [team=" + team.getId() + ", path=" + path + "]";
+  }
+  
 }

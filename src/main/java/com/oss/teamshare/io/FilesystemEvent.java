@@ -5,14 +5,6 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 /**
- * Event types that can occur for file or folders.
- * @author adriana
- *
- */
-enum FileEventType{
-	CREATE, DELETE, MODIFY;
-}
-/**
  * Represents an event related to a file or a folder inside a team's folder.
  *
  */
