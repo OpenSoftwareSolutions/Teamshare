@@ -6,5 +6,5 @@ import com.oss.teamshare.team.Team;
 
 public interface PullStrategy {
   
-  Collection<Change> pull(Team group);
+//  Collection<Change> pull(Team group);
 }

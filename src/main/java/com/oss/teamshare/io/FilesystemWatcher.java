@@ -20,7 +20,7 @@ import com.oss.teamshare.team.UserId;
  * 
  *
  */
-public class FilesystemWatcher extends Thread{
+public class FilesystemWatcher extends Thread {
 
   WatchService watcher;
 
@@ -34,7 +34,7 @@ public class FilesystemWatcher extends Thread{
 
   private Synchronization syncService;
   
-  FilesystemWatcher(Path teamPath, Synchronization syncService){
+  public FilesystemWatcher(Path teamPath, Synchronization syncService){
 
     super();
     this.syncService = syncService;
@@ -73,9 +73,13 @@ public class FilesystemWatcher extends Thread{
 
       WatchKey key;
       try {
-        key = watcher.take();
+        try {
+          key = watcher.take();
+        } catch(ClosedWatchServiceException ex){
+          return;
+        }
         Path dir = watchDirs.get(key);
-
+  
         if (dir == null) {
           logger.error("WatchKey not recognized!!");
           continue;
@@ -156,6 +160,15 @@ public class FilesystemWatcher extends Thread{
       }
     }
     
+    public void stopWatching(){
+      try{
+        watcher.close();
+      }catch(IOException ioe){
+        logger.error(String.format("Exception while stopping watcher %s", ioe.getMessage()));
+      }
+      
+    }
+    
     public static void main (String []args) {
       FileSystem fs = FileSystems.getDefault();
       Iterable<Path> dirs = fs.getRootDirectories();
@@ -179,8 +192,13 @@ public class FilesystemWatcher extends Thread{
         watcher.watch(true);
         
         watcher.start();
+        
+        System.out.println("Press any key to exit...");
+        System.in.read();
+
+        watcher.stopWatching();
         watcher.join();
-      
+       
         
       } catch (Exception ex) {
         ex.printStackTrace();
