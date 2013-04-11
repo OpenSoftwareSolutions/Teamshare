@@ -1,10 +1,16 @@
 package com.oss.teamshare;
 
 
+import java.io.Console;
+import java.nio.file.Paths;
+
 import org.apache.commons.lang3.exception.ExceptionUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import com.oss.teamshare.io.FileEventType;
+import com.oss.teamshare.io.FilesystemEvent;
+import com.oss.teamshare.sync.Synchronization;
 import com.oss.teamshare.team.DeviceId;
 import com.oss.teamshare.team.Session;
 import com.oss.teamshare.team.TeamRepoException;
@@ -19,6 +25,7 @@ public class Main {
   }
   
   public static void main(String[] args) throws TeamRepoException {
+    /* Read application input parameters from Java properties.*/
     String strUser = System.getProperty("teamshare.user");
     String strDevice = System.getProperty("teamshare.device");
     String strPort = System.getProperty("teamshare.port");
@@ -37,7 +44,17 @@ public class Main {
     
     /* Create session.*/
     try (Session session = new Session(userId, deviceId, port)) {
-      Thread.sleep(10000);
+      /* Send file event manually for testing.*/
+      Console console = System.console();
+      console.printf(
+          "Absolute path of the file for which to trigger a new file event: ");
+      String fileName = console.readLine();
+      Synchronization sync = new Synchronization(session);
+      sync.notifyFilesystemEvent(new FilesystemEvent(Paths.get(fileName),
+          FileEventType.CREATE));
+      
+      logger.info("Exiting in 5 seconds...");
+      Thread.sleep(5000);
       logger.info("Exiting Teamshare...");
     } catch (Exception e) {
       logger.fatal(ExceptionUtils.getStackTrace(e));

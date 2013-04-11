@@ -16,8 +16,8 @@ public class DeviceEndpointI extends _DeviceEndpointDisp {
   @Override
   public void notifyRevision(String uri, String swarmId,
       Current __current) {
-    logger.debug(uri + ", " + swarmId);
-
+    logger.debug(String.format("A notification was received for a new " +
+        "revision of %s available in swarm ID %s.", uri, swarmId));
   }
 
 }

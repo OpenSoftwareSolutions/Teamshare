@@ -3,6 +3,9 @@ package com.oss.teamshare.team;
 import java.net.InetSocketAddress;
 import java.security.PublicKey;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import com.oss.teamshare.common.ChangeId;
 import com.oss.teamshare.communication.IceRuntime;
 import com.oss.teamshare.communication.zerocice.DeviceEndpointPrx;
@@ -66,6 +69,8 @@ public class Device {
    */
   PublicKey publicKey;
   
+  private static Logger logger = LogManager.getLogger(Device.class);
+  
   /**
    * Connect to the device endpoint by using Ice. endpoint member will hold
    * a reference to the device proxy.
@@ -112,6 +117,7 @@ public class Device {
   }
   
   public DeviceEndpointPrx getEndpoint() {
+    connect();
     return endpoint;
   }
 

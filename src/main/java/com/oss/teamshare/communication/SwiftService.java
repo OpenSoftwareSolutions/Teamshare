@@ -15,7 +15,8 @@ public class SwiftService {
    * @return swarm ID hash value which identifies content
    */
   public byte[] seed(Path file) {
-    return null;
+    // FIXME Return a real swarm ID.
+    return new byte[20];
   }
   
   public void download(byte[] swarmId) {

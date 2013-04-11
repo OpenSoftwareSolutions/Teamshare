@@ -43,8 +43,10 @@ public class IceRuntime implements Closeable {
   }
 
   public Ice.ObjectPrx createObjectProxy(DeviceId id, InetSocketAddress address) {
-    return communicator.stringToProxy(id + ":default -h " +
-        address.getAddress().getHostAddress() + " -p " + address.getPort());
+    String strigifiedProxy = id + ":default -h " +
+        address.getAddress().getHostAddress() + " -p " + address.getPort();
+    logger.debug(strigifiedProxy);
+    return communicator.stringToProxy(strigifiedProxy);
   }
 
   @Override

@@ -19,6 +19,7 @@ public class DeviceServer extends Thread {
   
   public void run() {
     Ice.Communicator ic = IceRuntime.getInstance().getCommunicator();
+//    Ice.Communicator ic = Ice.Util.initialize();
     int status = 0;
     
     try {
@@ -26,7 +27,8 @@ public class DeviceServer extends Thread {
           ic.createObjectAdapterWithEndpoints("DeviceServerAdapter",
               "default -p " + port);
       Ice.Object object = new DeviceEndpointI();
-      adapter.add(object, ic.stringToIdentity("" + id));
+      adapter.add(object, ic.stringToIdentity(id.toString()));
+      logger.debug("device ID: " + id);
       adapter.activate();
       
       logger.info("DeviceServer started.");

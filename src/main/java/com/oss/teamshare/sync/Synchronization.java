@@ -5,6 +5,7 @@ import java.io.IOException;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import com.oss.teamshare.communication.SwiftService;
 import com.oss.teamshare.io.FileUtil;
 import com.oss.teamshare.io.FilesystemEvent;
 import com.oss.teamshare.io.TeamFile;
@@ -15,26 +16,26 @@ public class Synchronization {
   
   protected Session session;
   
-  // TODO Decide how strategies are loaded from Configuration.
   protected PushStrategy pushStrategy;
   protected PullStrategy pullStrategy;
-  protected Session account;
   
   private Logger logger = LogManager.getLogger(this.getClass().getName());
   
   public Synchronization(Session session) {
     this.session = session;
+    
+    // TODO Initialize different strategies for different contexts.
+    SwiftService swiftService = new SwiftService(); 
+    this.pushStrategy = new SwiftPushStrategy(session, swiftService);
   }
  
-  public Synchronization(){
-    //TODO initialize strategies, account!
-  }
-  
   public void notifyFilesystemEvent(FilesystemEvent event) {
-    logger.info(String.format("File system event of type %s occured for file %s.", 
+    logger.info(String.format(
+        "File system event of type %s occured for file '%s'.", 
                     event.getEventType(), event.getFile()));
     
     TeamFile file = session.getTeamFile(event.getFile());
+    logger.debug("Teamfile: " + file);
 
     // TODO Cache file hash somewhere in a file
     byte[] hash;
@@ -46,7 +47,7 @@ public class Synchronization {
       return;
     }
     
-    //pushStrategy.push(file);
+    pushStrategy.push(file);
   }
   
 }
