@@ -184,7 +184,7 @@ public class FilesystemWatcher extends Thread {
         
         //Team team = new Team (new TeamId("1234"), "ateam", new User(userId, "adriana"));
         Path dir = FileSystems.getDefault().getPath(teamPath);
-        Session session = new Session(userId, deviceId, port);
+        Session session = Session.create(userId, deviceId, port);
        
         Synchronization syncService = new Synchronization(session);        
         FilesystemWatcher watcher = new FilesystemWatcher(dir, syncService); // not yet session.getPath() 

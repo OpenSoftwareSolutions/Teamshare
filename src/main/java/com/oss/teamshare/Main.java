@@ -29,9 +29,11 @@ public class Main {
     /* Read application input parameters from Java properties.*/
     String strUser = System.getProperty("teamshare.user");
     String strDevice = System.getProperty("teamshare.device");
-    String strPort = System.getProperty("teamshare.port");
+    String strIcePort = System.getProperty("teamshare.ice.port");
+    String strSwiftPort = System.getProperty("teamshare.swift.port");
     
-    if (strUser == null || strDevice == null || strPort == null) {
+    if (strUser == null || strDevice == null || strIcePort == null ||
+        strSwiftPort == null) {
       throw new IllegalArgumentException(
           "You must provide properties teamshare.user, teamshare.device, teamshare.port.");
     }
@@ -40,11 +42,11 @@ public class Main {
     DeviceId deviceId = new DeviceId(strDevice);
     logger.info(String.format("Starting Teamshare for user %s and device %s.",
         userId, deviceId));
-    int port = Integer.parseInt(strPort);
-    logger.info("Device server endpoint listening on port " + port);
+    int icePort = Integer.parseInt(strIcePort);
+    logger.info("Device server endpoint (Ice) listening on port " + icePort);
     
     /* Create session.*/
-    try (Session session = new Session(userId, deviceId, port)) {
+    try (Session session = Session.create(userId, deviceId, icePort)) {
       
       /* HACK: Send file event manually for testing.*/
 //      Console console = System.console();

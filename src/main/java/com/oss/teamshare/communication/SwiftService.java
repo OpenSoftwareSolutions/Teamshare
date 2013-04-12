@@ -1,8 +1,12 @@
 package com.oss.teamshare.communication;
 
 import java.nio.file.Path;
+import java.util.Map;
 
 public class SwiftService {
+  
+  private int port;
+  private Map<byte[], Swarm> swarms;
 
   public SwiftService() {
 

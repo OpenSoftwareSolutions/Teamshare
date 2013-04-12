@@ -16,6 +16,8 @@ import com.oss.teamshare.messaging.Mailbox;
  * Singleton representing the session of running the application on a device.
  */
 public class Session implements AutoCloseable {
+  
+  private static Session instance = null;
 
   /**
    * Reference to the device of the current logged in user.
@@ -43,13 +45,29 @@ public class Session implements AutoCloseable {
 
   public static Logger logger = LogManager.getLogger(Session.class);
 
+  public static Session create(UserId userId, DeviceId deviceId, int port) {
+    if (instance != null) {
+      throw new IllegalStateException("Session already created");
+    }
+    
+    return new Session(userId, deviceId, port);
+  }
+  
+  public static Session getInstance() {
+    if (instance == null) {
+      throw new IllegalStateException("The Session must be created first.");
+    }
+    
+    return instance;
+  }
+  
   /**
    * Demo constructor which load team from JSON files.
    * 
    * @param userId
    * @param deviceId
    */
-  public Session(UserId userId, DeviceId deviceId, int port) {
+  private Session(UserId userId, DeviceId deviceId, int port) {
     /* Start device server where other devices can connect through Ice. */
     deviceServer = new DeviceServer(deviceId, port);
     deviceServer.start();
