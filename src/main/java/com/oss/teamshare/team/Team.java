@@ -1,7 +1,7 @@
 package com.oss.teamshare.team;
 
 import com.oss.teamshare.communication.Swarm;
-import com.oss.teamshare.sync.Revision;
+//import com.oss.teamshare.sync.Revision;
 
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -57,7 +57,7 @@ public class Team {
    * The (locally-stored) version of the team's folder. Ideally it would be
    * the same for all the devices in the team.
    */
-  protected Revision version;
+//  protected Revision version;
   
   protected Swarm swarm;
   

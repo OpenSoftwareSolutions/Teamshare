@@ -10,8 +10,8 @@ import com.oss.teamshare.common.ChangeId;
 import com.oss.teamshare.communication.IceRuntime;
 import com.oss.teamshare.communication.zerocice.DeviceEndpointPrx;
 import com.oss.teamshare.communication.zerocice.DeviceEndpointPrxHelper;
-import com.oss.teamshare.sync.Change;
-import com.oss.teamshare.sync.Revision;
+//import com.oss.teamshare.sync.Change;
+//import com.oss.teamshare.sync.Revision;
 
 public class Device {
   
@@ -89,9 +89,9 @@ public class Device {
   /**
    * Notify a device of a change so that it can pull them.
    */
-  public void notifyChange(Change change) {
-    
-  }
+//  public void notifyChange(Change change) {
+//    
+//  }
 
   /**
    * Notify a device that a message has been sent to it so that it can check its
@@ -104,9 +104,9 @@ public class Device {
   /**
    * Pull a change identified by its ID from this device.
    */
-  Change pullChange(ChangeId changeId) {
-    return null;
-  }
+//  Change pullChange(ChangeId changeId) {
+//    return null;
+//  }
 
   public DeviceId getId() {
     return id;
@@ -134,9 +134,9 @@ public class Device {
   }
 
   // TODO
-  public Revision getVersion() {
-    return null;
-  }
+//  public Revision getVersion() {
+//    return null;
+//  }
 
   @Override
   public String toString() {

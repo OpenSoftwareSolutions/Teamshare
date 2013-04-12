@@ -2,6 +2,7 @@ package com.oss.teamshare.sync;
 
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.nio.file.Files;
 import java.nio.file.Path;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
@@ -61,15 +62,12 @@ public class Synchronization {
     } catch (NoSuchAlgorithmException e) {
       throw new Error(e);
     }
-    FileInputStream input = new FileInputStream(file.toFile());
-    byte[] fileData = new byte[4096];
-    int count;
     
-    while ((count = input.read(fileData)) != -1) {
-      md.update(fileData, 0, count);
-    }
+    byte [] fileData = Files.readAllBytes(file); 
+    md.update(fileData);
+  
     
-    input.close();
+   // input.close();
     
     return md.digest();
   }
