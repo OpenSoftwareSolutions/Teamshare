@@ -22,21 +22,21 @@ package com.oss.teamshare.communication.zerocice;
 
 public interface DeviceEndpointPrx extends Ice.ObjectPrx
 {
-    public void notifyRevision(String uri, String swarmId);
+    public void notifyRevision(String uri, String swarmId, String seederAddress);
 
-    public void notifyRevision(String uri, String swarmId, java.util.Map<String, String> __ctx);
+    public void notifyRevision(String uri, String swarmId, String seederAddress, java.util.Map<String, String> __ctx);
 
-    public Ice.AsyncResult begin_notifyRevision(String uri, String swarmId);
+    public Ice.AsyncResult begin_notifyRevision(String uri, String swarmId, String seederAddress);
 
-    public Ice.AsyncResult begin_notifyRevision(String uri, String swarmId, java.util.Map<String, String> __ctx);
+    public Ice.AsyncResult begin_notifyRevision(String uri, String swarmId, String seederAddress, java.util.Map<String, String> __ctx);
 
-    public Ice.AsyncResult begin_notifyRevision(String uri, String swarmId, Ice.Callback __cb);
+    public Ice.AsyncResult begin_notifyRevision(String uri, String swarmId, String seederAddress, Ice.Callback __cb);
 
-    public Ice.AsyncResult begin_notifyRevision(String uri, String swarmId, java.util.Map<String, String> __ctx, Ice.Callback __cb);
+    public Ice.AsyncResult begin_notifyRevision(String uri, String swarmId, String seederAddress, java.util.Map<String, String> __ctx, Ice.Callback __cb);
 
-    public Ice.AsyncResult begin_notifyRevision(String uri, String swarmId, Callback_DeviceEndpoint_notifyRevision __cb);
+    public Ice.AsyncResult begin_notifyRevision(String uri, String swarmId, String seederAddress, Callback_DeviceEndpoint_notifyRevision __cb);
 
-    public Ice.AsyncResult begin_notifyRevision(String uri, String swarmId, java.util.Map<String, String> __ctx, Callback_DeviceEndpoint_notifyRevision __cb);
+    public Ice.AsyncResult begin_notifyRevision(String uri, String swarmId, String seederAddress, java.util.Map<String, String> __ctx, Callback_DeviceEndpoint_notifyRevision __cb);
 
     public void end_notifyRevision(Ice.AsyncResult __result);
 }

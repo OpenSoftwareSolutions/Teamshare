@@ -23,7 +23,7 @@ package com.oss.teamshare.communication.zerocice;
 public final class _DeviceEndpointDelD extends Ice._ObjectDelD implements _DeviceEndpointDel
 {
     public void
-    notifyRevision(final String uri, final String swarmId, java.util.Map<String, String> __ctx)
+    notifyRevision(final String uri, final String swarmId, final String seederAddress, java.util.Map<String, String> __ctx)
         throws IceInternal.LocalExceptionWrapper
     {
         final Ice.Current __current = new Ice.Current();
@@ -44,7 +44,7 @@ public final class _DeviceEndpointDelD extends Ice._ObjectDelD implements _Devic
                     {
                         throw new Ice.OperationNotExistException(__current.id, __current.facet, __current.operation);
                     }
-                    __servant.notifyRevision(uri, swarmId, __current);
+                    __servant.notifyRevision(uri, swarmId, seederAddress, __current);
                     return Ice.DispatchStatus.DispatchOK;
                 }
             };

@@ -35,27 +35,6 @@ public class Synchronization {
     this.pushStrategy = new SwiftPushStrategy(session, swiftService);
   }
   
-  // XXX HACK!
-  public void createSwarm(TeamFile file) {
-    // Get swift port from property.
-    String strSwiftPort = System.getProperty("teamshare.swift.port");
-    int swiftPort = Integer.parseInt(strSwiftPort);
-    logger.info("Swift listening on port " + swiftPort);
-    
-    // Find absolute file path.
-    Path absFilePath = file.getAbsolutePath(session);
-    
-    // Create swarm by running swift in a thread.
-    Swarm swarm = new Swarm(swiftPort, absFilePath);
-    swarm.start();
-    
-    // Wait 10 second to give for the swarm to be created before the other
-    // devices request content.
-    try {
-      Thread.sleep(10000);
-    } catch (InterruptedException e) {}
-  }
- 
   public void notifyFilesystemEvent(FilesystemEvent event) {
     logger.info(String.format(
         "File system event of type %s occured for file '%s'.", 
@@ -64,9 +43,6 @@ public class Synchronization {
     TeamFile file = session.getTeamFile(event.getFile());
     logger.debug("Teamfile: " + file);
     
-    // XXX HACK! Create a swift swarm.
-    createSwarm(file);
-
     // TODO Cache file hash somewhere in a file
     byte[] hash;
     try {

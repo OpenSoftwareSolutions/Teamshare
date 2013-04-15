@@ -23,19 +23,19 @@ package com.oss.teamshare.communication.zerocice;
 public final class DeviceEndpointPrxHelper extends Ice.ObjectPrxHelperBase implements DeviceEndpointPrx
 {
     public void
-    notifyRevision(String uri, String swarmId)
+    notifyRevision(String uri, String swarmId, String seederAddress)
     {
-        notifyRevision(uri, swarmId, null, false);
+        notifyRevision(uri, swarmId, seederAddress, null, false);
     }
 
     public void
-    notifyRevision(String uri, String swarmId, java.util.Map<String, String> __ctx)
+    notifyRevision(String uri, String swarmId, String seederAddress, java.util.Map<String, String> __ctx)
     {
-        notifyRevision(uri, swarmId, __ctx, true);
+        notifyRevision(uri, swarmId, seederAddress, __ctx, true);
     }
 
     private void
-    notifyRevision(String uri, String swarmId, java.util.Map<String, String> __ctx, boolean __explicitCtx)
+    notifyRevision(String uri, String swarmId, String seederAddress, java.util.Map<String, String> __ctx, boolean __explicitCtx)
     {
         if(__explicitCtx && __ctx == null)
         {
@@ -49,7 +49,7 @@ public final class DeviceEndpointPrxHelper extends Ice.ObjectPrxHelperBase imple
             {
                 __delBase = __getDelegate(false);
                 _DeviceEndpointDel __del = (_DeviceEndpointDel)__delBase;
-                __del.notifyRevision(uri, swarmId, __ctx);
+                __del.notifyRevision(uri, swarmId, seederAddress, __ctx);
                 return;
             }
             catch(IceInternal.LocalExceptionWrapper __ex)
@@ -65,37 +65,37 @@ public final class DeviceEndpointPrxHelper extends Ice.ObjectPrxHelperBase imple
 
     private static final String __notifyRevision_name = "notifyRevision";
 
-    public Ice.AsyncResult begin_notifyRevision(String uri, String swarmId)
+    public Ice.AsyncResult begin_notifyRevision(String uri, String swarmId, String seederAddress)
     {
-        return begin_notifyRevision(uri, swarmId, null, false, null);
+        return begin_notifyRevision(uri, swarmId, seederAddress, null, false, null);
     }
 
-    public Ice.AsyncResult begin_notifyRevision(String uri, String swarmId, java.util.Map<String, String> __ctx)
+    public Ice.AsyncResult begin_notifyRevision(String uri, String swarmId, String seederAddress, java.util.Map<String, String> __ctx)
     {
-        return begin_notifyRevision(uri, swarmId, __ctx, true, null);
+        return begin_notifyRevision(uri, swarmId, seederAddress, __ctx, true, null);
     }
 
-    public Ice.AsyncResult begin_notifyRevision(String uri, String swarmId, Ice.Callback __cb)
+    public Ice.AsyncResult begin_notifyRevision(String uri, String swarmId, String seederAddress, Ice.Callback __cb)
     {
-        return begin_notifyRevision(uri, swarmId, null, false, __cb);
+        return begin_notifyRevision(uri, swarmId, seederAddress, null, false, __cb);
     }
 
-    public Ice.AsyncResult begin_notifyRevision(String uri, String swarmId, java.util.Map<String, String> __ctx, Ice.Callback __cb)
+    public Ice.AsyncResult begin_notifyRevision(String uri, String swarmId, String seederAddress, java.util.Map<String, String> __ctx, Ice.Callback __cb)
     {
-        return begin_notifyRevision(uri, swarmId, __ctx, true, __cb);
+        return begin_notifyRevision(uri, swarmId, seederAddress, __ctx, true, __cb);
     }
 
-    public Ice.AsyncResult begin_notifyRevision(String uri, String swarmId, Callback_DeviceEndpoint_notifyRevision __cb)
+    public Ice.AsyncResult begin_notifyRevision(String uri, String swarmId, String seederAddress, Callback_DeviceEndpoint_notifyRevision __cb)
     {
-        return begin_notifyRevision(uri, swarmId, null, false, __cb);
+        return begin_notifyRevision(uri, swarmId, seederAddress, null, false, __cb);
     }
 
-    public Ice.AsyncResult begin_notifyRevision(String uri, String swarmId, java.util.Map<String, String> __ctx, Callback_DeviceEndpoint_notifyRevision __cb)
+    public Ice.AsyncResult begin_notifyRevision(String uri, String swarmId, String seederAddress, java.util.Map<String, String> __ctx, Callback_DeviceEndpoint_notifyRevision __cb)
     {
-        return begin_notifyRevision(uri, swarmId, __ctx, true, __cb);
+        return begin_notifyRevision(uri, swarmId, seederAddress, __ctx, true, __cb);
     }
 
-    private Ice.AsyncResult begin_notifyRevision(String uri, String swarmId, java.util.Map<String, String> __ctx, boolean __explicitCtx, IceInternal.CallbackBase __cb)
+    private Ice.AsyncResult begin_notifyRevision(String uri, String swarmId, String seederAddress, java.util.Map<String, String> __ctx, boolean __explicitCtx, IceInternal.CallbackBase __cb)
     {
         IceInternal.OutgoingAsync __result = new IceInternal.OutgoingAsync(this, __notifyRevision_name, __cb);
         try
@@ -104,6 +104,7 @@ public final class DeviceEndpointPrxHelper extends Ice.ObjectPrxHelperBase imple
             IceInternal.BasicStream __os = __result.__os();
             __os.writeString(uri);
             __os.writeString(swarmId);
+            __os.writeString(seederAddress);
             __os.endWriteEncaps();
             __result.__send(true);
         }

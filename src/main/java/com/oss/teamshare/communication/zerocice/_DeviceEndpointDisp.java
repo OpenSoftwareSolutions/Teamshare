@@ -78,9 +78,9 @@ public abstract class _DeviceEndpointDisp extends Ice.ObjectImpl implements Devi
     }
 
     public final void
-    notifyRevision(String uri, String swarmId)
+    notifyRevision(String uri, String swarmId, String seederAddress)
     {
-        notifyRevision(uri, swarmId, null);
+        notifyRevision(uri, swarmId, seederAddress, null);
     }
 
     public static Ice.DispatchStatus
@@ -93,8 +93,10 @@ public abstract class _DeviceEndpointDisp extends Ice.ObjectImpl implements Devi
         uri = __is.readString();
         String swarmId;
         swarmId = __is.readString();
+        String seederAddress;
+        seederAddress = __is.readString();
         __is.endReadEncaps();
-        __obj.notifyRevision(uri, swarmId, __current);
+        __obj.notifyRevision(uri, swarmId, seederAddress, __current);
         return Ice.DispatchStatus.DispatchOK;
     }
 

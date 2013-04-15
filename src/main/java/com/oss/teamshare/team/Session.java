@@ -50,7 +50,8 @@ public class Session implements AutoCloseable {
       throw new IllegalStateException("Session already created");
     }
     
-    return new Session(userId, deviceId, port);
+    instance = new Session(userId, deviceId, port);
+    return instance;
   }
   
   public static Session getInstance() {

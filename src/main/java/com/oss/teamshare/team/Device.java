@@ -1,5 +1,6 @@
 package com.oss.teamshare.team;
 
+import java.net.InetAddress;
 import java.net.InetSocketAddress;
 import java.security.PublicKey;
 
@@ -15,12 +16,15 @@ import com.oss.teamshare.communication.zerocice.DeviceEndpointPrxHelper;
 
 public class Device {
   
-  public Device(DeviceId id, String name, User user, InetSocketAddress address) {
+  public Device(DeviceId id, String name, User user, InetAddress address,
+      int icePort, int swiftPort) {
     super();
     this.id = id;
     this.name = name;
     this.user = user;
     this.address = address;
+    this.icePort = icePort;
+    this.swiftPort = swiftPort;
   }
 
   /**
@@ -39,7 +43,11 @@ public class Device {
   /**
    * Internet socket address for the communication endpoint of the device.
    */
-  InetSocketAddress address;
+  InetAddress address;
+  
+  int icePort;
+  
+  int swiftPort;
   
   /**
    * Provides communication to another device through Ice.
@@ -82,7 +90,8 @@ public class Device {
       return;
     }
     
-    Ice.ObjectPrx base = IceRuntime.getInstance().createObjectProxy(id, address);
+    Ice.ObjectPrx base = IceRuntime.getInstance().createObjectProxy(id,
+        new InetSocketAddress(address, icePort));
     endpoint = DeviceEndpointPrxHelper.checkedCast(base);
   }
 
@@ -123,6 +132,18 @@ public class Device {
 
   public User getUser() {
     return user;
+  }
+
+  public InetAddress getAddress() {
+    return address;
+  }
+
+  public int getIcePort() {
+    return icePort;
+  }
+
+  public int getSwiftPort() {
+    return swiftPort;
   }
 
   public boolean isOnline() {

@@ -23,7 +23,7 @@ package com.oss.teamshare.communication.zerocice;
 public final class _DeviceEndpointDelM extends Ice._ObjectDelM implements _DeviceEndpointDel
 {
     public void
-    notifyRevision(String uri, String swarmId, java.util.Map<String, String> __ctx)
+    notifyRevision(String uri, String swarmId, String seederAddress, java.util.Map<String, String> __ctx)
         throws IceInternal.LocalExceptionWrapper
     {
         IceInternal.Outgoing __og = __handler.getOutgoing("notifyRevision", Ice.OperationMode.Normal, __ctx);
@@ -34,6 +34,7 @@ public final class _DeviceEndpointDelM extends Ice._ObjectDelM implements _Devic
                 IceInternal.BasicStream __os = __og.os();
                 __os.writeString(uri);
                 __os.writeString(swarmId);
+                __os.writeString(seederAddress);
             }
             catch(Ice.LocalException __ex)
             {

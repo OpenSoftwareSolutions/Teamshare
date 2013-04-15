@@ -22,6 +22,6 @@ package com.oss.teamshare.communication.zerocice;
 
 public interface _DeviceEndpointDel extends Ice._ObjectDel
 {
-    void notifyRevision(String uri, String swarmId, java.util.Map<String, String> __ctx)
+    void notifyRevision(String uri, String swarmId, String seederAddress, java.util.Map<String, String> __ctx)
         throws IceInternal.LocalExceptionWrapper;
 }

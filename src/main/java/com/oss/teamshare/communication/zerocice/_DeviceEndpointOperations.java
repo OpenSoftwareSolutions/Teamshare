@@ -22,5 +22,5 @@ package com.oss.teamshare.communication.zerocice;
 
 public interface _DeviceEndpointOperations
 {
-    void notifyRevision(String uri, String swarmId, Ice.Current __current);
+    void notifyRevision(String uri, String swarmId, String seederAddress, Ice.Current __current);
 }

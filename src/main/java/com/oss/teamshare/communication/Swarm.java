@@ -44,6 +44,14 @@ public class Swarm extends Thread {
    */
   private byte[] swarmId;
   
+  /**
+   * Construct a swarm for leeching mode.
+   * 
+   * @param port
+   * @param filePath
+   * @param seederAddress
+   * @param swarmId
+   */
   public Swarm(int port, Path filePath, InetSocketAddress seederAddress,
       byte[] swarmId) {
     super();
@@ -53,6 +61,12 @@ public class Swarm extends Thread {
     this.swarmId = swarmId;
   }
   
+  /**
+   * Construct a swarm for seeding mode.
+   * 
+   * @param port
+   * @param filePath
+   */
   public Swarm(int port, Path filePath) {
     this(port, filePath, null, null);
   }
@@ -71,10 +85,31 @@ public class Swarm extends Thread {
     
     String strPort = "" + port;
     String strFilePath = filePath.toString();
-    String strSeederAddress = seederAddress.getAddress().getHostAddress() +
-        ":" + seederAddress.getPort();
-    String strSwarmId = DatatypeConverter.printHexBinary(swarmId).toLowerCase();
-    
+    String strSeederAddress = null;
+    if (seederAddress != null) {
+      strSeederAddress = seederAddress.getAddress().getHostAddress() +
+          ":" + seederAddress.getPort();
+    }
+    String strSwarmId = null;
+    if (swarmId != null) {
+      strSwarmId = DatatypeConverter.printHexBinary(swarmId).toLowerCase();
+    }
+  
     swift.Start(strPort, strFilePath, strSeederAddress, strSwarmId);
+  }
+  
+  public byte[] getSwarmId() {
+    String strFilePath = filePath.toString();
+    
+    String strSwarmId = swift.GetRootHash(strFilePath);
+    
+    return DatatypeConverter.parseHexBinary(strSwarmId);
+  }
+  
+  public static int getPortFromProperty() {
+    String strSwiftPort = System.getProperty("teamshare.swift.port");
+    int swiftPort = Integer.parseInt(strSwiftPort);
+    
+    return swiftPort;
   }
 }

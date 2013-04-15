@@ -2,7 +2,9 @@ package com.oss.teamshare.team;
 
 import java.io.File;
 import java.io.IOException;
+import java.net.InetAddress;
 import java.net.InetSocketAddress;
+import java.net.UnknownHostException;
 import java.util.Map;
 import java.util.LinkedHashMap;
 import java.util.NoSuchElementException;
@@ -115,25 +117,23 @@ public class JsonTeamRepo implements TeamRepo {
         String strDevId = deviceNode.get("id").textValue();
         String devName = deviceNode.get("name").textValue();
         String addr = deviceNode.get("address").textValue();
+        int icePort = deviceNode.get("icePort").intValue();
+        int swiftPort = deviceNode.get("swiftPort").intValue();
         if (strId == null || devName == null || addr == null) {
           throw new IllegalArgumentException(
               "id, name and address fields are mandatory for a device");
         }
         
-        InetSocketAddress isa;
-        StringTokenizer strtok = new StringTokenizer(addr, ":");
+        InetAddress ia;
         try {
-          isa = new InetSocketAddress(strtok.nextToken(),
-              Integer.parseInt(strtok.nextToken()));
-        } catch (NoSuchElementException e) {
-          throw new IllegalArgumentException("Provide address as <host>:<port>");
-        } catch (NumberFormatException e) {
-          throw new IllegalArgumentException("Invalid address port.");
+          ia = InetAddress.getByName(addr);
+        } catch (UnknownHostException e) {
+          throw new IllegalArgumentException("address must be a host name");
         }
 
         DeviceId devId = new DeviceId(strDevId);
         if (!devId.equals(myDeviceId)) {
-          Device device = new Device(devId, devName, user, isa);
+          Device device = new Device(devId, devName, user, ia, icePort, swiftPort);
           user.addDevice(device);
         }
       }
