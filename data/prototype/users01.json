@@ -7,7 +7,7 @@
 		{
 		    "id": "calin_desktop",
 		    "name": "CalinDesktop",
-		    "address": "localhost",
+		    "address": "172.16.4.164",
 			"icePort": 6771,
 			"swiftPort": 6881
 		}
@@ -18,7 +18,7 @@
 		{
 		    "id": "adriana_laptop",
 		    "name": "AdrianaLaptop",
-		    "address": "localhost",
+		    "address": "172.16.5.109",
 			"icePort": 6772,
 			"swiftPort": 6882
 		}
