@@ -63,7 +63,7 @@ Installation
 ------------
 
 On Linux: 
-* To build and test Teamshare check the [building Wiki page](wiki/Building).
+* To build and test Teamshare check the [building Wiki page](https://github.com/open-software-solutions/Teamshare/wiki/Building).
 On Windows:
 TODO
 On mobile devices:
