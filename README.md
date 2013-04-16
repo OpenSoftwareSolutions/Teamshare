@@ -1,4 +1,4 @@
-Teamshare 
+Teamshare
 =========
 
 Teamshare is a decentralized file-sharing application with emphasis on privacy,
@@ -56,14 +56,14 @@ https://koala.cs.pub.ro/teamwork/app-javadoc/
 Prerequisites
 -------------
 
-Java SE jre >= 1.6
+Java SE jre >= 1.7
 TODO other prerequisites
 
 Installation
 ------------
 
 On Linux: 
-TODO
+* To build and test Teamshare check the [building Wiki page](wiki/Building).
 On Windows:
 TODO
 On mobile devices:
