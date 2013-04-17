@@ -11,6 +11,7 @@ import org.apache.logging.log4j.Logger;
 
 import com.oss.teamshare.communication.SwiftService;
 
+import com.oss.teamshare.io.FileEventType;
 import com.oss.teamshare.io.FilesystemEvent;
 import com.oss.teamshare.io.TeamFile;
 import com.oss.teamshare.team.*;
@@ -42,36 +43,55 @@ public class Synchronization {
     TeamFile file = session.getTeamFile(filePath);
     logger.debug("Teamfile: " + file);
 
-   
-    try { 
-      //TODO TEST ME
-      hashFile(file, filePath);
 
-    } catch (IOException e) {
+    try { 
+     
+      if (event.getEventType() != FileEventType.DELETE)
+        hashFile(file, filePath);
+
+    } catch (IOException ioe) {
       logger.error(String.format("Error while hashing physical file '%s': %s",
-          filePath, e.getMessage()));
+          filePath, ioe.getMessage()));
+      ioe.printStackTrace();
       return;
     }
 
-    pushStrategy.push(file);
+   // pushStrategy.push(file);
   }
 
+  /**
+   * Store a file's hash in a subfolder of the team's hidden configuration folder. 
+   * The subfolder's name is the filename's hash.
+   * @param file 
+   * @param filePath - the absolute path of the file
+   * @throws IOException
+   */
   private void hashFile(TeamFile file, Path filePath) throws IOException {
-    //TODO change hardcode ".team"
-    String hidden = session.getPath().toString() + FileSystems.getDefault().getSeparator().charAt(0) 
-        +".team"+ FileSystems.getDefault().getSeparator().charAt(0) 
-        +file.getPath();
-    Path hiddenPath = FileSystems.getDefault().getPath(hidden);
 
-    if (Files.isDirectory(filePath)) {
-      Files.createDirectory(hiddenPath);
-      logger.debug(String.format("Created hidden entry for folder %s at %s", file.getPath(), hiddenPath));
-    }
-    else {
-      byte[] hash = computeFileHash(filePath);
+    //TODO remove hardcode "files" and "hash"
+
+    Path hiddenPath = session.getHiddenTeamFilesFolder(file.getTeam());
+
+    if (!Files.isDirectory(filePath)) { 
+
+      // obtain the path of the folder in which to store the hash
+      String fileNameHash = new String (file.getHash());
+      String s = hiddenPath.toString() + FileSystems.getDefault().getSeparator().charAt(0) +fileNameHash;
+      Path keyPath = FileSystems.getDefault().getPath(s);
+
+      if (!Files.isDirectory(keyPath)  || !Files.exists(keyPath)) {
+        Files.createDirectory(keyPath);
+        logger.debug(String.format("Created folder %s for file %s' hash", keyPath, file));
+      }     
+
+      byte[] hash = computeFileHash(filePath);      
       logger.debug(String.format("Created hash for file %s", file));            
 
-      Files.write(hiddenPath, hash, StandardOpenOption.CREATE, StandardOpenOption.WRITE);
+      s = keyPath.toString() + FileSystems.getDefault().getSeparator().charAt(0) + "hash";
+      Path hashFilePath = FileSystems.getDefault().getPath(s);
+      Files.write(hashFilePath, hash, StandardOpenOption.CREATE, 
+          StandardOpenOption.WRITE, 
+          StandardOpenOption.TRUNCATE_EXISTING);
 
       logger.debug(String.format("Stored hash for file %s at %s", file.getPath(), hiddenPath));
     }
@@ -97,6 +117,7 @@ public class Synchronization {
       while ((count = input.read(fileData)) != -1) {
         md.update(fileData, 0, count);
       }
+      input.close();
     }
 
     return md.digest();

@@ -4,6 +4,8 @@
 package com.oss.teamshare.io;
 
 
+import java.util.ArrayList;
+import java.util.List;
 import java.io.IOException;
 import java.nio.file.*;
 import java.nio.file.attribute.*;
@@ -15,6 +17,7 @@ import org.apache.logging.log4j.Logger;
 import com.oss.teamshare.sync.Synchronization;
 import com.oss.teamshare.team.DeviceId;
 import com.oss.teamshare.team.Session;
+import com.oss.teamshare.team.Team;
 import com.oss.teamshare.team.UserId;
 /**
  * 
@@ -33,6 +36,8 @@ public class FilesystemWatcher extends Thread {
   private Logger logger = LogManager.getLogger("FilesystemWatcher");
 
   private Synchronization syncService;
+
+  private List<Path> excludedDirs;
   
   public FilesystemWatcher(Path teamPath, Synchronization syncService){
 
@@ -47,15 +52,26 @@ public class FilesystemWatcher extends Thread {
    * @param recursive
    * @throws Exception
    */
-  public void watch(Boolean recursive){
+  public void watch(Boolean recursive, List<Path> exclude){
     try{
     watcher = FileSystems.getDefault().newWatchService();
     watchDirs = new HashMap<WatchKey, Path>();
-    
+    excludedDirs = exclude;
     Files.walkFileTree(teamAbsolutePath, new SimpleFileVisitor<Path>() {
       @Override
       public FileVisitResult preVisitDirectory(Path dir, BasicFileAttributes attrs)
       {
+        for (Path excluded: excludedDirs)
+        {
+          try {
+           
+            if (dir.startsWith(excluded))
+              return FileVisitResult.CONTINUE;
+          }catch (IllegalArgumentException e){
+            
+          }
+        }
+       
         register(dir);
         return FileVisitResult.CONTINUE;
       }
@@ -94,7 +110,6 @@ public class FilesystemWatcher extends Thread {
           logger.debug(String.format("%s: %s\n", event.kind().name(), filePath));
 
           if (Files.isHidden(filePath)) {
-            //System.out.println("ignore");
             continue;
           }
          
@@ -176,20 +191,24 @@ public class FilesystemWatcher extends Thread {
         System.out.println("uri " + p.toUri() + " string " + p);
       } 
       try{
-        String teamPath = "/home/adriana/work/teamshare-repo/fuse/ceva2";
-        UserId userId = new UserId("1");
-        DeviceId deviceId = new DeviceId("1");
-        String strPort = System.getProperty("teamshare.port");
-        int port = Integer.parseInt(strPort);
-        
+        String teamPath = "/home/adriana/Teamshare/Img";
+        UserId userId = new UserId("adriana");
+        DeviceId deviceId = new DeviceId("adriana_laptop");
+        //String strPort = System.getProperty("teamshare.port");
+        //int port = Integer.parseInt(strPort);
+        int port = 6772;
         //Team team = new Team (new TeamId("1234"), "ateam", new User(userId, "adriana"));
         Path dir = FileSystems.getDefault().getPath(teamPath);
         Session session = Session.create(userId, deviceId, port);
        
         Synchronization syncService = new Synchronization(session);        
         FilesystemWatcher watcher = new FilesystemWatcher(dir, syncService); // not yet session.getPath() 
-       
-        watcher.watch(true);
+              
+        ArrayList<Path> excludedDirs = new ArrayList<Path>();
+        for (Team team : session.getTeams()){
+          excludedDirs.add(session.getHiddenTeamFolder(team));
+        }
+        watcher.watch(true, excludedDirs);
         
         watcher.start();
         

@@ -1,7 +1,12 @@
 package com.oss.teamshare.team;
 
+import java.io.IOException;
+import java.nio.file.FileSystems;
+import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.Collection;
+import java.util.List;
 import java.util.Map;
 
 import org.apache.logging.log4j.LogManager;
@@ -16,7 +21,7 @@ import com.oss.teamshare.messaging.Mailbox;
  * Singleton representing the session of running the application on a device.
  */
 public class Session implements AutoCloseable {
-  
+
   private static Session instance = null;
 
   /**
@@ -41,6 +46,9 @@ public class Session implements AutoCloseable {
    */
   protected Path path;
 
+  
+  
+
   private DeviceServer deviceServer;
 
   public static Logger logger = LogManager.getLogger(Session.class);
@@ -49,19 +57,19 @@ public class Session implements AutoCloseable {
     if (instance != null) {
       throw new IllegalStateException("Session already created");
     }
-    
+
     instance = new Session(userId, deviceId, port);
     return instance;
   }
-  
+
   public static Session getInstance() {
     if (instance == null) {
       throw new IllegalStateException("The Session must be created first.");
     }
-    
+
     return instance;
   }
-  
+
   /**
    * Demo constructor which load team from JSON files.
    * 
@@ -97,8 +105,53 @@ public class Session implements AutoCloseable {
       path = Paths.get(strPath);
     }
     logger.info("Teamshare path: " + path);
+
+    
+   
+
   }
 
+  /**
+   *  Returns the Path to the team's hidden folder, which contains configuration details, file hashes etc.
+   *  Only the application has access to this folder and it is not synchronized.
+   *
+   * @param team - the Team for which to obtain the path
+   * @return
+   */
+  public Path getHiddenTeamFolder(Team team) {
+    String s = path.toString() +  FileSystems.getDefault().getSeparator().charAt(0)+ team.getPath().toString() + FileSystems.getDefault().getSeparator().charAt(0)+".team";
+    Path hiddenTeamFolder = FileSystems.getDefault().getPath(s);
+    System.out.println(s + " " + hiddenTeamFolder);
+    if (!Files.exists(hiddenTeamFolder) || !Files.isDirectory(hiddenTeamFolder)) {
+      try{
+        Files.createDirectory(hiddenTeamFolder); // for windows we need to make it hidden using attribute "dos:hidden"
+      }catch(IOException ioe){
+        logger.fatal(String.format("Failed to create team's hidden folder " +
+            "with path %s:", hiddenTeamFolder, ioe.getMessage()));
+        ioe.printStackTrace();
+        System.exit(1);
+      }
+    }
+    return hiddenTeamFolder;
+  }
+  
+  public Path getHiddenTeamFilesFolder(Team team){
+    Path hiddenTeamFolder = getHiddenTeamFolder(team);
+    String s = hiddenTeamFolder.toString() + FileSystems.getDefault().getSeparator().charAt(0) + "files";
+    Path hiddenTeamFilesFolder =   FileSystems.getDefault().getPath(s);   
+    if (!Files.exists(hiddenTeamFilesFolder) || !Files.isDirectory(hiddenTeamFilesFolder)) {
+          try{
+            Files.createDirectory(hiddenTeamFilesFolder); // for windows we need to make it hidden using attribute "dos:hidden"
+          }catch(IOException ioe){
+            logger.fatal(String.format("Failed to create team's hidden folder " +
+                "with path %s:", hiddenTeamFilesFolder, ioe.getMessage()));
+            ioe.printStackTrace();
+            System.exit(1);
+          }
+        }     
+    return hiddenTeamFilesFolder;
+  }
+  
   /**
    * Returns a team by its id or null if not found.
    * 
@@ -109,6 +162,10 @@ public class Session implements AutoCloseable {
     return teams.get(id);
   }
 
+  public Collection<Team> getTeams() {
+    return teams.values();
+  }
+  
   public Mailbox getMailbox() {
     return mailbox;
   }
@@ -117,6 +174,7 @@ public class Session implements AutoCloseable {
     return path;
   }
 
+ 
   /**
    * Retrieves a Team reference by its path relative to Teamshare path.
    * 
@@ -139,7 +197,7 @@ public class Session implements AutoCloseable {
    * Returns a TeamFile instance from an absolute local file path.
    * 
    * @param absoluteFile
-   *          the abstolute file path
+   *          the absolute file path
    * @return the TeamFile instance
    */
   public TeamFile getTeamFile(Path absoluteFile) {
