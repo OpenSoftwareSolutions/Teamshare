@@ -14,9 +14,8 @@ No centralized server stores your data because synchronization is performed by
 using peer-to-peer technology for each group. All communication is secured and
 data is locally stored in an encrypted format. 
 
-For more information please visit TODO site
 
-Licence
+License
 -------
 
 Teamshare Licensing Policy
