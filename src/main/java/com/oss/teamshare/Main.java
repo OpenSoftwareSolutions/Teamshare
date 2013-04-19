@@ -1,19 +1,17 @@
 package com.oss.teamshare;
 
-
-import java.io.Console;
-import java.nio.file.Paths;
+import java.nio.file.Path;
+import java.util.ArrayList;
 
 import org.apache.commons.lang3.exception.ExceptionUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import com.oss.teamshare.io.FileEventType;
-import com.oss.teamshare.io.FilesystemEvent;
 import com.oss.teamshare.io.FilesystemWatcher;
 import com.oss.teamshare.sync.Synchronization;
 import com.oss.teamshare.team.DeviceId;
 import com.oss.teamshare.team.Session;
+import com.oss.teamshare.team.Team;
 import com.oss.teamshare.team.TeamRepoException;
 import com.oss.teamshare.team.UserId;
 
@@ -64,7 +62,14 @@ public class Main {
       FilesystemWatcher fsWatcher = null;
       fsWatcher = new FilesystemWatcher(
           session.getPath(), sync);
-      fsWatcher.watch(true);
+      
+      // don't monitor changes in the team's hidden folder
+      ArrayList<Path> excludedDirs = new ArrayList<Path>();
+      for (Team team : session.getTeams()){
+        excludedDirs.add(session.getHiddenTeamFolder(team));
+      }
+      
+      fsWatcher.watch(true, excludedDirs);
       fsWatcher.start();
 
       System.out.println("Press any key to exit...");
