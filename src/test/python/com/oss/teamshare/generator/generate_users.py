@@ -5,8 +5,7 @@ import random
 import getopt
 import string
 import json
-
-alphabet = str(string.letters + string.digits )
+from util import *
 
 def usage(argv):
     """ Print help screen
@@ -74,48 +73,7 @@ def generate_users(num_users, min_port, max_port,
     print_json(num_users, indent, user_ids, usernames, device_ids, device_names,
                device_addresses, device_iceports, device_swiftports)
     
-def add_element(generate_function, field, prefix, args):
-    """ Generate unique element in the field list and append it to list
-        @param generate_function: Function used for generation
-        @param field: List of previously generated data
-        @param prefix: Prefix for the string in the field
-        @param args: Arguments for generate_function
-    """
-    random_element = prefix + generate_function(*args)
-    while random_element in field:
-        random_element = prefix + generate_function(*args)
-    field.append(random_element)
-        
-def generate_id(length):
-    """ Generate random ID
-        @param length: Length of the ID
-        @return: Random string
-    """
-    return "".join([random.choice(alphabet) for i in xrange(length)])
 
-def generate_name(length):
-    """ Generate random name
-        @param length: Length of the name
-        @return: Random string
-    """
-    return "".join([random.choice(alphabet) for i in xrange(length)])
-
-def generate_address():
-    """ Generate random IP address
-        @return: IP address
-    """
-    ip = []
-    for i in xrange(4):
-        ip.append(str(random.randrange(0, 256)))
-    return ".".join(ip)
-
-def generate_port(min_port, max_port):
-    """ Generate random port
-        @param min_port: Minimum port value
-        @param max_port: Maximum port value
-        @return: Random port
-    """ 
-    return str(random.randrange(min_port, max_port))
 
 def print_json(num_users, indent, user_ids, usernames, device_ids, device_names,
                device_addresses, device_iceports, device_swiftports):
@@ -147,17 +105,9 @@ def print_json(num_users, indent, user_ids, usernames, device_ids, device_names,
         user_data["devices"] = [device_data]
         data["users"].append(user_data)
     
-    file.write(json.dumps(data, indent = indent))
+    o_file.write(json.dumps(data, indent = indent))
 
-def check_validity(args):
-    """ Verifies that the given arguments are positive
-        @param args: List of arguments to check
-        @return: True if valid. False if not valid.
-    """
-    for arg in args:
-        if arg <= 0:
-            return False
-    return True
+
 
 if __name__ == "__main__":
     
@@ -211,21 +161,24 @@ if __name__ == "__main__":
                 print "Argument %s requires an integer value." % o
             sys.exit(2)
     
-    """Test parameters"""
-    if min_port > max_port:
-        raise Exception, "The port range is incorrect"
-    if min_length > max_length:
-        raise Exception, "The length range is incorrect"
-    if check_validity((min_port, min_length, num_users, )) == False:
-        raise Exception, "Arguments must be positive"
-    
+    """Test arguments and open output file"""
     try:
-        file = open(output_path, "w")
+        if min_port > max_port:
+            raise InputArgError("The port range is incorrect")
+        if min_length > max_length:
+            raise InputArgError("The length range is incorrect")
+        if check_validity((min_port, min_length, num_users, )) == False:
+            raise InputArgError("Arguments must be positive")
+        o_file = open(output_path, "w")
+    except InputArgError as err:
+        print err
+        sys.exit(2)
     except Exception:
         print "Output path not valid"
         sys.exit(2)
     
-    random.seed() #use local time as seed   
+    random.seed()
 
     generate_users(num_users, min_port, max_port,
                    min_length, max_length, indent)
+    o_file.close()

@@ -5,7 +5,7 @@ import sys
 import random
 import getopt
 import json
-import generate_users
+from util import *
 
 def usage(argv):
     """ Print help screen
@@ -48,22 +48,20 @@ def generate_teams(different, indent, min_length, max_length,
     team_id_prefix = "tid_"
     team_name_prefix = "t_"
     
-    
+    """Hack for randrange"""
     max_length += 1
     max_users += 1
     
     for i in xrange(num_teams):
-        generate_users.add_element(generate_users.generate_id,
-                                   team_ids, team_id_prefix,
-                                   (random.randrange(min_length, max_length),))
-        generate_users.add_element(generate_users.generate_name,
-                                   team_names, team_name_prefix,
-                                   (random.randrange(min_length, max_length),))
+        add_element(generate_id, team_ids, team_id_prefix,
+                    (random.randrange(min_length, max_length),))
+        add_element(generate_name, team_names, team_name_prefix,
+                    (random.randrange(min_length, max_length),))
         team_owners.append(random.choice(usernames))
         team_users.append([])
         team_users[i].append(team_owners[-1])
         num_team_users = random.randrange(min_users, max_users)
-        for j in xrange(num_team_users):
+        for j in xrange(1, num_team_users):
             team_user = random.choice(usernames)
             while team_user in team_users[i]:
                 team_user = random.choice(usernames)
@@ -85,16 +83,6 @@ def print_json(num_teams, indent, team_ids, team_names,
         data["teams"].append(team_data)
     
     o_file.write(json.dumps(data, indent=indent))
-    
-def check_validity(args):
-    """ Verifies that the given arguments are positive
-        @param args: List of arguments to check
-        @return: True if valid. False if not valid.
-    """
-    for arg in args:
-        if arg <= 0:
-            return False
-    return True
 
 if __name__ == "__main__":
     
@@ -109,7 +97,7 @@ if __name__ == "__main__":
     num_users = 5
     num_teams = 5
     output_path = "teams"
-    tmp_path = None
+    tmp_path = "tmp_users"
     
     short_options = "dhi:I:l:L:n:N:o:u:U:"
     long_options = ["different", "help", "input=", "indent=",
@@ -161,43 +149,41 @@ if __name__ == "__main__":
                 print "Parameter %s requires an integer value." % o
             sys.exit(2)
     
-    if min_users > max_users:
-        raise Exception, "The number of users range is incorrect"
-        sys.exit(2)
-    if min_length > max_length:
-        raise Exception, "The length range is incorrect"
-        sys.exit(2)
-    if check_validity((min_length, min_users,
-                       num_users, num_teams, indent,)) == False:
-        raise Exception, "Parameters must be positive"
-        sys.exit(2)
+    """Test arguments and read a given JSON file or generate one"""
     try:
+        if min_users > max_users:
+            raise InputArgError("The number range for users range is incorrect",
+                                [min_users, max_users])
+        if min_length > max_length:
+            raise InputArgError("The length range is incorrect",
+                                [min_length, max_length])
+        if check_validity((min_length, min_users,
+                           num_users, num_teams, indent,)) == False:
+            raise InputArgError("Parameters must be positive")
         if input_path != None:
             i_file = open(input_path, "r")
+        else:
+            os.system("python generate_users.py -o %s -n %d -l %d -L %d"
+                       % (tmp_path, num_users, min_length, max_length))
+            i_file = open(tmp_path, "r")
+        usernames = get_usernames()
+        i_file.close()
+        num_users = len(usernames)
+        if num_users < max_users:
+            raise InputArgError("Number of maximum allowed users per team" +
+                                "(%d) exceeds number of available users(%d)" 
+                                % (max_users,num_users))
         o_file = open(output_path, "w")
-    except Exception:
+    except InputArgError as err:
+        print err
+        sys.exit(2)
+    except IOError:
         print "Input/Output path not valid"
         sys.exit(2)
-    
-    if input_path == None:
-        os.system("python generate_users.py -o tmp_users -n %d" % num_users)
-        tmp_path = "tmp_users"
-        i_file = open(tmp_path, "r")
-    
-    try:
-        usernames = get_usernames()
     except Exception:
         print "Invalid JSON file"
         sys.exit(2)
-    i_file.close()
-    
-    num_users = len(usernames)
-    
-    if num_users < max_users:
-        print "Number of maximum allowed users per team(%d)" % max_users,
-        print "exceeds number of available users(%d)." % num_users
-        sys.exit(2)
-    
+        
     #if tmp_path != None:
     #    os.remove(tmp_path)
 
@@ -205,3 +191,4 @@ if __name__ == "__main__":
     
     generate_teams(different, indent, min_length, max_length,
                    min_users, max_users, num_users, num_teams, usernames)
+    o_file.close()
