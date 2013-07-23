@@ -21,7 +21,7 @@ def usage(argv):
     print "\t-o, --output\t\t"
     print "file in which to generate data, defaults to users"
     print "\t-i, --indent\t\tindentation width, defaults to 2"
-    print "\t-h, --number\t\tprint help screen"
+    print "\t-h, --help\t\tprint help screen"
 
 def generate_users(num_users, min_port, max_port,
                    min_length, max_length, indent):
