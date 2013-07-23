@@ -14,7 +14,7 @@ def usage(argv):
     print "Usage: python %s [OPTIONS]" % argv[0]
     print "Options:"
     print "\t-d, --different\t\tdifferent owner for every team"
-    print "\t-h,\t\t\tprint help screen"
+    print "\t-h, --help\t\tprint help screen"
     print "\t-i, --input\t\tinput file; if given, -n argument is ignored"
     print "\t-I, --indent\t\tindentation width, defaults to 2"
     print "\t-l, --min-length\tminimum length of names and IDs, defaults to 5"
