@@ -23,8 +23,37 @@ public class Main {
     
   }
   
+  
+  public static void main(String []args){
+    
+    for(String s: args)
+      System.out.println(s);
+    System.out.println(System.getProperty("teamshare.user"));
+    String strUser = System.getProperty("teamshare.user");
+    String strDevice = System.getProperty("teamshare.device");
+    String strFolderPath = System.getProperty("user.folder");
+   
+    if (strUser == null || strDevice == null || strFolderPath == null) {
+      throw new IllegalArgumentException(
+          "You must provide properties teamshare.user, teamshare.device, user.folder.");
+    }
+  
+    
+    logger.info("Starting Teamshare for:\nuser=" + strUser + "\ndevice=" + strDevice + "\nfolder=" + strFolderPath);
+    
+    
+    //Create session.
+    /*try (Session session = Session.create(new UserId(strUser),
+                                  new DeviceId(strDevice), 0)){
+      
+    }
+    }*/
+    
+  }
+  
+  /* Calin's main
   public static void main(String[] args) throws TeamRepoException {
-    /* Read application input parameters from Java properties.*/
+    // Read application input parameters from Java properties.
     String strUser = System.getProperty("teamshare.user");
     String strDevice = System.getProperty("teamshare.device");
     String strIcePort = System.getProperty("teamshare.ice.port");
@@ -43,10 +72,10 @@ public class Main {
     int icePort = Integer.parseInt(strIcePort);
     logger.info("Device server endpoint (Ice) listening on port " + icePort);
     
-    /* Create session.*/
+    //Create session.
     try (Session session = Session.create(userId, deviceId, icePort)) {
       
-      /* HACK: Send file event manually for testing.*/
+      // HACK: Send file event manually for testing.
 //      Console console = System.console();
 //      console.printf(
 //          "Absolute path of the file for which to trigger a new file event: ");
@@ -55,10 +84,10 @@ public class Main {
 //      sync.notifyFilesystemEvent(new FilesystemEvent(Paths.get(fileName),
 //          FileEventType.CREATE));
       
-      /* Start sync service.*/
+      // Start sync service.
       Synchronization sync = new Synchronization(session);
       
-      /* Start FilesystemWatcher.*/
+      // Start FilesystemWatcher.
       FilesystemWatcher fsWatcher = null;
       fsWatcher = new FilesystemWatcher(
           session.getPath(), sync);
@@ -68,6 +97,7 @@ public class Main {
       for (Team team : session.getTeams()){
         excludedDirs.add(session.getHiddenTeamFolder(team));
       }
+     
       
       fsWatcher.watch(true, excludedDirs);
       fsWatcher.start();
@@ -82,6 +112,6 @@ public class Main {
     } catch (Exception e) {
       logger.fatal(ExceptionUtils.getStackTrace(e));
     }
-  }
+  }*/
 
 }
